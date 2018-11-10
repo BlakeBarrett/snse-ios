@@ -87,15 +87,9 @@
 		25E4D4912195252100CFA268 /* snse */ = {
 			isa = PBXGroup;
 			children = (
-				25E4D4922195252100CFA268 /* AppDelegate.swift */,
-				25E4D4942195252100CFA268 /* ViewController.swift */,
-				25E4D4B821954B5000CFA268 /* QuestionaireViewController.swift */,
-				25E4D4962195252100CFA268 /* Main.storyboard */,
-				25E4D4BA21954DD300CFA268 /* index.html */,
-				25E4D49E2195252300CFA268 /* LaunchScreen.storyboard */,
-				25E4D4A12195252300CFA268 /* Info.plist */,
-				25E4D4992195252100CFA268 /* snse.xcdatamodeld */,
-				25FED67421967692002DE7F0 /* Assets.xcassets */,
+				25FED67921967F5E002DE7F0 /* Supporting Files */,
+				25FED67721967F1F002DE7F0 /* Controllers */,
+				25FED67621967F17002DE7F0 /* Views */,
 			);
 			path = snse;
 			sourceTree = "<group>";
@@ -115,6 +109,36 @@
 				25E4D4B621954AA200CFA268 /* WebKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		25FED67621967F17002DE7F0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				25E4D4962195252100CFA268 /* Main.storyboard */,
+				25E4D49E2195252300CFA268 /* LaunchScreen.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		25FED67721967F1F002DE7F0 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				25E4D4922195252100CFA268 /* AppDelegate.swift */,
+				25E4D4942195252100CFA268 /* ViewController.swift */,
+				25E4D4B821954B5000CFA268 /* QuestionaireViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		25FED67921967F5E002DE7F0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				25E4D4BA21954DD300CFA268 /* index.html */,
+				25E4D4A12195252300CFA268 /* Info.plist */,
+				25E4D4992195252100CFA268 /* snse.xcdatamodeld */,
+				25FED67421967692002DE7F0 /* Assets.xcassets */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -386,7 +410,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JJNWD2J7X4;
-				INFOPLIST_FILE = snse/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/snse/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -405,7 +429,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JJNWD2J7X4;
-				INFOPLIST_FILE = snse/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/snse/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
