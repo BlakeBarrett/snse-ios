@@ -11,12 +11,12 @@
 		25E4D4952195252100CFA268 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E4D4942195252100CFA268 /* ViewController.swift */; };
 		25E4D4982195252100CFA268 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25E4D4962195252100CFA268 /* Main.storyboard */; };
 		25E4D49B2195252100CFA268 /* snse.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 25E4D4992195252100CFA268 /* snse.xcdatamodeld */; };
-		25E4D49D2195252300CFA268 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25E4D49C2195252300CFA268 /* Assets.xcassets */; };
 		25E4D4A02195252300CFA268 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25E4D49E2195252300CFA268 /* LaunchScreen.storyboard */; };
 		25E4D4AB2195252300CFA268 /* snseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E4D4AA2195252300CFA268 /* snseTests.swift */; };
 		25E4D4B721954AA200CFA268 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25E4D4B621954AA200CFA268 /* WebKit.framework */; };
 		25E4D4B921954B5000CFA268 /* QuestionaireViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E4D4B821954B5000CFA268 /* QuestionaireViewController.swift */; };
 		25E4D4BB21954DD300CFA268 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 25E4D4BA21954DD300CFA268 /* index.html */; };
+		25FED67521967692002DE7F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25FED67421967692002DE7F0 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,7 +35,6 @@
 		25E4D4942195252100CFA268 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		25E4D4972195252100CFA268 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		25E4D49A2195252100CFA268 /* snse.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = snse.xcdatamodel; sourceTree = "<group>"; };
-		25E4D49C2195252300CFA268 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		25E4D49F2195252300CFA268 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		25E4D4A12195252300CFA268 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25E4D4A62195252300CFA268 /* snseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = snseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +43,7 @@
 		25E4D4B621954AA200CFA268 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		25E4D4B821954B5000CFA268 /* QuestionaireViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionaireViewController.swift; sourceTree = "<group>"; };
 		25E4D4BA21954DD300CFA268 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		25FED67421967692002DE7F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,10 +92,10 @@
 				25E4D4B821954B5000CFA268 /* QuestionaireViewController.swift */,
 				25E4D4962195252100CFA268 /* Main.storyboard */,
 				25E4D4BA21954DD300CFA268 /* index.html */,
-				25E4D49C2195252300CFA268 /* Assets.xcassets */,
 				25E4D49E2195252300CFA268 /* LaunchScreen.storyboard */,
 				25E4D4A12195252300CFA268 /* Info.plist */,
 				25E4D4992195252100CFA268 /* snse.xcdatamodeld */,
+				25FED67421967692002DE7F0 /* Assets.xcassets */,
 			);
 			path = snse;
 			sourceTree = "<group>";
@@ -200,7 +200,7 @@
 			files = (
 				25E4D4A02195252300CFA268 /* LaunchScreen.storyboard in Resources */,
 				25E4D4BB21954DD300CFA268 /* index.html in Resources */,
-				25E4D49D2195252300CFA268 /* Assets.xcassets in Resources */,
+				25FED67521967692002DE7F0 /* Assets.xcassets in Resources */,
 				25E4D4982195252100CFA268 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
