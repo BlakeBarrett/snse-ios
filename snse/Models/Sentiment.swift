@@ -41,13 +41,15 @@ class Sentiment: Codable {
         for (key, value) in values {
             switch key {
             case Fields.timestamp.rawValue:
-                // First try as an int (from JavaScript)
+                // Are we loading from the db?
+                if let date = value as? Date {
+                    self.timestamp = date
+                } else
+                // Try as an Int (from JavaScript)
                 if  let epoch = value as? Int,
                     let timeInterval = TimeInterval(exactly: epoch / 1000) {
                     let epochDate = Date(timeIntervalSince1970: timeInterval)
                     self.timestamp = epochDate
-                } else if let date = value as? Date {
-                        self.timestamp = date
                 }
                 break
             case Fields.water.rawValue:

@@ -14,7 +14,7 @@ class SentimentFactory {
     
     static let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    static func load() -> [Sentiment] {
+    static func load(from context: NSManagedObjectContext) -> [Sentiment] {
         var results = [Sentiment]()
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "SentimentEntity")
         request.returnsObjectsAsFaults = false

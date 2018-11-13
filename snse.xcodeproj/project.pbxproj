@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2593190921978195005CCC75 /* Sentiment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2593190821978195005CCC75 /* Sentiment.swift */; };
 		2593190B21978BC5005CCC75 /* SentimentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2593190A21978BC5005CCC75 /* SentimentFactory.swift */; };
+		2593190F2197A76D005CCC75 /* SentimentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2593190E2197A76D005CCC75 /* SentimentViewController.swift */; };
 		25E4D4932195252100CFA268 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E4D4922195252100CFA268 /* AppDelegate.swift */; };
 		25E4D4952195252100CFA268 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E4D4942195252100CFA268 /* ViewController.swift */; };
 		25E4D4982195252100CFA268 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25E4D4962195252100CFA268 /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 /* Begin PBXFileReference section */
 		2593190821978195005CCC75 /* Sentiment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sentiment.swift; sourceTree = "<group>"; };
 		2593190A21978BC5005CCC75 /* SentimentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentimentFactory.swift; sourceTree = "<group>"; };
+		2593190E2197A76D005CCC75 /* SentimentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentimentViewController.swift; sourceTree = "<group>"; };
 		25E4D48F2195252100CFA268 /* snse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = snse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25E4D4922195252100CFA268 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		25E4D4942195252100CFA268 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				25E4D4942195252100CFA268 /* ViewController.swift */,
 				25E4D4B821954B5000CFA268 /* QuestionaireViewController.swift */,
 				2593190A21978BC5005CCC75 /* SentimentFactory.swift */,
+				2593190E2197A76D005CCC75 /* SentimentViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 				25E4D49B2195252100CFA268 /* snse.xcdatamodeld in Sources */,
 				25E4D4952195252100CFA268 /* ViewController.swift in Sources */,
 				25E4D4932195252100CFA268 /* AppDelegate.swift in Sources */,
+				2593190F2197A76D005CCC75 /* SentimentViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
