@@ -13,22 +13,32 @@ class SentimentViewController: UIViewController {
     
     @IBOutlet weak var textArea: UITextView?
     
-    var sentiments: [Sentiment]?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        fetchAndRender()
+    }
+    
+    func fetchAndRender() {
+        loadSentiments() { sentiments in
+            self.showSentiments(sentiments)
+        }
+    }
+    
+    func loadSentiments(_ success: (([Sentiment]) -> Void)?) {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        
-        DispatchQueue.global(qos: .userInitiated).async {
-            self.sentiments = SentimentFactory.load(from: context)
-            var json = ""
-            for value in self.sentiments ?? [] {
-                json.append("\(value.description), ")
-            }
+        DispatchQueue.global(qos: .background).async {
+            let sentiments = SentimentFactory.load(from: context)
             DispatchQueue.main.async {
-                self.textArea?.text.append(json)
+                success?(sentiments)
             }
         }
+    }
+    
+    func showSentiments(_ sentiments: [Sentiment]) {
+        var json = ""
+        for value in sentiments {
+            json.append("\(value.description), ")
+        }
+        self.textArea?.text.append(json)
     }
 }
