@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		258377D7219A52C100747670 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 258377D6219A52C100747670 /* LocalAuthentication.framework */; };
+		258377D9219A69E300747670 /* SentimentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 258377D8219A69E300747670 /* SentimentTableViewCell.xib */; };
 		2593190921978195005CCC75 /* Sentiment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2593190821978195005CCC75 /* Sentiment.swift */; };
 		2593190B21978BC5005CCC75 /* SentimentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2593190A21978BC5005CCC75 /* SentimentFactory.swift */; };
 		2593190F2197A76D005CCC75 /* SentimentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2593190E2197A76D005CCC75 /* SentimentViewController.swift */; };
@@ -35,6 +36,7 @@
 
 /* Begin PBXFileReference section */
 		258377D6219A52C100747670 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
+		258377D8219A69E300747670 /* SentimentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SentimentTableViewCell.xib; sourceTree = "<group>"; };
 		2593190821978195005CCC75 /* Sentiment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sentiment.swift; sourceTree = "<group>"; };
 		2593190A21978BC5005CCC75 /* SentimentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentimentFactory.swift; sourceTree = "<group>"; };
 		2593190E2197A76D005CCC75 /* SentimentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentimentViewController.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 			children = (
 				25E4D4962195252100CFA268 /* Main.storyboard */,
 				25E4D49E2195252300CFA268 /* LaunchScreen.storyboard */,
+				258377D8219A69E300747670 /* SentimentTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 				25E4D4BB21954DD300CFA268 /* index.html in Resources */,
 				25FED67521967692002DE7F0 /* Assets.xcassets in Resources */,
 				25E4D4982195252100CFA268 /* Main.storyboard in Resources */,
+				258377D9219A69E300747670 /* SentimentTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

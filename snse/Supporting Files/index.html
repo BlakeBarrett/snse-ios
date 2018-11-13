@@ -20,20 +20,34 @@
           bridge.postMessage(object);
       }
   </script>
+  <style>
+      input[type="checkbox"],
+      input[type="radio"] {
+          box-sizing: border-box; /* 1 */
+          padding: 0; /* 2 */
+          *height: 13px; /* 3 */
+          *width: 13px; /* 3 */
+      }
+      .snseForm {}
+      .snseForm_radio {}
+      .snseForm_radio-sad {}
+      .snseForm_radio-meh {}
+      .snseForm_radio-happy {}
+  </style>
 </head>
 <body>
-    <form id="form">
+    <form id="form" class="snseForm" name="entryForm">
         How are you feeling? <br/>
-        <input type="radio" name="feeling" value="😞">😞&nbsp;&nbsp;
-        <input type="radio" name="feeling" value="😐">😐&nbsp;&nbsp;
-        <input type="radio" name="feeling" value="😊">😊&nbsp;&nbsp;
+        <input type="radio" class="snseForm_radio snseForm_radio-sad" name="feeling" value="😞">😞&nbsp;&nbsp;
+        <input type="radio" class="snseForm_radio snseForm_radio-meh" name="feeling" value="😐">😐&nbsp;&nbsp;
+        <input type="radio" class="snseForm_radio snseForm_radio-happy" name="feeling" value="😊">😊&nbsp;&nbsp;
         <br /><br />
+        Have you recently drunk water?
+        <input type="checkbox" name="water"> <br /><br />
         Care to elaborate? <br />
         <textarea type="text" name="elaborate"></textarea> <br /><br />
         Would you like to pick a color that reflects that?<br />
         <input type="color" name="color" disabled> <br />
-        Have you recently drunk water?
-        <input type="checkbox" name="water"> <br /><br />
         Any links to share? <br /><br />
         <input type="url" name="url"><br /><br />
         Do you have a file that reflects how you are feeling? <br /><br />
