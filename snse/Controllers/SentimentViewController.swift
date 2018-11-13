@@ -26,8 +26,10 @@ class SentimentViewController: UIViewController {
     
     func loadSentiments(_ success: (([Sentiment]) -> Void)?) {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        // db on the background
         DispatchQueue.global(qos: .background).async {
             let sentiments = SentimentFactory.load(from: context)
+            // ui on the main thread
             DispatchQueue.main.async {
                 success?(sentiments)
             }
@@ -35,6 +37,11 @@ class SentimentViewController: UIViewController {
     }
     
     func showSentiments(_ sentiments: [Sentiment]) {
+        if sentiments.count == 0 {
+            self.textArea?.text = "Nothing saved yet."
+            return
+        }
+        
         var json = ""
         for value in sentiments {
             json.append("\(value.description), ")

@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import LocalAuthentication
 
 class ViewController: UIViewController {
 
+    var authenticated = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -20,11 +23,47 @@ class ViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)
-        if segue.destination is SentimentViewController {
-            // Do show the nav bar when presenting history.
-            navigationController?.setNavigationBarHidden(false, animated: true)
+    @IBAction func onHistoryButtonPressed(_ sender: UIButton) {
+        if !authenticated {
+            authenticateUser() {
+                self.authenticated = true
+                self.showHistory()
+            }
+            return
+        }
+        showHistory()
+    }
+    
+    func showHistory() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "historyViewController")
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        navigationController?.pushViewController(controller, animated: true)
+    }
+}
+
+// for LocalAuthentication code.
+extension ViewController {
+    
+    func authenticateUser(_ success: (() -> Void)?) {
+        let context = LAContext()
+        var error: NSError?
+        
+        let hasBiometrics = context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error)
+        let hasPasscode = context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error)
+        if hasBiometrics || hasPasscode {
+            let reason = "Only the device' owner has access."
+            
+            let onAuthComplete: (Bool, Error?) -> Void = { authenticated, _ in
+                DispatchQueue.main.async {
+                    if authenticated {
+                        success?()
+                    }
+                }
+            }
+            
+            let policy = hasBiometrics ? LAPolicy.deviceOwnerAuthenticationWithBiometrics : LAPolicy.deviceOwnerAuthentication
+            context.evaluatePolicy(policy, localizedReason: reason, reply: onAuthComplete)
         }
     }
 }

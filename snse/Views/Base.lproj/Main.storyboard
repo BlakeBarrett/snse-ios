@@ -50,7 +50,7 @@
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
-                                    <segue destination="ah6-rv-dgA" kind="show" id="YdT-UU-Qgv"/>
+                                    <action selector="onHistoryButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oEd-fI-9hW"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -77,13 +77,13 @@
         <!--Sentiment View Controller-->
         <scene sceneID="1Qi-yE-5a6">
             <objects>
-                <viewController id="ah6-rv-dgA" customClass="SentimentViewController" customModule="snse" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="historyViewController" id="ah6-rv-dgA" customClass="SentimentViewController" customModule="snse" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JB8-mN-nvz">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="l44-6t-euh">
-                                <rect key="frame" x="16" y="0.0" width="359" height="583"/>
+                                <rect key="frame" x="16" y="20" width="359" height="627"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>

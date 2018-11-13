@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		258377D7219A52C100747670 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 258377D6219A52C100747670 /* LocalAuthentication.framework */; };
 		2593190921978195005CCC75 /* Sentiment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2593190821978195005CCC75 /* Sentiment.swift */; };
 		2593190B21978BC5005CCC75 /* SentimentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2593190A21978BC5005CCC75 /* SentimentFactory.swift */; };
 		2593190F2197A76D005CCC75 /* SentimentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2593190E2197A76D005CCC75 /* SentimentViewController.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		258377D6219A52C100747670 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		2593190821978195005CCC75 /* Sentiment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sentiment.swift; sourceTree = "<group>"; };
 		2593190A21978BC5005CCC75 /* SentimentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentimentFactory.swift; sourceTree = "<group>"; };
 		2593190E2197A76D005CCC75 /* SentimentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentimentViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				258377D7219A52C100747670 /* LocalAuthentication.framework in Frameworks */,
 				25E4D4B721954AA200CFA268 /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -113,6 +116,7 @@
 		25E4D4B521954AA200CFA268 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				258377D6219A52C100747670 /* LocalAuthentication.framework */,
 				25E4D4B621954AA200CFA268 /* WebKit.framework */,
 			);
 			name = Frameworks;
