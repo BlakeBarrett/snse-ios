@@ -59,6 +59,20 @@ extension SentimentViewController {
         cell.set(row)
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let value = self.sentiments[indexPath.row]
+        showHistoricalSentiment(value)
+    }
+    
+    func showHistoricalSentiment(_ value: Sentiment) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let controller = (storyboard.instantiateViewController(withIdentifier: "historicalSentimentView") as? HistoricalSentimentViewController) {
+            controller.sentiment = value
+            navigationController?.pushViewController(controller, animated: true)
+        }
+    }
+    
 }
 
 class SentimentTableViewCell: UITableViewCell {

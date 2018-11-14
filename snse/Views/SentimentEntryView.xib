@@ -33,21 +33,20 @@
                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="3mH-Je-XOW">
+                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="3mH-Je-XOW">
                     <rect key="frame" x="14" y="114" width="347" height="31"/>
                     <connections>
                         <action selector="onSliderValueChanged:forEvent:" destination="iN0-l3-epB" eventType="valueChanged" id="Ffj-W7-Nd3"/>
                     </connections>
                 </slider>
                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="VJ2-wZ-CYj">
-                    <rect key="frame" x="310" y="180" width="51" height="31"/>
+                    <rect key="frame" x="310" y="177" width="51" height="31"/>
                     <connections>
                         <action selector="onSwitchValueChanged:forEvent:" destination="iN0-l3-epB" eventType="valueChanged" id="NGO-J6-Y0u"/>
                     </connections>
                 </switch>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LJs-wa-ino">
-                    <rect key="frame" x="322" y="147" width="37" height="30"/>
-                    <state key="normal" title="Color"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LJs-wa-ino">
+                    <rect key="frame" x="337" y="147" width="22" height="22"/>
                     <connections>
                         <action selector="onColorButtonClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="6E4-Gx-kFC"/>
                     </connections>
@@ -59,19 +58,19 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Color" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Og-fI-IAw">
-                    <rect key="frame" x="16" y="152" width="302" height="21"/>
+                    <rect key="frame" x="16" y="152" width="317" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Have you recently drunk water?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ihP-tU-tOV">
-                    <rect key="frame" x="16" y="185" width="291" height="21"/>
+                    <rect key="frame" x="16" y="182" width="291" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" keyboardDismissMode="onDrag" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tq9-fh-RVd">
-                    <rect key="frame" x="10" y="219" width="349" height="428"/>
+                    <rect key="frame" x="10" y="216" width="357" height="451"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -80,14 +79,14 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="tq9-fh-RVd" secondAttribute="bottom" constant="20" id="0A8-QY-xqo"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="tq9-fh-RVd" secondAttribute="bottom" id="0A8-QY-xqo"/>
                 <constraint firstItem="LJs-wa-ino" firstAttribute="leading" secondItem="2Og-fI-IAw" secondAttribute="trailing" constant="4" id="0J8-Ef-Xdw"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="LJs-wa-ino" secondAttribute="trailing" constant="16" id="0Kg-0f-MFT"/>
                 <constraint firstItem="EAl-0T-Gim" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="1Vx-eh-oJG"/>
                 <constraint firstItem="jcw-e2-7kt" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="23B-Qa-bNL"/>
                 <constraint firstItem="tq9-fh-RVd" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="30q-d5-7xZ"/>
                 <constraint firstItem="EAl-0T-Gim" firstAttribute="top" secondItem="bLg-bP-gKe" secondAttribute="bottom" constant="8" id="3YK-0X-PZi"/>
-                <constraint firstItem="VJ2-wZ-CYj" firstAttribute="top" secondItem="LJs-wa-ino" secondAttribute="bottom" constant="3" id="3rC-yG-6Cl"/>
+                <constraint firstItem="VJ2-wZ-CYj" firstAttribute="top" secondItem="LJs-wa-ino" secondAttribute="bottom" constant="8" id="3rC-yG-6Cl"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="VJ2-wZ-CYj" secondAttribute="trailing" constant="16" id="85z-Fw-GDr"/>
                 <constraint firstItem="3mH-Je-XOW" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="ANI-nU-WBB"/>
                 <constraint firstItem="jcw-e2-7kt" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="ECg-pt-EF1"/>
@@ -104,19 +103,24 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="bLg-bP-gKe" secondAttribute="trailing" constant="16" id="feY-i1-RIe"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="3mH-Je-XOW" secondAttribute="trailing" constant="16" id="g0D-SC-ChA"/>
                 <constraint firstItem="3mH-Je-XOW" firstAttribute="top" secondItem="EAl-0T-Gim" secondAttribute="bottom" constant="8" id="hir-Bm-K54"/>
-                <constraint firstItem="ihP-tU-tOV" firstAttribute="top" secondItem="LJs-wa-ino" secondAttribute="bottom" constant="8" id="rFf-Ic-0K7"/>
+                <constraint firstItem="ihP-tU-tOV" firstAttribute="top" secondItem="LJs-wa-ino" secondAttribute="bottom" constant="13" id="rFf-Ic-0K7"/>
                 <constraint firstItem="bLg-bP-gKe" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="rxT-ZG-43m"/>
                 <constraint firstItem="bLg-bP-gKe" firstAttribute="top" secondItem="jcw-e2-7kt" secondAttribute="bottom" constant="8" id="tOP-Rp-8dJ"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="jcw-e2-7kt" secondAttribute="trailing" constant="16" id="wp6-Iv-HsO"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="tq9-fh-RVd" secondAttribute="trailing" constant="16" id="wtW-0m-wv3"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="tq9-fh-RVd" secondAttribute="trailing" constant="8" id="wtW-0m-wv3"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="buttonControl" destination="LJs-wa-ino" id="1FC-Ry-LnV"/>
+                <outlet property="colorButtonControl" destination="LJs-wa-ino" id="y81-nL-ny8"/>
+                <outlet property="colorLabel" destination="2Og-fI-IAw" id="Cla-yc-qrv"/>
+                <outlet property="feelingLabel" destination="jcw-e2-7kt" id="8qZ-Bg-aZA"/>
+                <outlet property="intensityLabel" destination="EAl-0T-Gim" id="q42-p6-4cr"/>
                 <outlet property="segmentedControl" destination="bLg-bP-gKe" id="Lti-se-y7u"/>
                 <outlet property="sliderControl" destination="3mH-Je-XOW" id="NqA-f4-ESz"/>
                 <outlet property="switchControl" destination="VJ2-wZ-CYj" id="X3K-AV-tMl"/>
                 <outlet property="textView" destination="tq9-fh-RVd" id="08X-wc-LyC"/>
+                <outlet property="waterLabel" destination="ihP-tU-tOV" id="2aV-RX-vCw"/>
             </connections>
             <point key="canvasLocation" x="133.59999999999999" y="94.902548725637189"/>
         </view>

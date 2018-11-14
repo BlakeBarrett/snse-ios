@@ -13,10 +13,18 @@ class QuestionaireView: UIView {
     
     private var sentiment = Sentiment()
     
+    // labels
+    @IBOutlet weak var feelingLabel: UILabel!
+    @IBOutlet weak var intensityLabel: UILabel!
+    @IBOutlet weak var colorLabel: UILabel!
+    @IBOutlet weak var waterLabel: UILabel!
+    
+    // controls
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var sliderControl: UISlider!
     @IBOutlet weak var buttonControl: UIButton!
     @IBOutlet weak var switchControl: UISwitch!
+    @IBOutlet weak var colorButtonControl: UIButton!
     @IBOutlet weak var textView: UITextView!
     
     @IBAction func onSegmentedControlValueChanged(_ sender: UISegmentedControl, forEvent event: UIEvent) {
@@ -60,9 +68,8 @@ extension QuestionaireView {
     
     func reset() {
         self.sentiment = Sentiment()
-        self.segmentedControl.selectedSegmentIndex = 1
-        self.sliderControl.value = 50
-        self.switchControl.isOn = false
+        self.segmentedControl.selectedSegmentIndex = UISegmentedControl.noSegment
+        self.sliderControl.setValue(50.0, animated: false)
         self.switchControl.setOn(false, animated: false)
         self.textView.text = ""
     }
@@ -70,6 +77,55 @@ extension QuestionaireView {
     func getSentiment() -> Sentiment {
         sentiment.elaborate = textView.text
         return sentiment
+    }
+    
+    func setSentiment(value: Sentiment?) {
+        reset()
+        
+        switch value?.feeling {
+        case "😞":
+                self.segmentedControl.selectedSegmentIndex = 0
+            break
+        case "😐":
+            self.segmentedControl.selectedSegmentIndex = 1
+            break
+        case "😊":
+            self.segmentedControl.selectedSegmentIndex = 2
+            break
+        default:
+            self.segmentedControl.selectedSegmentIndex = UISegmentedControl.noSegment
+            self.segmentedControl.isHidden = true
+            self.feelingLabel.isHidden = true
+            break
+        }
+        
+        if let intensity = value?.intensity {
+            self.sliderControl.setValue(Float(intensity), animated: false)
+        } else {
+            self.sliderControl.isHidden = true
+            self.intensityLabel.isHidden = true
+        }
+        
+        self.colorLabel.isHidden = true
+        self.colorButtonControl.isHidden = true
+//        if let _ = value?.color {
+//
+//        } else {
+//            self.colorLabel.isHidden = true
+//        }
+        
+        if let water = value?.water {
+            self.switchControl.setOn(water, animated: false)
+        } else {
+            self.switchControl.isHidden = true
+            self.waterLabel.isHidden = true
+        }
+        
+        if let elaborate = value?.elaborate {
+            self.textView.text = elaborate
+        } else {
+            self.textView.isHidden = true
+        }
     }
 }
 
