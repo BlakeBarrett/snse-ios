@@ -19,7 +19,7 @@ class SentimentViewController: UITableViewController {
         
         let cellNib = UINib(nibName: "SentimentTableViewCell", bundle: Bundle.main)
         tableView.register(cellNib, forCellReuseIdentifier: reuseIdentifier)
-        tableView.estimatedRowHeight = 300
+        tableView.estimatedRowHeight = 75
         fetchAndRender()
     }
     
@@ -72,20 +72,27 @@ class SentimentTableViewCell: UITableViewCell {
     */
     
     @IBOutlet weak var feelingLabel: UILabel!
-    @IBOutlet weak var waterSwitch: UISwitch!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var elaborateTextView: UITextView!
     
     func set(_ value: Sentiment) {
+        accessoryType = .disclosureIndicator
+        
         feelingLabel.text = value.feeling
         
-        waterSwitch.setOn(value.water, animated: false)
+        elaborateTextView.text = value.elaborate
         
-        let dateFormatterGet = DateFormatter()
-        dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        
-        let dateFormatterPrint = DateFormatter()
-        dateFormatterPrint.dateFormat = "MMM dd, hh:mm"
-        
-        dateLabel.text = dateFormatterPrint.string(from: value.timestamp!)
+        let calendar = NSCalendar.autoupdatingCurrent
+        let then = value.timestamp!
+        let dateFormatter = DateFormatter()
+        if calendar.isDateInToday(then) {
+            dateFormatter.dateFormat = "hh:mm"
+        } else if calendar.isDateInYesterday(then) {
+            dateLabel.text = "Yesterday"
+            return
+        } else {
+            dateFormatter.dateFormat = "MM/dd, hh:mm"
+        }
+        dateLabel.text = dateFormatter.string(from: then)
     }
 }

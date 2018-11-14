@@ -115,8 +115,8 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" keyboardDismissMode="interactive" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WfV-lf-YXs">
-                                        <rect key="frame" x="10" y="199" width="349" height="231"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <rect key="frame" x="10" y="199" width="357" height="251"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="yes" returnKeyType="done" enablesReturnKeyAutomatically="YES" smartQuotesType="yes"/>
@@ -131,7 +131,7 @@
                                     <constraint firstItem="7n0-2g-HT4" firstAttribute="leading" secondItem="gWf-yx-AYM" secondAttribute="trailing" constant="3" id="BOb-to-xVS"/>
                                     <constraint firstItem="7n0-2g-HT4" firstAttribute="leading" secondItem="gWf-yx-AYM" secondAttribute="trailing" constant="3" id="EQv-cV-f0q"/>
                                     <constraint firstItem="L7l-cq-Vpm" firstAttribute="top" secondItem="NKK-Yb-Vki" secondAttribute="bottom" constant="8" id="FSW-2Y-FSc"/>
-                                    <constraint firstItem="doR-1V-nMo" firstAttribute="trailing" secondItem="WfV-lf-YXs" secondAttribute="trailing" constant="16" id="Fkw-Z3-z3z"/>
+                                    <constraint firstItem="doR-1V-nMo" firstAttribute="trailing" secondItem="WfV-lf-YXs" secondAttribute="trailing" constant="8" id="Fkw-Z3-z3z"/>
                                     <constraint firstItem="JJl-36-4cp" firstAttribute="leading" secondItem="doR-1V-nMo" secondAttribute="leading" constant="16" id="Hu0-il-dYo"/>
                                     <constraint firstItem="YYp-2U-E0O" firstAttribute="leading" secondItem="4Bk-4y-6q3" secondAttribute="trailing" constant="4" id="NoF-Tu-SwZ"/>
                                     <constraint firstItem="gWf-yx-AYM" firstAttribute="leading" secondItem="doR-1V-nMo" secondAttribute="leading" constant="16" id="Q6b-Kl-Urx"/>
@@ -140,7 +140,7 @@
                                     <constraint firstItem="4Bk-4y-6q3" firstAttribute="leading" secondItem="doR-1V-nMo" secondAttribute="leading" constant="16" id="RtF-lV-Ht6"/>
                                     <constraint firstItem="YYp-2U-E0O" firstAttribute="leading" secondItem="4Bk-4y-6q3" secondAttribute="trailing" constant="4" id="VEy-ym-Lr4"/>
                                     <constraint firstItem="L7l-cq-Vpm" firstAttribute="leading" secondItem="doR-1V-nMo" secondAttribute="leading" constant="16" id="VJs-Ss-9pj"/>
-                                    <constraint firstItem="doR-1V-nMo" firstAttribute="bottom" secondItem="WfV-lf-YXs" secondAttribute="bottom" constant="20" id="XK0-nn-AxF"/>
+                                    <constraint firstItem="doR-1V-nMo" firstAttribute="bottom" secondItem="WfV-lf-YXs" secondAttribute="bottom" id="XK0-nn-AxF"/>
                                     <constraint firstItem="I1j-3K-0V3" firstAttribute="top" secondItem="L7l-cq-Vpm" secondAttribute="bottom" constant="8" id="Xdk-qT-bLm"/>
                                     <constraint firstItem="JJl-36-4cp" firstAttribute="top" secondItem="I1j-3K-0V3" secondAttribute="bottom" constant="8" id="cVX-tr-IZd"/>
                                     <constraint firstItem="NKK-Yb-Vki" firstAttribute="leading" secondItem="doR-1V-nMo" secondAttribute="leading" constant="16" id="cbO-dX-edG"/>
@@ -193,11 +193,11 @@
             </objects>
             <point key="canvasLocation" x="184.80000000000001" y="95.802098950524751"/>
         </scene>
-        <!--Sentiment View Controller-->
+        <!--History-->
         <scene sceneID="HwG-p7-crF">
             <objects>
-                <tableViewController storyboardIdentifier="historyViewController" id="Xht-FG-ofk" customClass="SentimentViewController" customModule="snse" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="VvG-li-rAc">
+                <tableViewController storyboardIdentifier="historyViewController" title="History" id="Xht-FG-ofk" customClass="SentimentViewController" customModule="snse" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="75" sectionHeaderHeight="28" sectionFooterHeight="28" id="VvG-li-rAc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
