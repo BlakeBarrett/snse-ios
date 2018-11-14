@@ -11,6 +11,8 @@ import LocalAuthentication
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var questionaireView: QuestionaireView!
+    
     var authenticated = false
     
     override func viewDidLoad() {
@@ -19,8 +21,19 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        questionaireView.reset()
         // Don't show the nav bar for the main view.
         navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        questionaireView.viewDidAppear()
+    }
+    
+    @IBAction func onSaveButtonPressed(_ sender: UIButton) {
+        let sentiment = questionaireView.getSentiment()
+        SentimentFactory.save(sentiment)
+        questionaireView.reset()
     }
     
     @IBAction func onHistoryButtonPressed(_ sender: UIButton) {

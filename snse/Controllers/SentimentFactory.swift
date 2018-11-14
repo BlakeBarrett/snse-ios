@@ -17,6 +17,8 @@ class SentimentFactory {
     static func load(from context: NSManagedObjectContext) -> [Sentiment] {
         var results = [Sentiment]()
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "SentimentEntity")
+        let sort = NSSortDescriptor(key: "timestamp", ascending: false)
+        request.sortDescriptors = [sort]
         request.returnsObjectsAsFaults = false
         do {
             let result = try context.fetch(request)

@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 class Sentiment: Codable {
     
@@ -16,7 +17,8 @@ class Sentiment: Codable {
         water = "water",
         elaborate = "elaborate",
         feeling = "feeling",
-        url = "url"
+        intensity = "intensity",
+        color = "color"
         
         static func keys() -> [String] {
             return [
@@ -24,13 +26,22 @@ class Sentiment: Codable {
                 Fields.water.rawValue,
                 Fields.elaborate.rawValue,
                 Fields.feeling.rawValue,
-                Fields.url.rawValue]
+                Fields.intensity.rawValue,
+                Fields.color.rawValue
+            ]
         }
     }
+    let JSON = "json"
     
     var timestamp: Date?
-    var elaborate, feeling, url: String?
+    var elaborate, feeling: String?
+    var intensity: Int?
+//    var color: UIColor?
     var water: Bool = false
+    
+    init() {
+        self.timestamp = Date()
+    }
     
     convenience init?(managedObject values: NSManagedObject) {
         let valuesDict = values.dictionaryWithValues(forKeys: Fields.keys())
@@ -45,7 +56,7 @@ class Sentiment: Codable {
                 if let date = value as? Date {
                     self.timestamp = date
                 } else
-                // Try as an Int (from JavaScript)
+                // Try as an Int (from JSON)
                 if  let epoch = value as? Int,
                     let timeInterval = TimeInterval(exactly: epoch / 1000) {
                     let epochDate = Date(timeIntervalSince1970: timeInterval)
@@ -53,7 +64,7 @@ class Sentiment: Codable {
                 }
                 break
             case Fields.water.rawValue:
-                self.water = true
+                self.water = (value as? Bool) ?? false
                 break
             case Fields.elaborate.rawValue:
                 self.elaborate = value as? String
@@ -61,8 +72,11 @@ class Sentiment: Codable {
             case Fields.feeling.rawValue:
                 self.feeling = value as? String
                 break
-            case Fields.url.rawValue:
-                self.url = value as? String
+            case Fields.intensity.rawValue:
+                self.intensity = value as? Int
+                break
+            case Fields.color.rawValue:
+                // self.color = color
                 break
             default: break
             }
@@ -79,7 +93,8 @@ extension Sentiment {
             sentiment.setValue(self.water, forKey: Fields.water.rawValue)
             sentiment.setValue(self.elaborate, forKey: Fields.elaborate.rawValue)
             sentiment.setValue(self.feeling, forKey: Fields.feeling.rawValue)
-            sentiment.setValue(self.url, forKey: Fields.url.rawValue)
+            sentiment.setValue(self.intensity, forKey: Fields.intensity.rawValue)
+            sentiment.setValue(self.serialize(), forKey: JSON)
             return sentiment
         }
         return nil

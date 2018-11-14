@@ -18,7 +18,8 @@ class SentimentViewController: UITableViewController {
         super.viewDidLoad()
         
         let cellNib = UINib(nibName: "SentimentTableViewCell", bundle: Bundle.main)
-        self.tableView.register(cellNib, forCellReuseIdentifier: reuseIdentifier)
+        tableView.register(cellNib, forCellReuseIdentifier: reuseIdentifier)
+        tableView.estimatedRowHeight = 300
         fetchAndRender()
     }
     
@@ -67,18 +68,24 @@ class SentimentTableViewCell: UITableViewCell {
      water = "water",
      elaborate = "elaborate",
      feeling = "feeling",
-     url = "url"
+     color = "color"
     */
     
     @IBOutlet weak var feelingLabel: UILabel!
-    @IBOutlet weak var elaborateTextView: UITextView!
-    @IBOutlet weak var urlLabel: UILabel!
     @IBOutlet weak var waterSwitch: UISwitch!
+    @IBOutlet weak var dateLabel: UILabel!
     
     func set(_ value: Sentiment) {
         feelingLabel.text = value.feeling
-        urlLabel.text = value.url
-        waterSwitch.isOn = Bool(value.water)
-        elaborateTextView.text = value.elaborate
+        
+        waterSwitch.setOn(value.water, animated: false)
+        
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        
+        let dateFormatterPrint = DateFormatter()
+        dateFormatterPrint.dateFormat = "MMM dd, hh:mm"
+        
+        dateLabel.text = dateFormatterPrint.string(from: value.timestamp!)
     }
 }
