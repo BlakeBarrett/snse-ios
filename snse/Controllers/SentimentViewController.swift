@@ -73,6 +73,19 @@ extension SentimentViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if  editingStyle == .delete {
+            let sentiment = sentiments[indexPath.row]
+            if SentimentFactory.delete(sentiment) {
+                sentiments.remove(at: indexPath.row)
+                tableView.reloadData()
+            }
+        }
+    }
 }
 
 class SentimentTableViewCell: UITableViewCell {

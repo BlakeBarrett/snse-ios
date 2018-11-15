@@ -16,21 +16,30 @@ class SentimentFactory {
     
     static func load(from context: NSManagedObjectContext) -> [Sentiment] {
         var results = [Sentiment]()
+        let result = load(from: context, withPredicate: nil)
+        for data in result {
+            if let sentiment = Sentiment(managedObject: data) {
+                results.append(sentiment)
+            }
+        }
+        return results
+    }
+    
+    static func load(from context: NSManagedObjectContext, withPredicate predicate: NSPredicate?) -> [NSManagedObject] {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "SentimentEntity")
+        if let _ = predicate {
+            request.predicate = predicate
+        }
         let sort = NSSortDescriptor(key: "timestamp", ascending: false)
         request.sortDescriptors = [sort]
         request.returnsObjectsAsFaults = false
         do {
             let result = try context.fetch(request)
-            for data in result as! [NSManagedObject] {
-                if let sentiment = Sentiment(managedObject: data) {
-                    results.append(sentiment)
-                }
-            }
+            return result as! [NSManagedObject]
         } catch {
             print("Failed")
         }
-        return results
+        return [NSManagedObject]()
     }
     
     static func save(_ value: Sentiment) {
@@ -40,5 +49,19 @@ class SentimentFactory {
         } catch {
             return
         }
+    }
+    
+    static func delete(_ value: Sentiment) -> Bool {
+        let predicate = NSPredicate(format: "timestamp == %@", value.timestamp! as NSDate)
+        if let managedObject = load(from: context, withPredicate: predicate).first {
+            context.delete(managedObject)
+            do {
+                try context.save()
+            } catch {
+                return false
+            }
+            return true
+        }
+        return false
     }
 }

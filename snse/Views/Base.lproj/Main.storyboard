@@ -205,7 +205,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gmp-lc-ypv" customClass="HSBColorPicker" customModule="snse" customModuleProvider="target">
-                                <rect key="frame" x="16" y="20" width="343" height="343"/>
+                                <rect key="frame" x="16" y="36" width="343" height="343"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="gmp-lc-ypv" secondAttribute="height" multiplier="1:1" id="w5x-pa-LCn"/>
@@ -228,14 +228,14 @@
                                 </items>
                             </toolbar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IKr-Mn-dg7">
-                                <rect key="frame" x="16" y="379" width="343" height="228"/>
+                                <rect key="frame" x="16" y="395" width="343" height="212"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="8cg-WG-mtM" firstAttribute="trailing" secondItem="gmp-lc-ypv" secondAttribute="trailing" constant="16" id="3Mr-oD-De5"/>
-                            <constraint firstItem="gmp-lc-ypv" firstAttribute="top" secondItem="8cg-WG-mtM" secondAttribute="top" id="7ai-Fg-iYu"/>
+                            <constraint firstItem="gmp-lc-ypv" firstAttribute="top" secondItem="8cg-WG-mtM" secondAttribute="top" constant="16" id="7ai-Fg-iYu"/>
                             <constraint firstItem="gmp-lc-ypv" firstAttribute="leading" secondItem="8cg-WG-mtM" secondAttribute="leading" constant="16" id="QZ6-sJ-J3D"/>
                             <constraint firstItem="v8U-bR-K5D" firstAttribute="trailing" secondItem="8cg-WG-mtM" secondAttribute="trailing" id="Z79-m7-PtT"/>
                             <constraint firstItem="v8U-bR-K5D" firstAttribute="bottom" secondItem="8cg-WG-mtM" secondAttribute="bottom" id="Zia-a0-UAE"/>
@@ -295,7 +295,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Myf-Rj-zF7" customClass="QuestionaireView" customModule="snse" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                                 <subviews>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="yAo-7t-rCT">
+                                    <segmentedControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="yAo-7t-rCT">
                                         <rect key="frame" x="16" y="29" width="343" height="29"/>
                                         <segments>
                                             <segment title="😞"/>
@@ -312,19 +312,19 @@
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="9Sp-dd-KyG">
+                                    <slider opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="9Sp-dd-KyG">
                                         <rect key="frame" x="14" y="94" width="347" height="31"/>
                                         <connections>
                                             <action selector="onSliderValueChanged:forEvent:" destination="Myf-Rj-zF7" eventType="valueChanged" id="ffC-3d-YYv"/>
                                         </connections>
                                     </slider>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="O2d-7k-ffG">
+                                    <switch opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="O2d-7k-ffG">
                                         <rect key="frame" x="310" y="157" width="51" height="31"/>
                                         <connections>
                                             <action selector="onSwitchValueChanged:forEvent:" destination="Myf-Rj-zF7" eventType="valueChanged" id="J5o-Wk-Mki"/>
                                         </connections>
                                     </switch>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NDD-83-61h">
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NDD-83-61h">
                                         <rect key="frame" x="337" y="127" width="22" height="22"/>
                                         <connections>
                                             <action selector="onColorButtonClicked:" destination="Myf-Rj-zF7" eventType="touchUpInside" id="fI2-F6-9rD"/>
@@ -348,12 +348,13 @@
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" keyboardDismissMode="onDrag" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jVD-Nb-EG4">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" keyboardDismissMode="onDrag" editable="NO" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jVD-Nb-EG4">
                                         <rect key="frame" x="10" y="196" width="349" height="407"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
+                                        <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES" shipmentTrackingNumber="YES" flightNumber="YES" lookupSuggestion="YES"/>
                                     </textView>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

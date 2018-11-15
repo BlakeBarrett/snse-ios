@@ -18,5 +18,9 @@ class HistoricalSentimentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         questionaireView.setSentiment(value: self.sentiment)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM, dd, hh:mm"
+        navigationController?.title = dateFormatter.string(from: self.sentiment?.timestamp ?? Date())
     }
 }

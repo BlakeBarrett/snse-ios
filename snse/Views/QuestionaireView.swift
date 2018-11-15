@@ -13,6 +13,9 @@ class QuestionaireView: UIView {
     
     private var sentiment = Sentiment()
     
+    // TODO: This really doesn't belong here.
+    var navigationController: UINavigationController?
+    
     // labels
     @IBOutlet weak var feelingLabel: UILabel!
     @IBOutlet weak var intensityLabel: UILabel!
@@ -58,9 +61,6 @@ class QuestionaireView: UIView {
     @IBAction func onSwitchValueChanged(_ sender: UISwitch, forEvent event: UIEvent) {
         sentiment.water = sender.isOn
     }
-    
-    // TODO: This really doesn't belong here.
-    var navigationController: UINavigationController?
 }
 
 extension QuestionaireView {
@@ -128,6 +128,17 @@ extension QuestionaireView {
             self.textView.text = elaborate
         } else {
             self.textView.isHidden = true
+        }
+    }
+}
+
+extension QuestionaireView {
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch in touches {
+            if touch != textView {
+                textView.resignFirstResponder()
+            }
         }
     }
 }
