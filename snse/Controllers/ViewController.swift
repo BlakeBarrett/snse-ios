@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         questionaireView.reset()
+        questionaireView.navigationController = navigationController
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -196,6 +196,66 @@
             </objects>
             <point key="canvasLocation" x="184.80000000000001" y="95.802098950524751"/>
         </scene>
+        <!--Color Picker View Controller-->
+        <scene sceneID="7Xe-Dh-AzP">
+            <objects>
+                <viewController storyboardIdentifier="colorPickerViewController" id="dN6-5v-Dlm" customClass="ColorPickerViewController" customModule="snse" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7FA-Gv-CId">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gmp-lc-ypv" customClass="HSBColorPicker" customModule="snse" customModuleProvider="target">
+                                <rect key="frame" x="16" y="20" width="343" height="343"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="gmp-lc-ypv" secondAttribute="height" multiplier="1:1" id="w5x-pa-LCn"/>
+                                </constraints>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v8U-bR-K5D">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="cancel" id="bud-IO-x2r">
+                                        <connections>
+                                            <action selector="onCancelPressed:" destination="dN6-5v-Dlm" id="JhE-Zz-aPL"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem systemItem="flexibleSpace" id="gSs-5s-8Hg"/>
+                                    <barButtonItem style="done" systemItem="done" id="58a-bO-aiO">
+                                        <connections>
+                                            <action selector="onDonePressed:" destination="dN6-5v-Dlm" id="lSj-Vb-Ukb"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IKr-Mn-dg7">
+                                <rect key="frame" x="16" y="379" width="343" height="228"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="8cg-WG-mtM" firstAttribute="trailing" secondItem="gmp-lc-ypv" secondAttribute="trailing" constant="16" id="3Mr-oD-De5"/>
+                            <constraint firstItem="gmp-lc-ypv" firstAttribute="top" secondItem="8cg-WG-mtM" secondAttribute="top" id="7ai-Fg-iYu"/>
+                            <constraint firstItem="gmp-lc-ypv" firstAttribute="leading" secondItem="8cg-WG-mtM" secondAttribute="leading" constant="16" id="QZ6-sJ-J3D"/>
+                            <constraint firstItem="v8U-bR-K5D" firstAttribute="trailing" secondItem="8cg-WG-mtM" secondAttribute="trailing" id="Z79-m7-PtT"/>
+                            <constraint firstItem="v8U-bR-K5D" firstAttribute="bottom" secondItem="8cg-WG-mtM" secondAttribute="bottom" id="Zia-a0-UAE"/>
+                            <constraint firstItem="IKr-Mn-dg7" firstAttribute="leading" secondItem="8cg-WG-mtM" secondAttribute="leading" constant="16" id="dKy-PY-TmQ"/>
+                            <constraint firstItem="v8U-bR-K5D" firstAttribute="leading" secondItem="8cg-WG-mtM" secondAttribute="leading" id="inS-Kx-5DX"/>
+                            <constraint firstItem="8cg-WG-mtM" firstAttribute="trailing" secondItem="IKr-Mn-dg7" secondAttribute="trailing" constant="16" id="lwa-hm-dFu"/>
+                            <constraint firstItem="IKr-Mn-dg7" firstAttribute="top" secondItem="gmp-lc-ypv" secondAttribute="bottom" constant="16" id="miY-g6-zdX"/>
+                            <constraint firstItem="v8U-bR-K5D" firstAttribute="top" secondItem="IKr-Mn-dg7" secondAttribute="bottom" constant="16" id="rSU-Q7-caT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="8cg-WG-mtM"/>
+                    </view>
+                    <connections>
+                        <outlet property="colorPreviewView" destination="IKr-Mn-dg7" id="qC0-9c-ruI"/>
+                        <outlet property="viewHSBColorPicker" destination="gmp-lc-ypv" id="H8H-7Y-3UV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8wv-f5-pFT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1048.8" y="95.802098950524751"/>
+        </scene>
         <!--History-->
         <scene sceneID="HwG-p7-crF">
             <objects>

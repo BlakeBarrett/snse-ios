@@ -52,12 +52,15 @@ class QuestionaireView: UIView {
     }
     
     @IBAction func onColorButtonClicked(_ sender: UIButton) {
-        // TODO: Launch color picker
+        showColorPicker()
     }
     
     @IBAction func onSwitchValueChanged(_ sender: UISwitch, forEvent event: UIEvent) {
         sentiment.water = sender.isOn
     }
+    
+    // TODO: This really doesn't belong here.
+    var navigationController: UINavigationController?
 }
 
 extension QuestionaireView {
@@ -137,5 +140,22 @@ extension QuestionaireView: UITextViewDelegate {
             return false
         }
         return true
+    }
+}
+
+extension QuestionaireView {
+    func showColorPicker() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let controller = (storyboard.instantiateViewController(withIdentifier: "colorPickerViewController") as? ColorPickerViewController) {
+            controller.delegate = self
+            navigationController?.setNavigationBarHidden(true, animated: false)
+            navigationController?.pushViewController(controller, animated: true)
+        }
+    }
+}
+
+extension QuestionaireView: ColorPickerDelegate {
+    func onColorSelected(_ color: UIColor?) {
+//        self.sentiment.color = color
     }
 }
