@@ -62,7 +62,16 @@ extension ViewController {
         let hasBiometrics = context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error)
         let hasPasscode = context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error)
         if hasBiometrics || hasPasscode {
-            let reason = "Only the device' owner has access."
+            var reason = "Only the device' owner has access."
+            switch Locale.current.languageCode {
+            case Locale.init(identifier: "es").languageCode:
+                reason = "Solo el propietario del dispositivo tiene acceso."
+                break
+            case Locale.init(identifier: "en").languageCode:
+                reason = "Only the device' owner has access."
+                break
+            default: break
+            }
             
             let onAuthComplete: (Bool, Error?) -> Void = { authenticated, _ in
                 DispatchQueue.main.async {

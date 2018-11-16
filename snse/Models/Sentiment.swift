@@ -110,6 +110,11 @@ extension Sentiment {
         if calendar.isDateInToday(timestamp!) {
             dateFormatter.dateFormat = "hh:mm"
         } else if calendar.isDateInYesterday(timestamp!) {
+            
+            if Locale.current.languageCode == Locale.init(identifier: "es").languageCode {
+                return "Ayer"
+            }
+            
             return "Yesterday"
         } else {
             dateFormatter.dateFormat = "MM/dd, hh:mm"

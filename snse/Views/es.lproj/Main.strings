@@ -1,0 +1,48 @@
+
+/* Class = "UILabel"; text = "How are you feeling?"; ObjectID = "41u-rD-axS"; */
+"41u-rD-axS.text" = "¿Como te sientes?";
+
+/* Class = "UILabel"; text = "0 - 100"; ObjectID = "7ap-MU-biQ"; */
+"7ap-MU-biQ.text" = "0 - 100";
+
+/* Class = "UILabel"; text = "Color"; ObjectID = "C31-Mt-7YT"; */
+"C31-Mt-7YT.text" = "Color";
+
+/* Class = "UILabel"; text = "Have you recently drunk water?"; ObjectID = "Jdy-sc-2AM"; */
+"Jdy-sc-2AM.text" = "¿Has bebido agua recientemente?";
+
+/* Class = "UISegmentedControl"; QS9-fM-WRS.segmentTitles[0] = "😞"; ObjectID = "QS9-fM-WRS"; */
+"QS9-fM-WRS.segmentTitles[0]" = "😞";
+
+/* Class = "UISegmentedControl"; QS9-fM-WRS.segmentTitles[1] = "😐"; ObjectID = "QS9-fM-WRS"; */
+"QS9-fM-WRS.segmentTitles[1]" = "😐";
+
+/* Class = "UISegmentedControl"; QS9-fM-WRS.segmentTitles[2] = "😊"; ObjectID = "QS9-fM-WRS"; */
+"QS9-fM-WRS.segmentTitles[2]" = "😊";
+
+/* Class = "UILabel"; text = "Have you recently drunk water?"; ObjectID = "U3I-31-Ayl"; */
+"U3I-31-Ayl.text" = "¿Has bebido agua recientemente?";
+
+/* Class = "UITableViewController"; title = "History"; ObjectID = "Xht-FG-ofk"; */
+"Xht-FG-ofk.title" = "Historia";
+
+/* Class = "UILabel"; text = "How are you feeling?"; ObjectID = "d11-Yj-KA1"; */
+"d11-Yj-KA1.text" = "¿Como te sientes?";
+
+/* Class = "UILabel"; text = "Color"; ObjectID = "rR2-nD-tkt"; */
+"rR2-nD-tkt.text" = "Color";
+
+/* Class = "UILabel"; text = "0 - 100"; ObjectID = "sZp-Tx-g4I"; */
+"sZp-Tx-g4I.text" = "0 - 100";
+
+/* Class = "UIButton"; normalTitle = "+"; ObjectID = "vKM-Nl-lDS"; */
+"vKM-Nl-lDS.normalTitle" = "+";
+
+/* Class = "UISegmentedControl"; yAo-7t-rCT.segmentTitles[0] = "😞"; ObjectID = "yAo-7t-rCT"; */
+"yAo-7t-rCT.segmentTitles[0]" = "😞";
+
+/* Class = "UISegmentedControl"; yAo-7t-rCT.segmentTitles[1] = "😐"; ObjectID = "yAo-7t-rCT"; */
+"yAo-7t-rCT.segmentTitles[1]" = "😐";
+
+/* Class = "UISegmentedControl"; yAo-7t-rCT.segmentTitles[2] = "😊"; ObjectID = "yAo-7t-rCT"; */
+"yAo-7t-rCT.segmentTitles[2]" = "😊";
