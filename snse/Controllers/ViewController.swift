@@ -31,13 +31,13 @@ class ViewController: UIViewController {
 //        questionaireView.viewDidAppear()
     }
     
-    @IBAction func onSaveButtonPressed(_ sender: UIButton) {
+    @IBAction func onSaveButtonPressed(_ sender: Any) {
         let sentiment = questionaireView.getSentiment()
         SentimentFactory.save(sentiment)
         questionaireView.reset()
     }
     
-    @IBAction func onHistoryButtonPressed(_ sender: UIButton) {
+    @IBAction func onHistoryButtonPressed(_ sender: Any) {
         if !authenticated {
             authenticateUser() {
                 self.authenticated = true

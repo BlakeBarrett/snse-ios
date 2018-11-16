@@ -37,28 +37,8 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qxd-RO-V27">
-                                <rect key="frame" x="16" y="565" width="48" height="30"/>
-                                <fontDescription key="fontDescription" name="Trattatello" family="Trattatello" pointSize="15"/>
-                                <state key="normal" title="History">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="onHistoryButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oEd-fI-9hW"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="259-xg-9Cu">
-                                <rect key="frame" x="325" y="565" width="34" height="30"/>
-                                <fontDescription key="fontDescription" name="Trattatello" family="Trattatello" pointSize="15"/>
-                                <state key="normal" title="Save">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="onSaveButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3gR-kP-Yh9"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="24D-m2-WP5" customClass="QuestionaireView" customModule="snse" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="95" width="375" height="462"/>
+                                <rect key="frame" x="0.0" y="95" width="375" height="456"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="QS9-fM-WRS">
                                         <rect key="frame" x="16" y="29" width="343" height="29"/>
@@ -115,7 +95,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" keyboardDismissMode="onDrag" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XNz-1V-ak7">
-                                        <rect key="frame" x="10" y="196" width="357" height="266"/>
+                                        <rect key="frame" x="10" y="196" width="357" height="252"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -123,6 +103,7 @@
                                     </textView>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="XNz-1V-ak7" secondAttribute="bottom" constant="8" id="3SH-66-II5"/>
                                     <constraint firstItem="MxS-wo-jVn" firstAttribute="leading" secondItem="xeb-hP-NC2" secondAttribute="leading" constant="16" id="3Ta-kJ-KbQ"/>
                                     <constraint firstItem="xeb-hP-NC2" firstAttribute="trailing" secondItem="2qE-Vu-e1P" secondAttribute="trailing" constant="16" id="460-Tq-vnz"/>
                                     <constraint firstItem="z6J-Xa-K7D" firstAttribute="top" secondItem="2qE-Vu-e1P" secondAttribute="bottom" constant="8" id="9VH-io-kRC"/>
@@ -132,7 +113,6 @@
                                     <constraint firstItem="xeb-hP-NC2" firstAttribute="trailing" secondItem="MxS-wo-jVn" secondAttribute="trailing" constant="16" id="LO3-Ws-OdG"/>
                                     <constraint firstItem="U3I-31-Ayl" firstAttribute="top" secondItem="2qE-Vu-e1P" secondAttribute="bottom" constant="13" id="QQh-8v-B6V"/>
                                     <constraint firstItem="MxS-wo-jVn" firstAttribute="top" secondItem="sZp-Tx-g4I" secondAttribute="bottom" constant="8" id="REJ-3g-xrb"/>
-                                    <constraint firstItem="xeb-hP-NC2" firstAttribute="bottom" secondItem="XNz-1V-ak7" secondAttribute="bottom" id="Uxp-jz-mqf"/>
                                     <constraint firstItem="2qE-Vu-e1P" firstAttribute="leading" secondItem="rR2-nD-tkt" secondAttribute="trailing" constant="4" id="Wh4-jT-ZJe"/>
                                     <constraint firstItem="rR2-nD-tkt" firstAttribute="leading" secondItem="xeb-hP-NC2" secondAttribute="leading" constant="16" id="XC0-BA-zZO"/>
                                     <constraint firstItem="d11-Yj-KA1" firstAttribute="top" secondItem="xeb-hP-NC2" secondAttribute="top" id="XNA-46-3Hs"/>
@@ -167,24 +147,40 @@
                                     <outlet property="waterLabel" destination="U3I-31-Ayl" id="BkT-sb-3yh"/>
                                 </connections>
                             </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uka-8C-bJm">
+                                <rect key="frame" x="0.0" y="559" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem systemItem="bookmarks" id="k5U-qD-GZ5">
+                                        <connections>
+                                            <action selector="onHistoryButtonPressed:" destination="BYZ-38-t0r" id="HDV-mC-mnF"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem systemItem="flexibleSpace" id="EpI-qQ-9eV"/>
+                                    <barButtonItem systemItem="save" id="Jx8-Qn-J46">
+                                        <connections>
+                                            <action selector="onSaveButtonPressed:" destination="BYZ-38-t0r" id="cUY-Gg-HCI"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="Qxd-RO-V27" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="24e-a9-hEf"/>
+                            <constraint firstItem="uka-8C-bJm" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="2Xz-9z-fgE"/>
                             <constraint firstAttribute="trailing" secondItem="Dhr-xt-aLv" secondAttribute="trailing" id="99d-8T-9YH"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="259-xg-9Cu" secondAttribute="bottom" constant="8" id="DA7-Mu-cYd"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="259-xg-9Cu" secondAttribute="trailing" constant="16" id="HSp-Jl-3Lo"/>
+                            <constraint firstItem="uka-8C-bJm" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="DXK-NL-Ssj"/>
+                            <constraint firstItem="uka-8C-bJm" firstAttribute="top" secondItem="24D-m2-WP5" secondAttribute="bottom" constant="8" id="FGM-qu-VWg"/>
                             <constraint firstItem="Dhr-xt-aLv" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="LsP-Hz-XKk"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Qxd-RO-V27" secondAttribute="bottom" constant="8" id="Mf6-cX-Zpw"/>
                             <constraint firstItem="24D-m2-WP5" firstAttribute="top" secondItem="Dhr-xt-aLv" secondAttribute="bottom" constant="8" id="Mot-C3-LOJ"/>
+                            <constraint firstItem="uka-8C-bJm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Uon-nc-pgI"/>
                             <constraint firstItem="Dhr-xt-aLv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="buz-y7-3jc"/>
                             <constraint firstItem="vKM-Nl-lDS" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="cf4-h4-GWy"/>
                             <constraint firstItem="24D-m2-WP5" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="cgC-9x-7nw"/>
                             <constraint firstItem="24D-m2-WP5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fks-sG-ZOY"/>
+                            <constraint firstItem="uka-8C-bJm" firstAttribute="top" secondItem="24D-m2-WP5" secondAttribute="bottom" constant="8" id="klT-dj-bVI"/>
                             <constraint firstItem="vKM-Nl-lDS" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="nSW-Ll-3eX"/>
-                            <constraint firstItem="259-xg-9Cu" firstAttribute="top" secondItem="24D-m2-WP5" secondAttribute="bottom" constant="8" id="q7v-6W-vb1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -317,7 +313,7 @@
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <slider opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="9Sp-dd-KyG">
+                                    <slider opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="9Sp-dd-KyG">
                                         <rect key="frame" x="14" y="118" width="347" height="31"/>
                                         <connections>
                                             <action selector="onSliderValueChanged:forEvent:" destination="Myf-Rj-zF7" eventType="valueChanged" id="ffC-3d-YYv"/>
