@@ -65,21 +65,20 @@ class QuestionaireView: UIView {
 
 extension QuestionaireView {
     
-    func viewDidAppear() {
-        self.textView.delegate = self
-    }
-    
     func reset() {
         self.sentiment = Sentiment()
         self.segmentedControl.selectedSegmentIndex = UISegmentedControl.noSegment
         self.sliderControl.setValue(50.0, animated: false)
         self.switchControl.setOn(false, animated: false)
         self.textView.text = ""
+        
+        self.tintColor = UIView().tintColor
+        self.waterLabel.tintColor = UILabel().tintColor
     }
     
     func getSentiment() -> Sentiment {
-        sentiment.elaborate = textView.text
-        return sentiment
+        self.sentiment.elaborate = textView.text
+        return self.sentiment
     }
     
     func setSentiment(value: Sentiment?) {
@@ -111,11 +110,11 @@ extension QuestionaireView {
         
         self.colorLabel.isHidden = true
         self.colorButtonControl.isHidden = true
-//        if let _ = value?.color {
-//
-//        } else {
-//            self.colorLabel.isHidden = true
-//        }
+        if let color = value?.color {
+            self.backgroundColor = color
+        } else {
+            self.colorLabel.isHidden = true
+        }
         
         if let water = value?.water {
             self.switchControl.setOn(water, animated: false)
@@ -167,6 +166,8 @@ extension QuestionaireView {
 
 extension QuestionaireView: ColorPickerDelegate {
     func onColorSelected(_ color: UIColor?) {
-//        self.sentiment.color = color
+        self.sentiment.color = color
+        self.tintColor = color
+        self.waterLabel.tintColor = color
     }
 }

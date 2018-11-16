@@ -23,13 +23,12 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        questionaireView.reset()
         // Don't show the nav bar for the main view.
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        questionaireView.viewDidAppear()
+//        questionaireView.viewDidAppear()
     }
     
     @IBAction func onSaveButtonPressed(_ sender: UIButton) {

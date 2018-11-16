@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 import UIKit
 
-class Sentiment: Codable {
+class Sentiment {
     
     enum Fields: String {
         case timestamp = "timestamp",
@@ -31,12 +31,11 @@ class Sentiment: Codable {
             ]
         }
     }
-    let JSON = "json"
     
     var timestamp: Date?
     var elaborate, feeling: String?
     var intensity: Int?
-//    var color: UIColor?
+    var color: UIColor?
     var water: Bool = false
     
     init() {
@@ -55,12 +54,6 @@ class Sentiment: Codable {
                 // Are we loading from the db?
                 if let date = value as? Date {
                     self.timestamp = date
-                } else
-                // Try as an Int (from JSON)
-                if  let epoch = value as? Int,
-                    let timeInterval = TimeInterval(exactly: epoch / 1000) {
-                    let epochDate = Date(timeIntervalSince1970: timeInterval)
-                    self.timestamp = epochDate
                 }
                 break
             case Fields.water.rawValue:
@@ -76,7 +69,9 @@ class Sentiment: Codable {
                 self.intensity = value as? Int
                 break
             case Fields.color.rawValue:
-                // self.color = color
+                if let colorString = value as? String {
+                    self.color = UIColor(hexaDecimalString: colorString)
+                }
                 break
             default: break
             }
@@ -94,37 +89,32 @@ extension Sentiment {
             sentiment.setValue(self.elaborate, forKey: Fields.elaborate.rawValue)
             sentiment.setValue(self.feeling, forKey: Fields.feeling.rawValue)
             sentiment.setValue(self.intensity, forKey: Fields.intensity.rawValue)
-            sentiment.setValue(self.serialize(), forKey: JSON)
+            sentiment.setValue(self.color?.toRGBAString(), forKey: Fields.color.rawValue)
             return sentiment
         }
         return nil
     }
 }
 
-// Serialization for Codable/JSON
-extension Sentiment {
-    static func deserialize(from json: String) -> Sentiment? {
-        if  let data = json.data(using: .utf8),
-            let result = try? JSONDecoder().decode(Sentiment.self, from: data){
-            return result
-        }
-        return nil
-    }
-    
-    func serialize() -> String {
-        let encoder = JSONEncoder()
-        encoder.outputFormatting = .prettyPrinted // if necessary
-        if  let data = try? encoder.encode(self),
-            let result = String(data: data, encoding: .utf8){
-            return result
-        } else {
-            return ""
-        }
+extension Sentiment: CustomStringConvertible {
+    var description: String {
+        return "\(getDateString()) \(self.feeling ?? "") \(self.elaborate ?? "")"
     }
 }
 
-extension Sentiment: CustomStringConvertible {
-    var description: String {
-        return serialize()
+extension Sentiment {
+    
+    func getDateString() -> String {
+        let calendar = NSCalendar.autoupdatingCurrent
+        let dateFormatter = DateFormatter()
+        if calendar.isDateInToday(timestamp!) {
+            dateFormatter.dateFormat = "hh:mm"
+        } else if calendar.isDateInYesterday(timestamp!) {
+            return "Yesterday"
+        } else {
+            dateFormatter.dateFormat = "MM/dd, hh:mm"
+        }
+        return dateFormatter.string(from: timestamp!)
     }
+    
 }

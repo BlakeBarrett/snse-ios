@@ -5,11 +5,10 @@
         <attribute name="elaborate" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="feeling" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="intensity" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="json" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="water" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <elements>
-        <element name="SentimentEntity" positionX="-63" positionY="-18" width="128" height="150"/>
+        <element name="SentimentEntity" positionX="-63" positionY="-18" width="128" height="135"/>
     </elements>
 </model>

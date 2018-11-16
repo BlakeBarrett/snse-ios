@@ -101,6 +101,7 @@ class SentimentTableViewCell: UITableViewCell {
     @IBOutlet weak var feelingLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var elaborateTextView: UITextView!
+    @IBOutlet weak var colorView: UIView!
     
     func set(_ value: Sentiment) {
         accessoryType = .disclosureIndicator
@@ -109,17 +110,8 @@ class SentimentTableViewCell: UITableViewCell {
         
         elaborateTextView.text = value.elaborate
         
-        let calendar = NSCalendar.autoupdatingCurrent
-        let then = value.timestamp!
-        let dateFormatter = DateFormatter()
-        if calendar.isDateInToday(then) {
-            dateFormatter.dateFormat = "hh:mm"
-        } else if calendar.isDateInYesterday(then) {
-            dateLabel.text = "Yesterday"
-            return
-        } else {
-            dateFormatter.dateFormat = "MM/dd, hh:mm"
-        }
-        dateLabel.text = dateFormatter.string(from: then)
+        dateLabel.text = value.getDateString()
+        
+        colorView.backgroundColor = value.color
     }
 }

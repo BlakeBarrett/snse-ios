@@ -16,6 +16,7 @@
 		2593190F2197A76D005CCC75 /* SentimentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2593190E2197A76D005CCC75 /* SentimentViewController.swift */; };
 		25CDBC24219CFE0F008DB875 /* HSBColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CDBC23219CFE0F008DB875 /* HSBColorPicker.swift */; };
 		25CDBC26219D0129008DB875 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CDBC25219D0129008DB875 /* ColorPickerViewController.swift */; };
+		25CDBC29219E3307008DB875 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CDBC28219E3307008DB875 /* UIColor+Extensions.swift */; };
 		25E4D4932195252100CFA268 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E4D4922195252100CFA268 /* AppDelegate.swift */; };
 		25E4D4952195252100CFA268 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E4D4942195252100CFA268 /* ViewController.swift */; };
 		25E4D4982195252100CFA268 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25E4D4962195252100CFA268 /* Main.storyboard */; };
@@ -47,6 +48,7 @@
 		2593190E2197A76D005CCC75 /* SentimentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentimentViewController.swift; sourceTree = "<group>"; };
 		25CDBC23219CFE0F008DB875 /* HSBColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSBColorPicker.swift; sourceTree = "<group>"; };
 		25CDBC25219D0129008DB875 /* ColorPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
+		25CDBC28219E3307008DB875 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		25E4D48F2195252100CFA268 /* snse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = snse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25E4D4922195252100CFA268 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		25E4D4942195252100CFA268 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +84,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		25CDBC27219E32EB008DB875 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				25CDBC28219E3307008DB875 /* UIColor+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		25E4D4862195252100CFA268 = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +169,7 @@
 		25FED67921967F5E002DE7F0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				25CDBC27219E32EB008DB875 /* Extensions */,
 				25E4D4BA21954DD300CFA268 /* index.html */,
 				25E4D4A12195252300CFA268 /* Info.plist */,
 				25E4D4992195252100CFA268 /* snse.xcdatamodeld */,
@@ -287,6 +298,7 @@
 				25E4D4B921954B5000CFA268 /* QuestionaireView.swift in Sources */,
 				25E4D49B2195252100CFA268 /* snse.xcdatamodeld in Sources */,
 				25E4D4952195252100CFA268 /* ViewController.swift in Sources */,
+				25CDBC29219E3307008DB875 /* UIColor+Extensions.swift in Sources */,
 				25E4D4932195252100CFA268 /* AppDelegate.swift in Sources */,
 				2593190F2197A76D005CCC75 /* SentimentViewController.swift in Sources */,
 			);
