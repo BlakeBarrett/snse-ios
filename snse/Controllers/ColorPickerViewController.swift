@@ -15,6 +15,8 @@ protocol ColorPickerDelegate {
 
 class ColorPickerViewController: UIViewController {
     
+    static let identifier = "colorPickerViewController"
+    
     @IBOutlet weak var viewHSBColorPicker: HSBColorPicker!
     @IBOutlet weak var colorPreviewView: UIView!
     @IBOutlet weak var toolbarView: UIToolbar!

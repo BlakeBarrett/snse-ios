@@ -27,10 +27,6 @@ class ViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-//        questionaireView.viewDidAppear()
-    }
-    
     @IBAction func onSaveButtonPressed(_ sender: Any) {
         let sentiment = questionaireView.getSentiment()
         SentimentFactory.save(sentiment)
@@ -50,7 +46,7 @@ class ViewController: UIViewController {
     
     func showHistory() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "historyViewController")
+        let controller = storyboard.instantiateViewController(withIdentifier: HistoricalSentimentViewController.identifier)
         navigationController?.setNavigationBarHidden(false, animated: false)
         navigationController?.pushViewController(controller, animated: true)
     }

@@ -12,13 +12,12 @@ import UIKit
 class SentimentViewController: UITableViewController {
     
     var sentiments = [Sentiment]()
-    var reuseIdentifier = "sentimentTableViewCellReuseIdentifier"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let cellNib = UINib(nibName: "SentimentTableViewCell", bundle: Bundle.main)
-        tableView.register(cellNib, forCellReuseIdentifier: reuseIdentifier)
+        let cellNib = UINib(nibName: SentimentTableViewCell.nibIdentifier, bundle: Bundle.main)
+        tableView.register(cellNib, forCellReuseIdentifier: SentimentTableViewCell.reuseIdentifier)
         tableView.estimatedRowHeight = 75
         fetchAndRender()
     }
@@ -53,7 +52,7 @@ extension SentimentViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! SentimentTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: SentimentTableViewCell.reuseIdentifier, for: indexPath) as! SentimentTableViewCell
         cell.prepareForReuse()
         let row = self.sentiments[indexPath.row]
         cell.set(row)
@@ -67,7 +66,7 @@ extension SentimentViewController {
     
     func showHistoricalSentiment(_ value: Sentiment) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let controller = (storyboard.instantiateViewController(withIdentifier: "historicalSentimentView") as? HistoricalSentimentViewController) {
+        if let controller = (storyboard.instantiateViewController(withIdentifier: HistoricalSentimentViewController.storyboardId) as? HistoricalSentimentViewController) {
             controller.sentiment = value
             navigationController?.pushViewController(controller, animated: true)
         }
@@ -89,6 +88,9 @@ extension SentimentViewController {
 }
 
 class SentimentTableViewCell: UITableViewCell {
+    
+    static let reuseIdentifier = "sentimentTableViewCellReuseIdentifier"
+    static let nibIdentifier = "SentimentTableViewCell"
     
     /*
      timestamp = "timestamp",

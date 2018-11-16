@@ -72,8 +72,7 @@ extension QuestionaireView {
         self.switchControl.setOn(false, animated: false)
         self.textView.text = ""
         
-        self.tintColor = UIView().tintColor
-        self.waterLabel.tintColor = UILabel().tintColor
+        self.setColors()
     }
     
     func getSentiment() -> Sentiment {
@@ -111,7 +110,7 @@ extension QuestionaireView {
         self.colorLabel.isHidden = true
         self.colorButtonControl.isHidden = true
         if let color = value?.color {
-            self.backgroundColor = color
+            self.setColors(tintColor: color, textColor: color)
         } else {
             self.colorLabel.isHidden = true
         }
@@ -154,9 +153,10 @@ extension QuestionaireView: UITextViewDelegate {
 }
 
 extension QuestionaireView {
+    
     func showColorPicker() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let controller = (storyboard.instantiateViewController(withIdentifier: "colorPickerViewController") as? ColorPickerViewController) {
+        if let controller = (storyboard.instantiateViewController(withIdentifier: ColorPickerViewController.identifier) as? ColorPickerViewController) {
             controller.delegate = self
             navigationController?.setNavigationBarHidden(true, animated: false)
             navigationController?.pushViewController(controller, animated: true)
@@ -165,9 +165,25 @@ extension QuestionaireView {
 }
 
 extension QuestionaireView: ColorPickerDelegate {
+    
     func onColorSelected(_ color: UIColor?) {
         self.sentiment.color = color
-        self.tintColor = color
-        self.waterLabel.tintColor = color
+        self.setColors(tintColor: color, textColor: color)
+    }
+    
+    func setColors(tintColor: UIColor? = UIView().tintColor, textColor: UIColor? = UIColor.lightGray) {
+        self.tintColor = tintColor
+        
+        // labels
+        feelingLabel.textColor = textColor
+        intensityLabel.textColor = textColor
+        colorLabel.textColor = textColor
+        waterLabel.textColor = textColor
+        
+        // controls
+        segmentedControl.tintColor = tintColor
+        sliderControl.tintColor = tintColor
+        buttonControl.tintColor = tintColor
+        switchControl.tintColor = tintColor
     }
 }

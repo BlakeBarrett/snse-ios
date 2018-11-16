@@ -70,7 +70,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" keyboardDismissMode="onDrag" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tq9-fh-RVd">
-                    <rect key="frame" x="10" y="216" width="357" height="451"/>
+                    <rect key="frame" x="10" y="216" width="357" height="443"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -82,7 +82,7 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="tq9-fh-RVd" secondAttribute="bottom" id="0A8-QY-xqo"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="tq9-fh-RVd" secondAttribute="bottom" constant="8" id="0A8-QY-xqo"/>
                 <constraint firstItem="LJs-wa-ino" firstAttribute="leading" secondItem="2Og-fI-IAw" secondAttribute="trailing" constant="4" id="0J8-Ef-Xdw"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="LJs-wa-ino" secondAttribute="trailing" constant="16" id="0Kg-0f-MFT"/>
                 <constraint firstItem="EAl-0T-Gim" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="1Vx-eh-oJG"/>

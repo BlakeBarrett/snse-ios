@@ -11,6 +11,9 @@ import UIKit
 
 class HistoricalSentimentViewController: UIViewController {
     
+    static let storyboardId = "historicalSentimentView"
+    static let identifier = "historyViewController"
+    
     @IBOutlet weak var questionaireView: QuestionaireView!
     
     var sentiment: Sentiment?
