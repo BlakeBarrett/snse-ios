@@ -23,7 +23,7 @@ class HistoricalSentimentViewController: UIViewController {
         questionaireView.setSentiment(value: self.sentiment)
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMM, dd, hh:mm"
+        dateFormatter.dateFormat = "MMM, dd hh:mm"
         let when = dateFormatter.string(from: self.sentiment?.timestamp ?? Date())
         self.title = when
         self.navigationController?.title = when

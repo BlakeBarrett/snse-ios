@@ -1,0 +1,51 @@
+
+/* Class = "UILabel"; text = "How are you feeling?"; ObjectID = "8Jh-YW-Ynh"; */
+"8Jh-YW-Ynh.text" = "¿Como te sientes?";
+
+/* Class = "UISegmentedControl"; CLN-Qe-PZk.segmentTitles[0] = "😞"; ObjectID = "CLN-Qe-PZk"; */
+"CLN-Qe-PZk.segmentTitles[0]" = "😞";
+
+/* Class = "UISegmentedControl"; CLN-Qe-PZk.segmentTitles[1] = "😐"; ObjectID = "CLN-Qe-PZk"; */
+"CLN-Qe-PZk.segmentTitles[1]" = "😐";
+
+/* Class = "UISegmentedControl"; CLN-Qe-PZk.segmentTitles[2] = "😊"; ObjectID = "CLN-Qe-PZk"; */
+"CLN-Qe-PZk.segmentTitles[2]" = "😊";
+
+/* Class = "UILabel"; text = "Have you recently drunk water?"; ObjectID = "IkQ-WC-3U0"; */
+"IkQ-WC-3U0.text" = "¿Has bebido agua recientemente?";
+
+/* Class = "UILabel"; text = "0 - 100"; ObjectID = "OdD-NT-Uth"; */
+"OdD-NT-Uth.text" = "0 - 100";
+
+/* Class = "UILabel"; text = "How are you feeling?"; ObjectID = "QZZ-gA-ZSd"; */
+"QZZ-gA-ZSd.text" = "¿Como te sientes?";
+
+/* Class = "UITableViewController"; title = "History"; ObjectID = "Xht-FG-ofk"; */
+"Xht-FG-ofk.title" = "Historia";
+
+/* Class = "UILabel"; text = "0 - 100"; ObjectID = "Z4J-Ge-GuX"; */
+"Z4J-Ge-GuX.text" = "0 - 100";
+
+/* Class = "UILabel"; text = "Color"; ObjectID = "aot-Mk-6rp"; */
+"aot-Mk-6rp.text" = "Color";
+
+/* Class = "UILabel"; text = "Color"; ObjectID = "ihb-ZP-wbT"; */
+"ihb-ZP-wbT.text" = "Color";
+
+/* Class = "UILabel"; text = "Care to elaborate?"; ObjectID = "jCS-VF-ko1"; */
+"jCS-VF-ko1.text" = "Care to elaborate?";
+
+/* Class = "UILabel"; text = "Care to elaborate?"; ObjectID = "pi2-s6-zN4"; */
+"pi2-s6-zN4.text" = "Care to elaborate?";
+
+/* Class = "UILabel"; text = "Have you recently drunk water?"; ObjectID = "qc2-16-f2N"; */
+"qc2-16-f2N.text" = "¿Has bebido agua recientemente?";
+
+/* Class = "UISegmentedControl"; uWh-fP-OzM.segmentTitles[0] = "😞"; ObjectID = "uWh-fP-OzM"; */
+"uWh-fP-OzM.segmentTitles[0]" = "😞";
+
+/* Class = "UISegmentedControl"; uWh-fP-OzM.segmentTitles[1] = "😐"; ObjectID = "uWh-fP-OzM"; */
+"uWh-fP-OzM.segmentTitles[1]" = "😐";
+
+/* Class = "UISegmentedControl"; uWh-fP-OzM.segmentTitles[2] = "😊"; ObjectID = "uWh-fP-OzM"; */
+"uWh-fP-OzM.segmentTitles[2]" = "😊";
