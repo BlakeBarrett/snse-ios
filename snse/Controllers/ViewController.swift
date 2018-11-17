@@ -110,6 +110,8 @@ extension ViewController {
             case Locale.init(identifier: "ru").languageCode:
                 reason = "Доступ имеет только владелец устройства."
                 break
+            case Locale.init(identifier: "de").languageCode:
+                reason = "Nur der Besitzer des Geräts hat Zugriff."
             default: break
             }
             
