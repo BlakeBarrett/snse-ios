@@ -121,5 +121,4 @@ extension Sentiment {
         }
         return dateFormatter.string(from: timestamp!)
     }
-    
 }

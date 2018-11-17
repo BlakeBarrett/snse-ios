@@ -21,14 +21,21 @@ class QuestionaireView: UIView {
     @IBOutlet weak var intensityLabel: UILabel!
     @IBOutlet weak var colorLabel: UILabel!
     @IBOutlet weak var waterLabel: UILabel!
+    @IBOutlet weak var elaborateLabel: UILabel!
     
     // controls
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var sliderControl: UISlider!
-    @IBOutlet weak var buttonControl: UIButton!
     @IBOutlet weak var switchControl: UISwitch!
     @IBOutlet weak var colorButtonControl: UIButton!
     @IBOutlet weak var textView: UITextView!
+    
+    // views
+    @IBOutlet weak var feelingsUIView: UIView!
+    @IBOutlet weak var intensityUIView: UIView!
+    @IBOutlet weak var colorUIView: UIView!
+    @IBOutlet weak var waterUIView: UIView!
+    @IBOutlet weak var elaborateUIView: UIView!
     
     @IBAction func onSegmentedControlValueChanged(_ sender: UISegmentedControl, forEvent event: UIEvent) {
         
@@ -81,7 +88,7 @@ extension QuestionaireView {
     }
     
     func setSentiment(value: Sentiment?) {
-        reset()
+        self.reset()
         
         switch value?.feeling {
         case "😞":
@@ -95,44 +102,50 @@ extension QuestionaireView {
             break
         default:
             self.segmentedControl.selectedSegmentIndex = UISegmentedControl.noSegment
-            self.segmentedControl.isHidden = true
-            self.feelingLabel.isHidden = true
+            self.collapse(self.feelingsUIView)
             break
         }
         
         if let intensity = value?.intensity {
             self.sliderControl.setValue(Float(intensity), animated: false)
         } else {
-            self.sliderControl.isHidden = true
-            self.intensityLabel.isHidden = true
+            self.collapse(self.intensityUIView)
         }
         
         self.colorLabel.isHidden = true
         self.colorButtonControl.isHidden = true
         if let color = value?.color {
             self.setColors(tintColor: color, textColor: color)
+            self.backgroundColor = color
         } else {
-            self.colorLabel.isHidden = true
+            self.collapse(self.colorUIView)
         }
         
         if let water = value?.water {
             self.switchControl.setOn(water, animated: false)
         } else {
-            self.switchControl.isHidden = true
-            self.waterLabel.isHidden = true
+            self.collapse(self.waterUIView)
         }
         
         if let elaborate = value?.elaborate {
             self.textView.text = elaborate
         } else {
             self.textView.isHidden = true
+            self.collapse(self.elaborateUIView)
         }
+    }
+    
+    func collapse(_ view: UIView) {
+        let frame = view.frame
+        let size = CGSize(width: frame.width, height: 0.0)
+        view.frame = CGRect(origin: frame.origin, size: size)
+        view.isHidden = true
     }
 }
 
 extension QuestionaireView {
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
             if touch != textView {
                 textView.resignFirstResponder()
@@ -169,21 +182,31 @@ extension QuestionaireView: ColorPickerDelegate {
     func onColorSelected(_ color: UIColor?) {
         self.sentiment.color = color
         self.setColors(tintColor: color, textColor: color)
+        self.backgroundColor = color
     }
     
-    func setColors(tintColor: UIColor? = UIView().tintColor, textColor: UIColor? = UIColor.lightGray) {
+    func setColors(tintColor: UIColor? = UIColor.darkGray, textColor: UIColor? = UIColor.lightGray) {
         self.tintColor = tintColor
+        self.backgroundColor = UIColor.groupTableViewBackground
         
         // labels
         feelingLabel.textColor = textColor
         intensityLabel.textColor = textColor
         colorLabel.textColor = textColor
         waterLabel.textColor = textColor
+        elaborateLabel.textColor = textColor
         
         // controls
         segmentedControl.tintColor = tintColor
         sliderControl.tintColor = tintColor
-        buttonControl.tintColor = tintColor
+        colorButtonControl.tintColor = tintColor
         switchControl.tintColor = tintColor
+        
+        // views
+        feelingsUIView.tintColor = tintColor
+        intensityUIView.tintColor = tintColor
+        colorUIView.tintColor = tintColor
+        waterUIView.tintColor = tintColor
+        elaborateUIView.tintColor = tintColor
     }
 }

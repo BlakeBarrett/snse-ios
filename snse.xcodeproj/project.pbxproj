@@ -43,8 +43,6 @@
 		256CF65A219CD66D00C0C8B6 /* HistoricalSentimentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalSentimentViewController.swift; sourceTree = "<group>"; };
 		258377D6219A52C100747670 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		258377D8219A69E300747670 /* SentimentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SentimentTableViewCell.xib; sourceTree = "<group>"; };
-		258DC333219E5E9C00F549FA /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
-		258DC334219E5E9C00F549FA /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		2593190821978195005CCC75 /* Sentiment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sentiment.swift; sourceTree = "<group>"; };
 		2593190A21978BC5005CCC75 /* SentimentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentimentFactory.swift; sourceTree = "<group>"; };
 		2593190E2197A76D005CCC75 /* SentimentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentimentViewController.swift; sourceTree = "<group>"; };
@@ -329,7 +327,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				25E4D4972195252100CFA268 /* Base */,
-				258DC333219E5E9C00F549FA /* es */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -338,7 +335,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				25E4D49F2195252300CFA268 /* Base */,
-				258DC334219E5E9C00F549FA /* es */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

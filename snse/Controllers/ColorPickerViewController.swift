@@ -18,7 +18,6 @@ class ColorPickerViewController: UIViewController {
     static let identifier = "colorPickerViewController"
     
     @IBOutlet weak var viewHSBColorPicker: HSBColorPicker!
-    @IBOutlet weak var colorPreviewView: UIView!
     @IBOutlet weak var toolbarView: UIToolbar!
     
     private var color: UIColor?
@@ -43,7 +42,6 @@ extension ColorPickerViewController: HSBColorPickerDelegate {
     func HSBColorColorPickerTouched(sender:HSBColorPicker,
                                     color:UIColor, point:CGPoint,
                                     state:UIGestureRecognizer.State) {
-        self.colorPreviewView.backgroundColor = color
         self.color = color
         self.view.tintColor = color
         self.toolbarView.tintColor = color

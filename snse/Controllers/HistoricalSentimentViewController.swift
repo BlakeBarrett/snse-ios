@@ -24,6 +24,8 @@ class HistoricalSentimentViewController: UIViewController {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM, dd, hh:mm"
-        navigationController?.title = dateFormatter.string(from: self.sentiment?.timestamp ?? Date())
+        let when = dateFormatter.string(from: self.sentiment?.timestamp ?? Date())
+        self.title = when
+        self.navigationController?.title = when
     }
 }
