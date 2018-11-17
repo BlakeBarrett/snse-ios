@@ -63,83 +63,29 @@ extension ViewController {
     
     func addKeyboardEventListeners() {
         let center = NotificationCenter.default
-        center.addObserver(forName: UIViewController.keyboardDidChangeFrameNotification, object: nil, queue: nil, using: self.onKeyboardChangeFrameNotification)
-        center.addObserver(forName: UIViewController.keyboardDidShowNotification, object: nil, queue: nil, using: self.onKeyboardShownNotification)
-        center.addObserver(forName: UIViewController.keyboardWillHideNotification, object: nil, queue: nil, using: self.onKeyboardHiddenNotification)
+        center.addObserver(forName: UIViewController.keyboardDidShowNotification, object: nil, queue: nil, using: self.onKeyboardShown)
+        center.addObserver(forName: UIViewController.keyboardWillHideNotification, object: nil, queue: nil, using: self.onKeyboardHidden)
     }
     
-    func onKeyboardChangeFrameNotification(notification: Notification) -> Void {
-        let userInfo = notification.userInfo ?? [:]
-        print(userInfo)
-        
-    }
-    
-    func onKeyboardShownNotification(notification: Notification) -> Void {
-//        let show = notification.name == UIViewController.keyboardDidShowNotification
-//        let userInfo = notification.userInfo ?? [:]
-//        let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-//        let adjustmentHeight = keyboardFrame.height * (show ? 1 : -1)
-//        let originalContentOffset = scrollView.contentOffset
-//        let newContentOffset = CGPoint(x: originalContentOffset.x, y: originalContentOffset.y + adjustmentHeight)
-//        scrollView.contentOffset = newContentOffset
-        
-        /*
-        
-         // one
-         
-         AnyHashable("UIKeyboardAnimationDurationUserInfoKey"): 0.25,
-         AnyHashable("UIKeyboardBoundsUserInfoKey"): NSRect: {{0, 0}, {1024, 0}},
-         AnyHashable("UIKeyboardAnimationCurveUserInfoKey"): 7,
-         AnyHashable("UIKeyboardCenterEndUserInfoKey"): NSPoint: {512, 768},
-         AnyHashable("UIKeyboardIsLocalUserInfoKey"): 1,
-         AnyHashable("UIKeyboardFrameBeginUserInfoKey"): NSRect: {{0, 768}, {1024, 0}},
-         AnyHashable("UIKeyboardFrameEndUserInfoKey"): NSRect: {{0, 768}, {1024, 0}},
-         AnyHashable("UIKeyboardCenterBeginUserInfoKey"): NSPoint: {512, 768}]
-         
-         // two
-         
-         AnyHashable("UIKeyboardAnimationDurationUserInfoKey"): 0,
-         AnyHashable("UIKeyboardBoundsUserInfoKey"): NSRect: {{0, 0}, {1024, 398}},
-         AnyHashable("UIKeyboardAnimationCurveUserInfoKey"): 7,
-         AnyHashable("UIKeyboardCenterEndUserInfoKey"): NSPoint: {512, 569},
-         AnyHashable("UIKeyboardIsLocalUserInfoKey"): 1,
-         AnyHashable("UIKeyboardFrameBeginUserInfoKey"): NSRect: {{0, 768}, {1024, 0}},
-         AnyHashable("UIKeyboardFrameEndUserInfoKey"): NSRect: {{0, 370}, {1024, 398}},
-         AnyHashable("UIKeyboardCenterBeginUserInfoKey"): NSPoint: {512, 768}]
-        
-        */
-
-
+    func onKeyboardShown(notification: Notification) -> Void {
         let info = notification.userInfo ?? [:]
         let infoKeyboardInfoKey = info[UIResponder.keyboardFrameEndUserInfoKey]
         let keyboardSize = (infoKeyboardInfoKey as! NSValue).cgRectValue.size
-        var backgroundRect = questionaireView.frame
-        backgroundRect.size.height += keyboardSize.height
-        questionaireView.frame = backgroundRect
-        let newY = questionaireView.frame.size.height + keyboardSize.height
+        
+        let originalContentInset = scrollView.contentInset
+        let contentInsets = UIEdgeInsets.init(top: originalContentInset.top, left: originalContentInset.left, bottom: keyboardSize.height, right: originalContentInset.right)
+        scrollView.contentInset = contentInsets
+        scrollView.scrollIndicatorInsets = contentInsets
+        
+        let newY = keyboardSize.height
         let point =  CGPoint(x: 0.0, y: newY)
         scrollView.setContentOffset(point, animated: true)
-        
-//        NSDictionary* info = [aNotification userInfo];
-//        CGSize kbSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
-//        CGRect bkgndRect = activeField.superview.frame;
-//        bkgndRect.size.height += kbSize.height;
-//        [activeField.superview setFrame:bkgndRect];
-//        [scrollView setContentOffset:CGPointMake(0.0, activeField.frame.origin.y-kbSize.height) animated:YES];
-        
-
-//        let info = notification.userInfo ?? [:]
-//        let infoKeyboardInfoKey = info[UIResponder.keyboardFrameEndUserInfoKey]
-//        let keyboardSize = (infoKeyboardInfoKey as! NSValue).cgRectValue.size
-//        let contentInsets = UIEdgeInsets.init(top: 0.0, left: 0.0, bottom: keyboardSize.height, right: 0.0)
-//        scrollView.contentInset = contentInsets;
-//        scrollView.scrollIndicatorInsets = contentInsets;
     }
     
-    func onKeyboardHiddenNotification(notification: Notification) -> Void {
+    func onKeyboardHidden(notification: Notification) -> Void {
         let contentInsets = UIEdgeInsets.zero
-        scrollView.contentInset = contentInsets;
-        scrollView.scrollIndicatorInsets = contentInsets;
+        scrollView.contentInset = contentInsets
+        scrollView.scrollIndicatorInsets = contentInsets
     }
 }
 

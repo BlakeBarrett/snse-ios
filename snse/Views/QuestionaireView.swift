@@ -112,14 +112,11 @@ extension QuestionaireView {
             self.collapse(self.intensityUIView)
         }
         
-        self.colorLabel.isHidden = true
-        self.colorButtonControl.isHidden = true
         if let color = value?.color {
             self.setColors(tintColor: color, textColor: color)
             self.backgroundColor = color
-        } else {
-            self.collapse(self.colorUIView)
         }
+        self.collapse(self.colorUIView)
         
         if let water = value?.water {
             self.switchControl.setOn(water, animated: false)
