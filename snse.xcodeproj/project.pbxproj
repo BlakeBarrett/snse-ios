@@ -47,6 +47,7 @@
 		2593190A21978BC5005CCC75 /* SentimentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentimentFactory.swift; sourceTree = "<group>"; };
 		2593190E2197A76D005CCC75 /* SentimentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentimentViewController.swift; sourceTree = "<group>"; };
 		25A64AAF21A0154400B553A9 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
+		25A64AB021A01A3600B553A9 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		25CDBC23219CFE0F008DB875 /* HSBColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSBColorPicker.swift; sourceTree = "<group>"; };
 		25CDBC25219D0129008DB875 /* ColorPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
 		25CDBC28219E3307008DB875 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
@@ -329,6 +330,7 @@
 			children = (
 				25E4D4972195252100CFA268 /* Base */,
 				25A64AAF21A0154400B553A9 /* es */,
+				25A64AB021A01A3600B553A9 /* ru */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
