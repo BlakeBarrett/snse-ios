@@ -77,7 +77,7 @@ extension ViewController {
         scrollView.contentInset = contentInsets
         scrollView.scrollIndicatorInsets = contentInsets
         
-        let newY = keyboardSize.height
+        let newY = UIDevice.current.userInterfaceIdiom == .pad ? keyboardSize.height : scrollView.contentOffset.y
         let point =  CGPoint(x: 0.0, y: newY)
         scrollView.setContentOffset(point, animated: true)
     }
