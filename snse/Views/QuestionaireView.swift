@@ -187,17 +187,18 @@ extension QuestionaireView: ColorPickerDelegate {
         self.backgroundColor = UIColor.groupTableViewBackground
         
         // labels
-        feelingLabel.textColor = textColor
-        intensityLabel.textColor = textColor
-        colorLabel.textColor = textColor
-        waterLabel.textColor = textColor
-        elaborateLabel.textColor = textColor
+//        feelingLabel.textColor = textColor
+//        intensityLabel.textColor = textColor
+//        colorLabel.textColor = textColor
+//        waterLabel.textColor = textColor
+//        elaborateLabel.textColor = textColor
         
         // controls
         segmentedControl.tintColor = tintColor
         sliderControl.tintColor = tintColor
         colorButtonControl.tintColor = tintColor
         switchControl.tintColor = tintColor
+        switchControl.thumbTintColor = tintColor
         
         // views
         feelingsUIView.tintColor = tintColor
