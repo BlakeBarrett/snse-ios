@@ -6,7 +6,7 @@
     },
     {
       "idiom" : "universal",
-      "filename" : "pencil.png",
+      "filename" : "settings.png",
       "scale" : "2x"
     },
     {
@@ -20,7 +20,6 @@
   },
   "properties" : {
     "template-rendering-intent" : "template",
-    "preserves-vector-representation" : true,
-    "auto-scaling" : "auto"
+    "preserves-vector-representation" : true
   }
 }
