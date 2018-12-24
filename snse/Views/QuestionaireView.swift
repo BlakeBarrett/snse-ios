@@ -198,7 +198,7 @@ extension QuestionaireView: ColorPickerDelegate {
         sliderControl.tintColor = tintColor
         colorButtonControl.tintColor = tintColor
         switchControl.tintColor = tintColor
-        switchControl.thumbTintColor = tintColor
+        switchControl.onTintColor = tintColor
         
         // views
         feelingsUIView.tintColor = tintColor

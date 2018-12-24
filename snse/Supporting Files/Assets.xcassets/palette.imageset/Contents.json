@@ -6,7 +6,7 @@
     },
     {
       "idiom" : "universal",
-      "filename" : "water.png",
+      "filename" : "palette.png",
       "scale" : "2x"
     },
     {
@@ -19,6 +19,8 @@
     "author" : "xcode"
   },
   "properties" : {
-    "template-rendering-intent" : "template"
+    "template-rendering-intent" : "template",
+    "preserves-vector-representation" : true,
+    "auto-scaling" : "auto"
   }
 }
