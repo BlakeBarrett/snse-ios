@@ -40,6 +40,12 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem systemItem="flexibleSpace" id="EpI-qQ-9eV"/>
+                                    <barButtonItem systemItem="compose" id="YHL-KB-Qpz">
+                                        <connections>
+                                            <action selector="onShowNewEntryForm:" destination="BYZ-38-t0r" id="4Dy-dz-YJJ"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Nhm-f6-ng0"/>
                                     <barButtonItem style="done" systemItem="save" id="Jx8-Qn-J46">
                                         <connections>
                                             <action selector="onSaveButtonPressed:" destination="BYZ-38-t0r" id="cUY-Gg-HCI"/>

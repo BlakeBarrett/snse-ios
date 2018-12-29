@@ -33,6 +33,12 @@ class ViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
+    @IBAction func onShowNewEntryForm(_ sender: UIBarButtonItem) {
+        let controller = EntryFormCardViewController()
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
     @IBAction func onSaveButtonPressed(_ sender: Any) {
         let sentiment = questionaireView.getSentiment()
         SentimentFactory.save(sentiment)
