@@ -13,7 +13,7 @@ class DetailCardViewController: UIViewController {
     
     public static let nibName = "DetailCardView"
     
-    public let minFontSize = 10.0
+    public let minFontSize = 14.0
     public let maxFontSize = 72.0
     
     @IBOutlet weak var contentView: UICardView!
@@ -48,7 +48,7 @@ class DetailCardViewController: UIViewController {
     func decorateFeelingLabel(view: UILabel, sentiment: Sentiment?) {
         view.text = sentiment?.feeling
         let intensity = Double(sentiment?.intensity ?? 0) * 0.01
-        let size = max(minFontSize, intensity * maxFontSize)
+        let size = minFontSize + (intensity * maxFontSize)
         view.font = view.font.withSize(CGFloat(size))
         view.sizeToFit()
     }
