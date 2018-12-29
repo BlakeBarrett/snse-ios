@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		251C679C21C9EFC000FED932 /* DetailCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 251C679B21C9EFC000FED932 /* DetailCardView.xib */; };
+		2560502421D07DAB00A0F046 /* EntryFormCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2560502321D07DAB00A0F046 /* EntryFormCardView.xib */; };
+		2560502621D07DBE00A0F046 /* EntryFormCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2560502521D07DBE00A0F046 /* EntryFormCardViewController.swift */; };
+		2560502821D07EA500A0F046 /* UICardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2560502721D07EA500A0F046 /* UICardView.swift */; };
 		256CF659219B814C00C0C8B6 /* SentimentEntryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 256CF658219B814C00C0C8B6 /* SentimentEntryView.xib */; };
 		256CF65B219CD66D00C0C8B6 /* HistoricalSentimentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256CF65A219CD66D00C0C8B6 /* HistoricalSentimentViewController.swift */; };
 		258377D7219A52C100747670 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 258377D6219A52C100747670 /* LocalAuthentication.framework */; };
@@ -42,6 +45,9 @@
 
 /* Begin PBXFileReference section */
 		251C679B21C9EFC000FED932 /* DetailCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailCardView.xib; sourceTree = "<group>"; };
+		2560502321D07DAB00A0F046 /* EntryFormCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EntryFormCardView.xib; sourceTree = "<group>"; };
+		2560502521D07DBE00A0F046 /* EntryFormCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryFormCardViewController.swift; sourceTree = "<group>"; };
+		2560502721D07EA500A0F046 /* UICardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICardView.swift; sourceTree = "<group>"; };
 		256CF658219B814C00C0C8B6 /* SentimentEntryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SentimentEntryView.xib; sourceTree = "<group>"; };
 		256CF65A219CD66D00C0C8B6 /* HistoricalSentimentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalSentimentViewController.swift; sourceTree = "<group>"; };
 		258377D6219A52C100747670 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
@@ -157,6 +163,7 @@
 				25E4D4B821954B5000CFA268 /* QuestionaireView.swift */,
 				25CDBC23219CFE0F008DB875 /* HSBColorPicker.swift */,
 				251C679B21C9EFC000FED932 /* DetailCardView.xib */,
+				2560502321D07DAB00A0F046 /* EntryFormCardView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -171,6 +178,8 @@
 				25E4D4942195252100CFA268 /* ViewController.swift */,
 				25CDBC25219D0129008DB875 /* ColorPickerViewController.swift */,
 				25D2A84621CDB9C1008F9129 /* DetailCardViewController.swift */,
+				2560502521D07DBE00A0F046 /* EntryFormCardViewController.swift */,
+				2560502721D07EA500A0F046 /* UICardView.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -277,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				25E4D4A02195252300CFA268 /* LaunchScreen.storyboard in Resources */,
+				2560502421D07DAB00A0F046 /* EntryFormCardView.xib in Resources */,
 				256CF659219B814C00C0C8B6 /* SentimentEntryView.xib in Resources */,
 				251C679C21C9EFC000FED932 /* DetailCardView.xib in Resources */,
 				25E4D4BB21954DD300CFA268 /* index.html in Resources */,
@@ -300,7 +310,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2560502821D07EA500A0F046 /* UICardView.swift in Sources */,
 				25CDBC26219D0129008DB875 /* ColorPickerViewController.swift in Sources */,
+				2560502621D07DBE00A0F046 /* EntryFormCardViewController.swift in Sources */,
 				2593190B21978BC5005CCC75 /* SentimentFactory.swift in Sources */,
 				25CDBC24219CFE0F008DB875 /* HSBColorPicker.swift in Sources */,
 				2593190921978195005CCC75 /* Sentiment.swift in Sources */,

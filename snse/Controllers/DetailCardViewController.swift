@@ -16,7 +16,7 @@ class DetailCardViewController: UIViewController {
     public let minFontSize = 10.0
     public let maxFontSize = 72.0
     
-    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var contentView: UICardView!
     
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var waterImageView: UIImageView!
@@ -43,8 +43,6 @@ class DetailCardViewController: UIViewController {
         let color = sentiment?.color
         feelingLabel.backgroundColor = color
         view.backgroundColor = color
-        
-        roundCornersOf(view: contentView)
     }
     
     func decorateFeelingLabel(view: UILabel, sentiment: Sentiment?) {
@@ -58,10 +56,5 @@ class DetailCardViewController: UIViewController {
     func waterImageFor(value: Sentiment?) -> UIImage? {
         let waterImage = (value?.water ?? false) ? "water" : "water-off"
         return UIImage(named: waterImage)
-    }
-    
-    func roundCornersOf(view: UIView, radius: CGFloat = 10) {
-        view.layer.masksToBounds = true
-        view.layer.cornerRadius = radius
     }
 }

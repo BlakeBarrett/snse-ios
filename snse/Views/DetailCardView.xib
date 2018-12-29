@@ -25,7 +25,7 @@
             <rect key="frame" x="0.0" y="0.0" width="389" height="1149"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V0J-IM-4R2" userLabel="Content View">
+                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V0J-IM-4R2" userLabel="Content View" customClass="UICardView" customModule="snse" customModuleProvider="target">
                     <rect key="frame" x="16" y="36" width="357" height="1097"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="water" translatesAutoresizingMaskIntoConstraints="NO" id="VKU-VL-oPN">
@@ -97,6 +97,6 @@
         </view>
     </objects>
     <resources>
-        <image name="water" width="24" height="24"/>
+        <image name="water" width="48" height="48"/>
     </resources>
 </document>

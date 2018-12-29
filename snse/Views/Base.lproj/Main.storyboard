@@ -40,7 +40,7 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem systemItem="flexibleSpace" id="EpI-qQ-9eV"/>
-                                    <barButtonItem systemItem="save" id="Jx8-Qn-J46">
+                                    <barButtonItem style="done" systemItem="save" id="Jx8-Qn-J46">
                                         <connections>
                                             <action selector="onSaveButtonPressed:" destination="BYZ-38-t0r" id="cUY-Gg-HCI"/>
                                         </connections>
@@ -382,7 +382,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="palette" width="24" height="24"/>
-        <image name="water" width="24" height="24"/>
+        <image name="palette" width="48" height="48"/>
+        <image name="water" width="48" height="48"/>
     </resources>
 </document>
