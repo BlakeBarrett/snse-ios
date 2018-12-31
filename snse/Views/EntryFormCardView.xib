@@ -14,7 +14,9 @@
             <connections>
                 <outlet property="cardView" destination="tHs-Hj-efO" id="uqi-6U-Lxl"/>
                 <outlet property="elaborateTextField" destination="06t-Jy-qYg" id="XUl-gW-40Y"/>
+                <outlet property="feelingView" destination="Oco-RH-LaC" id="vhZ-hM-IuG"/>
                 <outlet property="intensityFeelingLabel" destination="azR-7J-yzt" id="Nad-te-vQk"/>
+                <outlet property="intensityIconLabel" destination="azR-7J-yzt" id="EYg-5p-CX7"/>
                 <outlet property="intensitySlider" destination="31p-Pw-EjQ" id="iEE-JF-SS6"/>
                 <outlet property="paletteButton" destination="zgZ-JR-YMA" id="nJw-xQ-Acf"/>
                 <outlet property="view" destination="iN0-l3-epB" id="F7B-mu-McN"/>
@@ -43,9 +45,8 @@
                                 <constraint firstAttribute="width" secondItem="Mb8-Oq-d42" secondAttribute="height" multiplier="1:1" id="oPG-47-YhJ"/>
                             </constraints>
                         </imageView>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oco-RH-LaC" userLabel="FeelingView">
+                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oco-RH-LaC" userLabel="FeelingView" customClass="FeelingEntryView" customModule="snse" customModuleProvider="target">
                             <rect key="frame" x="8" y="52" width="361" height="120.5"/>
-                            <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="Oco-RH-LaC" secondAttribute="height" multiplier="3:1" id="Nee-hB-jMv"/>
                             </constraints>
@@ -67,7 +68,7 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6n9-Lv-hIc">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6n9-Lv-hIc" userLabel="PaletteContainerView">
                             <rect key="frame" x="8" y="220.5" width="361" height="512.5"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zgZ-JR-YMA">
@@ -94,7 +95,7 @@
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="06t-Jy-qYg" secondAttribute="bottom" constant="8" id="7Fg-N3-qoq"/>
                         <constraint firstAttribute="trailing" secondItem="Mb8-Oq-d42" secondAttribute="trailing" id="83R-5r-12b"/>
-                        <constraint firstItem="31p-Pw-EjQ" firstAttribute="top" secondItem="Oco-RH-LaC" secondAttribute="bottom" constant="16" id="9hr-EP-8i4"/>
+                        <constraint firstItem="31p-Pw-EjQ" firstAttribute="top" secondItem="Oco-RH-LaC" secondAttribute="bottom" constant="24" id="9hr-EP-8i4"/>
                         <constraint firstItem="06t-Jy-qYg" firstAttribute="top" secondItem="6n9-Lv-hIc" secondAttribute="bottom" constant="13" id="CUy-XJ-TnS"/>
                         <constraint firstItem="Mb8-Oq-d42" firstAttribute="leading" secondItem="1Mh-7k-QC5" secondAttribute="trailing" constant="8" id="DyQ-hc-17L"/>
                         <constraint firstItem="Oco-RH-LaC" firstAttribute="leading" secondItem="tHs-Hj-efO" secondAttribute="leading" constant="8" id="F7F-E3-wOw"/>

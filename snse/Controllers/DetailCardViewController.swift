@@ -38,11 +38,17 @@ class DetailCardViewController: UIViewController {
         decorateFeelingLabel(view: feelingLabel, sentiment: sentiment)
         
         elaborateTextView.text = sentiment?.elaborate
-        elaborateTextView.sizeToFit()
         
-        let color = sentiment?.color
+        setBackgroundColors(color(sentiment))
+    }
+    
+    func setBackgroundColors(_ color: UIColor) {
         feelingLabel.backgroundColor = color
         view.backgroundColor = color
+    }
+    
+    func color(_ sentiment: Sentiment?) -> UIColor {
+        return sentiment?.color ?? UIColor.groupTableViewBackground
     }
     
     func decorateFeelingLabel(view: UILabel, sentiment: Sentiment?) {

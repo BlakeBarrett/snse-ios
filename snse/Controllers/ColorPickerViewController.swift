@@ -20,11 +20,14 @@ class ColorPickerViewController: UIViewController {
     @IBOutlet weak var viewHSBColorPicker: HSBColorPicker!
     @IBOutlet weak var toolbarView: UIToolbar!
     
-    private var color: UIColor?
+    var color: UIColor?
     var delegate: ColorPickerDelegate?
     
     override func viewDidLoad() {
         viewHSBColorPicker.delegate = self
+        if let color = self.color {
+            decorateWithColor(color: color)
+        }
     }
     
     @IBAction func onCancelPressed(_ sender: UIBarButtonItem) {
@@ -42,6 +45,10 @@ extension ColorPickerViewController: HSBColorPickerDelegate {
     func HSBColorColorPickerTouched(sender:HSBColorPicker,
                                     color:UIColor, point:CGPoint,
                                     state:UIGestureRecognizer.State) {
+        decorateWithColor(color: color)
+    }
+    
+    func decorateWithColor(color: UIColor) {
         self.color = color
         self.view.tintColor = color
         self.toolbarView.tintColor = color

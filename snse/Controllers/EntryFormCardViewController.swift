@@ -12,16 +12,22 @@ class EntryFormCardViewController: UIViewController {
     
     @IBOutlet weak var cardView: UICardView!
     
+    @IBOutlet weak var feelingView: FeelingEntryView!
     @IBOutlet weak var waterImage: UIImageView!
     @IBOutlet weak var intensitySlider: UISlider!
     @IBOutlet weak var intensityFeelingLabel: UILabel!
+    @IBOutlet weak var intensityIconLabel: UILabel!
     @IBOutlet weak var paletteButton: UIButton!
     @IBOutlet weak var elaborateTextField: UITextField!
     
     var selectedColor: UIColor? = UIColor.white
+    var selectedFeelingIndex: Int = -1
     
     override func viewDidLoad() {
         elaborateTextField.delegate = self
+        waterImage.tintColor = self.view.tintColor
+        feelingView.selectedColor = self.view.tintColor
+        feelingView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -29,14 +35,16 @@ class EntryFormCardViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        
+        feelingView.delegate = nil
     }
     
     @IBAction func onPalettePressed(_ sender: UIButton) {
+        catchTheFeeling()
         // launch color picker
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let controller = (storyboard.instantiateViewController(withIdentifier: ColorPickerViewController.identifier) as? ColorPickerViewController) {
             weak var weakSelf = self
+            controller.color = selectedColor
             controller.delegate = weakSelf
             navigationController?.setNavigationBarHidden(true, animated: false)
             navigationController?.pushViewController(controller, animated: true)
@@ -55,12 +63,16 @@ extension EntryFormCardViewController: ColorPickerDelegate {
     func onColorSelected(_ color: UIColor?) {
         self.selectedColor = color
         self.setColors(tintColor: color)
+        setTheFeeling()
     }
     
     func setColors(tintColor: UIColor? = UIColor.darkGray) {
         view.backgroundColor = tintColor
         view.tintColor = tintColor
         cardView.backgroundColor = UIColor.white
+        
+        // feeling
+        feelingView.selectedColor = tintColor
         
         // text field
         elaborateTextField.backgroundColor = UIColor.white
@@ -69,5 +81,21 @@ extension EntryFormCardViewController: ColorPickerDelegate {
         // controls
         intensitySlider.tintColor = tintColor
         waterImage.tintColor = tintColor
+    }
+}
+
+extension EntryFormCardViewController {
+    func catchTheFeeling() {
+        selectedFeelingIndex = feelingView.selectedIndex
+    }
+    
+    func setTheFeeling() {
+        feelingView.selectedIndex = selectedFeelingIndex
+    }
+}
+
+extension EntryFormCardViewController: FeelingDelegate {
+    func onFeelingChanged(to value: String) {
+        intensityIconLabel.text = value
     }
 }

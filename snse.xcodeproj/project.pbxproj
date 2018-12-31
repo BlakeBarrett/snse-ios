@@ -18,6 +18,7 @@
 		2593190921978195005CCC75 /* Sentiment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2593190821978195005CCC75 /* Sentiment.swift */; };
 		2593190B21978BC5005CCC75 /* SentimentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2593190A21978BC5005CCC75 /* SentimentFactory.swift */; };
 		2593190F2197A76D005CCC75 /* SentimentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2593190E2197A76D005CCC75 /* SentimentViewController.swift */; };
+		25A8C11221D9A2B800C23C89 /* FeelingEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A8C11121D9A2B800C23C89 /* FeelingEntryView.swift */; };
 		25CDBC24219CFE0F008DB875 /* HSBColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CDBC23219CFE0F008DB875 /* HSBColorPicker.swift */; };
 		25CDBC26219D0129008DB875 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CDBC25219D0129008DB875 /* ColorPickerViewController.swift */; };
 		25CDBC29219E3307008DB875 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CDBC28219E3307008DB875 /* UIColor+Extensions.swift */; };
@@ -58,6 +59,7 @@
 		25A64AAF21A0154400B553A9 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
 		25A64AB021A01A3600B553A9 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		25A64AB121A01C7900B553A9 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
+		25A8C11121D9A2B800C23C89 /* FeelingEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingEntryView.swift; sourceTree = "<group>"; };
 		25CDBC23219CFE0F008DB875 /* HSBColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSBColorPicker.swift; sourceTree = "<group>"; };
 		25CDBC25219D0129008DB875 /* ColorPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
 		25CDBC28219E3307008DB875 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
@@ -97,6 +99,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		25A8C11021D9A29A00C23C89 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				25A8C11121D9A2B800C23C89 /* FeelingEntryView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		25CDBC27219E32EB008DB875 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -171,6 +181,7 @@
 		25FED67721967F1F002DE7F0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				25A8C11021D9A29A00C23C89 /* Components */,
 				25E4D4922195252100CFA268 /* AppDelegate.swift */,
 				256CF65A219CD66D00C0C8B6 /* HistoricalSentimentViewController.swift */,
 				2593190A21978BC5005CCC75 /* SentimentFactory.swift */,
@@ -314,6 +325,7 @@
 				25CDBC26219D0129008DB875 /* ColorPickerViewController.swift in Sources */,
 				2560502621D07DBE00A0F046 /* EntryFormCardViewController.swift in Sources */,
 				2593190B21978BC5005CCC75 /* SentimentFactory.swift in Sources */,
+				25A8C11221D9A2B800C23C89 /* FeelingEntryView.swift in Sources */,
 				25CDBC24219CFE0F008DB875 /* HSBColorPicker.swift in Sources */,
 				2593190921978195005CCC75 /* Sentiment.swift in Sources */,
 				256CF65B219CD66D00C0C8B6 /* HistoricalSentimentViewController.swift in Sources */,
