@@ -8,16 +8,19 @@
 
 import UIKit
 
-protocol FeelingDelegate {
-    func onFeelingChanged(to value: String)
-}
-
 @IBDesignable class FeelingEntryView: UIView {
     
-    private let fontSize = 72
+    private var minFontSize: CGFloat = 14.0
+    private var maxFontSize: CGFloat = 72.0
+    private var fontSize = 72
     private var selectedButton: UIButton?
     
-    var delegate: FeelingDelegate?
+    var intensity: Int = 72 {
+        didSet {
+            fontSize = intensity
+            updateLabelSizes()
+        }
+    }
     
     var deselectedColor: UIColor? = UIColor.clear
     var selectedColor: UIColor? = UIColor.lightGray {
@@ -63,7 +66,7 @@ protocol FeelingDelegate {
         let button = UIButton()
         button.setTitle(title, for: UIControl.State.normal)
         button.titleLabel?.textAlignment = NSTextAlignment.center
-        button.titleLabel?.font = button.titleLabel?.font.withSize(CGFloat(fontSize))
+        button.titleLabel?.updateFontSize(CGFloat(fontSize))
         button.addTarget(self, action: #selector(self.onClick(_:)), for: .touchUpInside)
         return button
     }
@@ -75,12 +78,22 @@ protocol FeelingDelegate {
         self.selectedIndex = view.tag
         self.selectedButton = view
         self.updateBackgroundColors()
-        self.delegate?.onFeelingChanged(to: self.selectedFeeling!)
     }
     
     func updateBackgroundColors() {
         subviews.forEach({ view in
             view.backgroundColor = (view.tag == self.selectedIndex ? selectedColor : deselectedColor)
+        })
+    }
+    
+    func updateLabelSizes() {
+        subviews.forEach({ view in
+            guard let view = view as? UIButton else {
+                return
+            }
+            let intensePercent = CGFloat(intensity) * 0.01
+            let size = CGFloat(minFontSize + (intensePercent * maxFontSize))
+            view.titleLabel?.updateFontSize(size)
         })
     }
     

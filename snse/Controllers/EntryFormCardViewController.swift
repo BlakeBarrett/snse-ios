@@ -13,10 +13,8 @@ class EntryFormCardViewController: UIViewController {
     @IBOutlet weak var cardView: UICardView!
     
     @IBOutlet weak var feelingView: FeelingEntryView!
-    @IBOutlet weak var waterImage: UIImageView!
+    @IBOutlet weak var waterImage: UIButton!
     @IBOutlet weak var intensitySlider: UISlider!
-    @IBOutlet weak var intensityFeelingLabel: UILabel!
-    @IBOutlet weak var intensityIconLabel: UILabel!
     @IBOutlet weak var paletteButton: UIButton!
     @IBOutlet weak var elaborateTextField: UITextField!
     
@@ -27,7 +25,6 @@ class EntryFormCardViewController: UIViewController {
         elaborateTextField.delegate = self
         waterImage.tintColor = self.view.tintColor
         feelingView.selectedColor = self.view.tintColor
-        feelingView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,7 +32,6 @@ class EntryFormCardViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        feelingView.delegate = nil
     }
     
     @IBAction func onPalettePressed(_ sender: UIButton) {
@@ -49,6 +45,13 @@ class EntryFormCardViewController: UIViewController {
             navigationController?.setNavigationBarHidden(true, animated: false)
             navigationController?.pushViewController(controller, animated: true)
         }
+    }
+    
+    @IBAction func onWaterButtonPressed(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+    }
+    @IBAction func onIntensitySliderChange(_ sender: UISlider) {
+        updateFeelingIntensity(value: Int(sender.value))
     }
 }
 
@@ -92,10 +95,8 @@ extension EntryFormCardViewController {
     func setTheFeeling() {
         feelingView.selectedIndex = selectedFeelingIndex
     }
-}
-
-extension EntryFormCardViewController: FeelingDelegate {
-    func onFeelingChanged(to value: String) {
-        intensityIconLabel.text = value
+    
+    func updateFeelingIntensity(value: Int) {
+        feelingView.intensity = value
     }
 }

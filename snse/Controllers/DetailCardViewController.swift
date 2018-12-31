@@ -54,9 +54,8 @@ class DetailCardViewController: UIViewController {
     func decorateFeelingLabel(view: UILabel, sentiment: Sentiment?) {
         view.text = sentiment?.feeling
         let intensity = Double(sentiment?.intensity ?? 0) * 0.01
-        let size = minFontSize + (intensity * maxFontSize)
-        view.font = view.font.withSize(CGFloat(size))
-        view.sizeToFit()
+        let size = CGFloat(minFontSize + (intensity * maxFontSize))
+        view.updateFontSize(size)
     }
     
     func waterImageFor(value: Sentiment?) -> UIImage? {

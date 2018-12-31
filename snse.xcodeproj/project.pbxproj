@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		251C679C21C9EFC000FED932 /* DetailCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 251C679B21C9EFC000FED932 /* DetailCardView.xib */; };
+		2527C33921D9FBBB008B3A58 /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2527C33821D9FBBB008B3A58 /* UILabel+Extensions.swift */; };
 		2560502421D07DAB00A0F046 /* EntryFormCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2560502321D07DAB00A0F046 /* EntryFormCardView.xib */; };
 		2560502621D07DBE00A0F046 /* EntryFormCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2560502521D07DBE00A0F046 /* EntryFormCardViewController.swift */; };
 		2560502821D07EA500A0F046 /* UICardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2560502721D07EA500A0F046 /* UICardView.swift */; };
@@ -46,6 +47,7 @@
 
 /* Begin PBXFileReference section */
 		251C679B21C9EFC000FED932 /* DetailCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailCardView.xib; sourceTree = "<group>"; };
+		2527C33821D9FBBB008B3A58 /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
 		2560502321D07DAB00A0F046 /* EntryFormCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EntryFormCardView.xib; sourceTree = "<group>"; };
 		2560502521D07DBE00A0F046 /* EntryFormCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryFormCardViewController.swift; sourceTree = "<group>"; };
 		2560502721D07EA500A0F046 /* UICardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICardView.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				25CDBC28219E3307008DB875 /* UIColor+Extensions.swift */,
+				2527C33821D9FBBB008B3A58 /* UILabel+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 				25E4D4B921954B5000CFA268 /* QuestionaireView.swift in Sources */,
 				25E4D49B2195252100CFA268 /* snse.xcdatamodeld in Sources */,
 				25E4D4952195252100CFA268 /* ViewController.swift in Sources */,
+				2527C33921D9FBBB008B3A58 /* UILabel+Extensions.swift in Sources */,
 				25CDBC29219E3307008DB875 /* UIColor+Extensions.swift in Sources */,
 				25E4D4932195252100CFA268 /* AppDelegate.swift in Sources */,
 				2593190F2197A76D005CCC75 /* SentimentViewController.swift in Sources */,

@@ -15,12 +15,10 @@
                 <outlet property="cardView" destination="tHs-Hj-efO" id="uqi-6U-Lxl"/>
                 <outlet property="elaborateTextField" destination="06t-Jy-qYg" id="XUl-gW-40Y"/>
                 <outlet property="feelingView" destination="Oco-RH-LaC" id="vhZ-hM-IuG"/>
-                <outlet property="intensityFeelingLabel" destination="azR-7J-yzt" id="Nad-te-vQk"/>
-                <outlet property="intensityIconLabel" destination="azR-7J-yzt" id="EYg-5p-CX7"/>
                 <outlet property="intensitySlider" destination="31p-Pw-EjQ" id="iEE-JF-SS6"/>
                 <outlet property="paletteButton" destination="zgZ-JR-YMA" id="nJw-xQ-Acf"/>
                 <outlet property="view" destination="iN0-l3-epB" id="F7B-mu-McN"/>
-                <outlet property="waterImage" destination="Mb8-Oq-d42" id="6oa-Tt-SLd"/>
+                <outlet property="waterImage" destination="s2E-Wz-rLl" id="cwH-EP-zvw"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -32,36 +30,23 @@
                     <rect key="frame" x="16" y="36" width="377" height="784"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How are you feeling?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Mh-7k-QC5">
-                            <rect key="frame" x="8" y="8" width="325" height="21"/>
+                            <rect key="frame" x="8" y="8" width="159" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="water-off" translatesAutoresizingMaskIntoConstraints="NO" id="Mb8-Oq-d42">
-                            <rect key="frame" x="341" y="0.0" width="36" height="36"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="36" id="3F3-2t-s48"/>
-                                <constraint firstAttribute="height" constant="36" id="DQl-hx-3Kw"/>
-                                <constraint firstAttribute="width" secondItem="Mb8-Oq-d42" secondAttribute="height" multiplier="1:1" id="oPG-47-YhJ"/>
-                            </constraints>
-                        </imageView>
                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oco-RH-LaC" userLabel="FeelingView" customClass="FeelingEntryView" customModule="snse" customModuleProvider="target">
                             <rect key="frame" x="8" y="52" width="361" height="120.5"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="Oco-RH-LaC" secondAttribute="height" multiplier="3:1" id="Nee-hB-jMv"/>
                             </constraints>
                         </view>
-                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="31p-Pw-EjQ" userLabel="Intensity Slider">
-                            <rect key="frame" x="6" y="188.5" width="334" height="31"/>
+                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="31p-Pw-EjQ" userLabel="Intensity Slider">
+                            <rect key="frame" x="6" y="196.5" width="365" height="31"/>
+                            <connections>
+                                <action selector="onIntensitySliderChange:" destination="-1" eventType="valueChanged" id="0Sk-1Y-Vtx"/>
+                            </connections>
                         </slider>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="😊" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="azR-7J-yzt">
-                            <rect key="frame" x="346" y="192.5" width="23" height="21"/>
-                            <accessibility key="accessibilityConfiguration">
-                                <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
-                            </accessibility>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Care to elaborate?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="06t-Jy-qYg">
                             <rect key="frame" x="8" y="746" width="361" height="30"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -69,10 +54,10 @@
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6n9-Lv-hIc" userLabel="PaletteContainerView">
-                            <rect key="frame" x="8" y="220.5" width="361" height="512.5"/>
+                            <rect key="frame" x="8" y="228.5" width="361" height="504.5"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zgZ-JR-YMA">
-                                    <rect key="frame" x="80.5" y="156" width="200" height="200"/>
+                                    <rect key="frame" x="80.5" y="152" width="200" height="200"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="zgZ-JR-YMA" secondAttribute="height" multiplier="1:1" id="2kX-Cf-t6e"/>
                                         <constraint firstAttribute="height" constant="200" id="LOi-x2-9uZ"/>
@@ -90,29 +75,34 @@
                                 <constraint firstItem="zgZ-JR-YMA" firstAttribute="centerX" secondItem="6n9-Lv-hIc" secondAttribute="centerX" id="vOP-bF-9GN"/>
                             </constraints>
                         </view>
+                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s2E-Wz-rLl">
+                            <rect key="frame" x="329" y="0.0" width="48" height="48"/>
+                            <state key="normal" image="water-off"/>
+                            <state key="selected" image="water"/>
+                            <connections>
+                                <action selector="onWaterButtonPressed:" destination="-1" eventType="touchUpInside" id="JTG-Oe-tnq"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstAttribute="trailing" secondItem="6n9-Lv-hIc" secondAttribute="trailing" constant="8" id="21u-oq-sn6"/>
                         <constraint firstAttribute="bottom" secondItem="06t-Jy-qYg" secondAttribute="bottom" constant="8" id="7Fg-N3-qoq"/>
-                        <constraint firstAttribute="trailing" secondItem="Mb8-Oq-d42" secondAttribute="trailing" id="83R-5r-12b"/>
                         <constraint firstItem="31p-Pw-EjQ" firstAttribute="top" secondItem="Oco-RH-LaC" secondAttribute="bottom" constant="24" id="9hr-EP-8i4"/>
+                        <constraint firstItem="Oco-RH-LaC" firstAttribute="top" secondItem="tHs-Hj-efO" secondAttribute="top" constant="52" id="APo-gz-OdN"/>
                         <constraint firstItem="06t-Jy-qYg" firstAttribute="top" secondItem="6n9-Lv-hIc" secondAttribute="bottom" constant="13" id="CUy-XJ-TnS"/>
-                        <constraint firstItem="Mb8-Oq-d42" firstAttribute="leading" secondItem="1Mh-7k-QC5" secondAttribute="trailing" constant="8" id="DyQ-hc-17L"/>
                         <constraint firstItem="Oco-RH-LaC" firstAttribute="leading" secondItem="tHs-Hj-efO" secondAttribute="leading" constant="8" id="F7F-E3-wOw"/>
                         <constraint firstAttribute="trailing" secondItem="Oco-RH-LaC" secondAttribute="trailing" constant="8" id="FS5-Pd-ooh"/>
                         <constraint firstItem="31p-Pw-EjQ" firstAttribute="leading" secondItem="tHs-Hj-efO" secondAttribute="leading" constant="8" id="KO9-GT-cuM"/>
                         <constraint firstAttribute="trailing" secondItem="06t-Jy-qYg" secondAttribute="trailing" constant="8" id="KQ1-cj-fZr"/>
-                        <constraint firstItem="Oco-RH-LaC" firstAttribute="top" secondItem="Mb8-Oq-d42" secondAttribute="bottom" constant="16" id="Ln2-2d-oKd"/>
-                        <constraint firstItem="Mb8-Oq-d42" firstAttribute="top" secondItem="tHs-Hj-efO" secondAttribute="top" id="OMO-Ax-3um"/>
+                        <constraint firstItem="6n9-Lv-hIc" firstAttribute="leading" secondItem="tHs-Hj-efO" secondAttribute="leading" constant="8" id="NNZ-3y-qwT"/>
                         <constraint firstItem="06t-Jy-qYg" firstAttribute="leading" secondItem="tHs-Hj-efO" secondAttribute="leading" constant="8" id="OhL-cm-PSF"/>
-                        <constraint firstAttribute="trailing" secondItem="azR-7J-yzt" secondAttribute="trailing" constant="8" id="QTB-Xi-P1K"/>
-                        <constraint firstItem="azR-7J-yzt" firstAttribute="leading" secondItem="31p-Pw-EjQ" secondAttribute="trailing" constant="8" id="YG1-3f-wKC"/>
+                        <constraint firstItem="s2E-Wz-rLl" firstAttribute="top" secondItem="tHs-Hj-efO" secondAttribute="top" id="X1p-Ti-1Bn"/>
+                        <constraint firstAttribute="trailing" secondItem="31p-Pw-EjQ" secondAttribute="trailing" constant="8" id="XKn-Dt-oAR"/>
                         <constraint firstItem="1Mh-7k-QC5" firstAttribute="leading" secondItem="tHs-Hj-efO" secondAttribute="leading" constant="8" id="aej-KF-1bc"/>
+                        <constraint firstAttribute="trailing" secondItem="s2E-Wz-rLl" secondAttribute="trailing" id="cbb-75-98R"/>
                         <constraint firstItem="1Mh-7k-QC5" firstAttribute="top" secondItem="tHs-Hj-efO" secondAttribute="top" constant="8" id="fz8-5p-aMR"/>
-                        <constraint firstItem="azR-7J-yzt" firstAttribute="top" secondItem="Oco-RH-LaC" secondAttribute="bottom" constant="20" id="lLG-6b-8lz"/>
-                        <constraint firstItem="6n9-Lv-hIc" firstAttribute="leading" secondItem="31p-Pw-EjQ" secondAttribute="leading" id="qOK-Dz-kiK"/>
                         <constraint firstItem="6n9-Lv-hIc" firstAttribute="top" secondItem="31p-Pw-EjQ" secondAttribute="bottom" constant="2" id="v2x-la-wX8"/>
-                        <constraint firstItem="6n9-Lv-hIc" firstAttribute="trailing" secondItem="azR-7J-yzt" secondAttribute="trailing" id="vDI-xu-Jr6"/>
                     </constraints>
                 </view>
             </subviews>
@@ -132,6 +122,7 @@
     </objects>
     <resources>
         <image name="palette" width="48" height="48"/>
+        <image name="water" width="48" height="48"/>
         <image name="water-off" width="48" height="48"/>
     </resources>
 </document>
