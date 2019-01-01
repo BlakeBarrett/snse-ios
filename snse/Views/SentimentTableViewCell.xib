@@ -39,7 +39,7 @@
                     <fontDescription key="fontDescription" name=".SFNSText" family=".SF NS Text" pointSize="48"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" textAlignment="natural" adjustsFontForContentSizeCategory="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kwU-hE-tEu">
+                <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kwU-hE-tEu">
                     <rect key="frame" x="84" y="8" width="161" height="60"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <accessibility key="accessibilityConfiguration">

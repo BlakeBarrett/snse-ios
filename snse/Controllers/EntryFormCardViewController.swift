@@ -25,6 +25,7 @@ class EntryFormCardViewController: UIViewController {
         elaborateTextField.delegate = self
         waterImage.tintColor = self.view.tintColor
         feelingView.selectedColor = self.view.tintColor
+        updateFeelingIntensity(value: 50)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,6 +59,16 @@ class EntryFormCardViewController: UIViewController {
 extension EntryFormCardViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         // launch full-screen text editor
+        textField.resignFirstResponder()
+        let controller = DedicatedTextEntryViewController.show(in: self.navigationController)
+        controller?.delegate = self
+        controller?.prepopulateText(with: textField.text)
+    }
+}
+
+extension EntryFormCardViewController: TextEntryDelegate {
+    func updateText(with value: String?) {
+        elaborateTextField.text = value
     }
 }
 
