@@ -19,12 +19,11 @@ class DedicatedTextEntryViewController: UIViewController {
     
     @IBOutlet weak var mainTextView: UITextView!
     @IBOutlet weak var keyboardSpaceSaverView: UIView!
-    @IBOutlet weak var toolbarView: UIToolbar!
+    @IBOutlet weak var keyboardHeightConstraint: NSLayoutConstraint!
     
     weak var delegate: TextEntryDelegate?
     var keyboardShowObserver: NSObjectProtocol?
     
-    private var keyboardHeight = 0
     private var text: String?
     
     static func show(in navigationController: UINavigationController? = nil) -> DedicatedTextEntryViewController? {
@@ -40,6 +39,7 @@ class DedicatedTextEntryViewController: UIViewController {
         mainTextView.becomeFirstResponder()
         mainTextView.text = text
         addKeyboardEventListener()
+        setupNavButtons()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -47,7 +47,16 @@ class DedicatedTextEntryViewController: UIViewController {
         cleanup()
     }
     
-    @IBAction func onCancelClicked(_ sender: UIBarButtonItem) {
+    private func setupNavButtons() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel,
+                                                           target: self,
+                                                           action: #selector(onCancelClicked(_:)))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done,
+                                                            target: self,
+                                                            action: #selector(onDoneClicked(_:)))
+    }
+    
+    @objc func onCancelClicked(_ sender: UIBarButtonItem) {
         if let _ = navigationController {
             navigationController?.popViewController(animated: true)
         } else {
@@ -55,7 +64,7 @@ class DedicatedTextEntryViewController: UIViewController {
         }
     }
     
-    @IBAction func onDoneClicked(_ sender: UIBarButtonItem) {
+    @objc func onDoneClicked(_ sender: UIBarButtonItem) {
         self.delegate?.updateText(with: self.mainTextView.text)
         if let _ = navigationController {
             navigationController?.popViewController(animated: true)
@@ -99,15 +108,8 @@ extension DedicatedTextEntryViewController {
         keyboardSpaceSaverView.frame = keyboardRect
         
         let keyboardHeight = keyboardRect.size.height
-        print(keyboardHeight)
-        
-        if (self.keyboardHeight < Int(keyboardHeight)) {
-            mainTextView.frame.size.height -= keyboardHeight
-            toolbarView.frame.origin.y -= keyboardHeight
-            
-            // This hack exists because the SwiftKey keyboard decided to throw THREE
-            // events for every one keyboardDidShow.
-            self.keyboardHeight = Int(keyboardHeight)
-        }
+        keyboardHeightConstraint.constant = keyboardHeight
+        mainTextView.frame.size.height -= keyboardHeight
+        view.layoutIfNeeded()
     }
 }

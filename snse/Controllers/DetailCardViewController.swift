@@ -29,7 +29,10 @@ class DetailCardViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        dateLabel.text = sentiment?.getDateString()
+        let when = sentiment?.getLongDateString()
+        dateLabel.text = ""
+        navigationController?.title = when
+        self.title = when
         
         waterImageView.image = waterImageFor(value: sentiment)
         waterImageView.tintColor = dateLabel.textColor
@@ -43,7 +46,7 @@ class DetailCardViewController: UIViewController {
     
     func setBackgroundColors(_ color: UIColor) {
         feelingLabel.backgroundColor = color
-        view.backgroundColor = color
+        view.backgroundColor = color.adjust(brightnessBy: -0.1)
     }
     
     func color(_ sentiment: Sentiment?) -> UIColor {

@@ -370,58 +370,37 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kiW-sa-Hfn">
-                                <rect key="frame" x="0.0" y="20" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="389"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
                             </textView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3PA-oX-FbT">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="uED-pL-ACu"/>
-                                </constraints>
-                                <items>
-                                    <barButtonItem systemItem="cancel" id="9n7-UM-R9d">
-                                        <connections>
-                                            <action selector="onCancelClicked:" destination="WrE-KH-uDr" id="fki-sG-iwj"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="0X5-vf-ReL"/>
-                                    <barButtonItem style="done" systemItem="done" id="g74-AS-Q7V">
-                                        <connections>
-                                            <action selector="onDoneClicked:" destination="WrE-KH-uDr" id="xeV-Ed-1rD"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zDY-sR-To1">
-                                <rect key="frame" x="0.0" y="667" width="375" height="0.0"/>
+                                <rect key="frame" x="0.0" y="417" width="375" height="250"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="TGI-TW-u5p"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
-                            <constraint firstItem="zDY-sR-To1" firstAttribute="top" secondItem="3PA-oX-FbT" secondAttribute="bottom" id="0Ko-Cn-T5P"/>
                             <constraint firstItem="kiW-sa-Hfn" firstAttribute="top" secondItem="7Si-xQ-Hcl" secondAttribute="top" id="6wC-4D-3a1"/>
-                            <constraint firstItem="kiW-sa-Hfn" firstAttribute="bottom" secondItem="3PA-oX-FbT" secondAttribute="top" id="7aL-NG-Uns"/>
+                            <constraint firstItem="zDY-sR-To1" firstAttribute="top" secondItem="kiW-sa-Hfn" secondAttribute="bottom" constant="8" id="8p2-Z0-FRU"/>
                             <constraint firstItem="kiW-sa-Hfn" firstAttribute="leading" secondItem="7Si-xQ-Hcl" secondAttribute="leading" id="Kgh-1D-xBv"/>
-                            <constraint firstItem="3PA-oX-FbT" firstAttribute="top" secondItem="kiW-sa-Hfn" secondAttribute="bottom" id="QsI-hP-GTx"/>
-                            <constraint firstItem="3PA-oX-FbT" firstAttribute="trailing" secondItem="7Si-xQ-Hcl" secondAttribute="trailing" id="RZ4-tr-t3X"/>
                             <constraint firstItem="zDY-sR-To1" firstAttribute="trailing" secondItem="7Si-xQ-Hcl" secondAttribute="trailing" id="SwJ-b3-naY"/>
                             <constraint firstItem="zDY-sR-To1" firstAttribute="bottom" secondItem="7Si-xQ-Hcl" secondAttribute="bottom" id="g75-5h-G4a"/>
-                            <constraint firstItem="3PA-oX-FbT" firstAttribute="leading" secondItem="7Si-xQ-Hcl" secondAttribute="leading" id="m44-W1-Nhb"/>
                             <constraint firstItem="kiW-sa-Hfn" firstAttribute="trailing" secondItem="7Si-xQ-Hcl" secondAttribute="trailing" id="qzr-xT-wEW"/>
                             <constraint firstItem="zDY-sR-To1" firstAttribute="leading" secondItem="7Si-xQ-Hcl" secondAttribute="leading" id="tAl-Vo-tqa"/>
-                            <constraint firstItem="3PA-oX-FbT" firstAttribute="bottom" secondItem="zDY-sR-To1" secondAttribute="bottom" id="zmA-MG-Xwz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7Si-xQ-Hcl"/>
                     </view>
                     <connections>
+                        <outlet property="keyboardHeightConstraint" destination="TGI-TW-u5p" id="EXb-Ov-R6x"/>
                         <outlet property="keyboardSpaceSaverView" destination="zDY-sR-To1" id="vQL-uV-PMz"/>
                         <outlet property="mainTextView" destination="kiW-sa-Hfn" id="kPd-hW-3J4"/>
-                        <outlet property="toolbarView" destination="3PA-oX-FbT" id="fZ9-RU-hNy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zjf-Cl-ylY" userLabel="First Responder" sceneMemberID="firstResponder"/>

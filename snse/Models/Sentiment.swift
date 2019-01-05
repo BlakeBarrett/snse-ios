@@ -107,18 +107,46 @@ extension Sentiment {
     func getDateString() -> String {
         let calendar = NSCalendar.autoupdatingCurrent
         let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale.autoupdatingCurrent
         if calendar.isDateInToday(timestamp!) {
-            dateFormatter.dateFormat = "hh:mm"
+            dateFormatter.timeStyle = .none
+            dateFormatter.dateStyle = .short
         } else if calendar.isDateInYesterday(timestamp!) {
             
-            if Locale.current.languageCode == Locale.init(identifier: "es").languageCode {
-                return "Ayer"
+            if Locale.autoupdatingCurrent.languageCode == Locale.init(identifier: "es").languageCode {
+                return "Ayer "
             }
             
-            return "Yesterday"
+            return "Yesterday "
         } else {
             dateFormatter.dateFormat = "MM/dd, hh:mm"
         }
         return dateFormatter.string(from: timestamp!)
+    }
+    
+    func getLongDateString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale.autoupdatingCurrent
+        dateFormatter.dateStyle = .long
+        dateFormatter.timeStyle = .short
+        
+        var dayString = ""
+        let calendar = NSCalendar.autoupdatingCurrent
+        if calendar.isDateInToday(timestamp!) {
+            dateFormatter.timeStyle = .none
+            dateFormatter.dateStyle = .short
+        } else if calendar.isDateInYesterday(timestamp!) {
+            switch Locale.autoupdatingCurrent.languageCode {
+            case Locale.init(identifier: "es").languageCode:
+                dayString = "Ayer "
+                break
+            default:
+                dayString = "Yesterday "
+                break
+            }
+            dateFormatter.dateStyle = .none
+        }
+        
+        return dayString + dateFormatter.string(from: timestamp!)
     }
 }

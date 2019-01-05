@@ -95,6 +95,11 @@ extension EntryFormCardViewController: ColorPickerDelegate {
         // controls
         intensitySlider.tintColor = tintColor
         waterImage.tintColor = tintColor
+        
+        // outline around the textfield
+        elaborateTextField.layer.borderColor = tintColor?.cgColor
+        elaborateTextField.layer.borderWidth = 1.0
+        elaborateTextField.layer.cornerRadius = 3.0
     }
 }
 
@@ -109,5 +114,12 @@ extension EntryFormCardViewController {
     
     func updateFeelingIntensity(value: Int) {
         feelingView.intensity = value
+    }
+}
+
+extension EntryFormCardViewController {
+    func sentiment() -> Sentiment? {
+        
+        return Sentiment(values: [String : Any]())
     }
 }

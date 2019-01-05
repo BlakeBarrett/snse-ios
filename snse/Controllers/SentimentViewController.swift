@@ -19,7 +19,16 @@ class SentimentViewController: UITableViewController {
         let cellNib = UINib(nibName: SentimentTableViewCell.nibIdentifier, bundle: Bundle.main)
         tableView.register(cellNib, forCellReuseIdentifier: SentimentTableViewCell.reuseIdentifier)
         tableView.estimatedRowHeight = 75
+        
         fetchAndRender()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setLargeTitleMode(true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        setLargeTitleMode(false)
     }
     
     func fetchAndRender() {
@@ -82,6 +91,15 @@ extension SentimentViewController {
                 sentiments.remove(at: indexPath.row)
                 tableView.reloadData()
             }
+        }
+    }
+}
+
+extension SentimentViewController {
+    func setLargeTitleMode(_ value: Bool) {
+        if #available(iOS 11.0, *) {
+            navigationController?.navigationBar.prefersLargeTitles = value
+            navigationItem.largeTitleDisplayMode = UINavigationItem.LargeTitleDisplayMode.always
         }
     }
 }
