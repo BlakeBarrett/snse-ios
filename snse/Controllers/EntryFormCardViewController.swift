@@ -104,6 +104,10 @@ extension EntryFormCardViewController: ColorPickerDelegate {
 }
 
 extension EntryFormCardViewController {
+    func getTheFeeling() -> String? {
+        return feelingView.selectedFeeling
+    }
+    
     func catchTheFeeling() {
         selectedFeelingIndex = feelingView.selectedIndex
     }
@@ -119,7 +123,13 @@ extension EntryFormCardViewController {
 
 extension EntryFormCardViewController {
     func sentiment() -> Sentiment? {
+        var values = [String : Any]()
+        values[Sentiment.Fields.feeling.rawValue] = getTheFeeling()
+        values[Sentiment.Fields.water.rawValue] = waterImage.isSelected
+        values[Sentiment.Fields.intensity.rawValue] = intensitySlider.value
+        values[Sentiment.Fields.elaborate.rawValue] = elaborateTextField.text
+        values[Sentiment.Fields.color.rawValue] = selectedColor
         
-        return Sentiment(values: [String : Any]())
+        return Sentiment(values: values)
     }
 }
