@@ -13,6 +13,7 @@ protocol TextEntryDelegate: class {
     func updateText(with value: String?)
 }
 
+@IBDesignable
 class DedicatedTextEntryViewController: UIViewController {
     
     public static let identifier = "dedicatedTextEntryViewController"

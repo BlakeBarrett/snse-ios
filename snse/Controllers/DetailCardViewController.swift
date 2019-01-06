@@ -8,6 +8,7 @@
 
 import UIKit
 
+@IBDesignable
 class DetailCardViewController: UIViewController {
     
     public static let nibName = "DetailCardView"

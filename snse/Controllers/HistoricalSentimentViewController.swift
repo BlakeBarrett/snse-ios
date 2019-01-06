@@ -14,13 +14,10 @@ class HistoricalSentimentViewController: UIViewController {
     static let storyboardId = "historicalSentimentView"
     static let identifier = "historyViewController"
     
-    @IBOutlet weak var questionaireView: QuestionaireView!
-    
     var sentiment: Sentiment?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        questionaireView.setSentiment(value: self.sentiment)
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM, dd hh:mm"

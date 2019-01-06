@@ -8,6 +8,7 @@
 
 import UIKit
 
+@IBDesignable
 class EntryFormCardViewController: UIViewController {
     
     @IBOutlet weak var cardView: UICardView!

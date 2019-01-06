@@ -10,12 +10,11 @@
 		251C679C21C9EFC000FED932 /* DetailCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 251C679B21C9EFC000FED932 /* DetailCardView.xib */; };
 		2527C33921D9FBBB008B3A58 /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2527C33821D9FBBB008B3A58 /* UILabel+Extensions.swift */; };
 		25592E2F21E16D5C00CB8752 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25592E2E21E16D5C00CB8752 /* UIViewController+Extensions.swift */; };
+		25592E3121E18E3A00CB8752 /* HistoricalSentimentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25592E3021E18E3900CB8752 /* HistoricalSentimentViewController.swift */; };
 		255C9BE221DAE4FB00AA7008 /* DedicatedTextEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255C9BE121DAE4FB00AA7008 /* DedicatedTextEntryViewController.swift */; };
 		2560502421D07DAB00A0F046 /* EntryFormCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2560502321D07DAB00A0F046 /* EntryFormCardView.xib */; };
 		2560502621D07DBE00A0F046 /* EntryFormCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2560502521D07DBE00A0F046 /* EntryFormCardViewController.swift */; };
 		2560502821D07EA500A0F046 /* UICardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2560502721D07EA500A0F046 /* UICardView.swift */; };
-		256CF659219B814C00C0C8B6 /* SentimentEntryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 256CF658219B814C00C0C8B6 /* SentimentEntryView.xib */; };
-		256CF65B219CD66D00C0C8B6 /* HistoricalSentimentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256CF65A219CD66D00C0C8B6 /* HistoricalSentimentViewController.swift */; };
 		258377D7219A52C100747670 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 258377D6219A52C100747670 /* LocalAuthentication.framework */; };
 		258377D9219A69E300747670 /* SentimentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 258377D8219A69E300747670 /* SentimentTableViewCell.xib */; };
 		2593190921978195005CCC75 /* Sentiment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2593190821978195005CCC75 /* Sentiment.swift */; };
@@ -32,7 +31,6 @@
 		25E4D49B2195252100CFA268 /* snse.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 25E4D4992195252100CFA268 /* snse.xcdatamodeld */; };
 		25E4D4A02195252300CFA268 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25E4D49E2195252300CFA268 /* LaunchScreen.storyboard */; };
 		25E4D4AB2195252300CFA268 /* snseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E4D4AA2195252300CFA268 /* snseTests.swift */; };
-		25E4D4B921954B5000CFA268 /* QuestionaireView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E4D4B821954B5000CFA268 /* QuestionaireView.swift */; };
 		25E4D4BB21954DD300CFA268 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 25E4D4BA21954DD300CFA268 /* index.html */; };
 		25FED67521967692002DE7F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25FED67421967692002DE7F0 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -51,12 +49,11 @@
 		251C679B21C9EFC000FED932 /* DetailCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailCardView.xib; sourceTree = "<group>"; };
 		2527C33821D9FBBB008B3A58 /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
 		25592E2E21E16D5C00CB8752 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		25592E3021E18E3900CB8752 /* HistoricalSentimentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoricalSentimentViewController.swift; sourceTree = "<group>"; };
 		255C9BE121DAE4FB00AA7008 /* DedicatedTextEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DedicatedTextEntryViewController.swift; sourceTree = "<group>"; };
 		2560502321D07DAB00A0F046 /* EntryFormCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EntryFormCardView.xib; sourceTree = "<group>"; };
 		2560502521D07DBE00A0F046 /* EntryFormCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryFormCardViewController.swift; sourceTree = "<group>"; };
 		2560502721D07EA500A0F046 /* UICardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICardView.swift; sourceTree = "<group>"; };
-		256CF658219B814C00C0C8B6 /* SentimentEntryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SentimentEntryView.xib; sourceTree = "<group>"; };
-		256CF65A219CD66D00C0C8B6 /* HistoricalSentimentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalSentimentViewController.swift; sourceTree = "<group>"; };
 		258377D6219A52C100747670 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		258377D8219A69E300747670 /* SentimentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SentimentTableViewCell.xib; sourceTree = "<group>"; };
 		2593190821978195005CCC75 /* Sentiment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sentiment.swift; sourceTree = "<group>"; };
@@ -81,7 +78,6 @@
 		25E4D4AA2195252300CFA268 /* snseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = snseTests.swift; sourceTree = "<group>"; };
 		25E4D4AC2195252300CFA268 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25E4D4B621954AA200CFA268 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
-		25E4D4B821954B5000CFA268 /* QuestionaireView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionaireView.swift; sourceTree = "<group>"; };
 		25E4D4BA21954DD300CFA268 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		25FED67421967692002DE7F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -177,9 +173,7 @@
 			children = (
 				25E4D4962195252100CFA268 /* Main.storyboard */,
 				25E4D49E2195252300CFA268 /* LaunchScreen.storyboard */,
-				256CF658219B814C00C0C8B6 /* SentimentEntryView.xib */,
 				258377D8219A69E300747670 /* SentimentTableViewCell.xib */,
-				25E4D4B821954B5000CFA268 /* QuestionaireView.swift */,
 				25CDBC23219CFE0F008DB875 /* HSBColorPicker.swift */,
 				251C679B21C9EFC000FED932 /* DetailCardView.xib */,
 				2560502321D07DAB00A0F046 /* EntryFormCardView.xib */,
@@ -191,11 +185,9 @@
 			isa = PBXGroup;
 			children = (
 				25A8C11021D9A29A00C23C89 /* Components */,
-				25E4D4922195252100CFA268 /* AppDelegate.swift */,
-				256CF65A219CD66D00C0C8B6 /* HistoricalSentimentViewController.swift */,
-				2593190A21978BC5005CCC75 /* SentimentFactory.swift */,
-				2593190E2197A76D005CCC75 /* SentimentViewController.swift */,
 				25E4D4942195252100CFA268 /* ViewController.swift */,
+				25592E3021E18E3900CB8752 /* HistoricalSentimentViewController.swift */,
+				2593190E2197A76D005CCC75 /* SentimentViewController.swift */,
 				25CDBC25219D0129008DB875 /* ColorPickerViewController.swift */,
 				25D2A84621CDB9C1008F9129 /* DetailCardViewController.swift */,
 				2560502521D07DBE00A0F046 /* EntryFormCardViewController.swift */,
@@ -207,6 +199,8 @@
 		25FED67921967F5E002DE7F0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				25E4D4922195252100CFA268 /* AppDelegate.swift */,
+				2593190A21978BC5005CCC75 /* SentimentFactory.swift */,
 				25CDBC27219E32EB008DB875 /* Extensions */,
 				25E4D4BA21954DD300CFA268 /* index.html */,
 				25E4D4A12195252300CFA268 /* Info.plist */,
@@ -307,7 +301,6 @@
 			files = (
 				25E4D4A02195252300CFA268 /* LaunchScreen.storyboard in Resources */,
 				2560502421D07DAB00A0F046 /* EntryFormCardView.xib in Resources */,
-				256CF659219B814C00C0C8B6 /* SentimentEntryView.xib in Resources */,
 				251C679C21C9EFC000FED932 /* DetailCardView.xib in Resources */,
 				25E4D4BB21954DD300CFA268 /* index.html in Resources */,
 				25FED67521967692002DE7F0 /* Assets.xcassets in Resources */,
@@ -339,15 +332,14 @@
 				25A8C11221D9A2B800C23C89 /* FeelingEntryView.swift in Sources */,
 				25CDBC24219CFE0F008DB875 /* HSBColorPicker.swift in Sources */,
 				2593190921978195005CCC75 /* Sentiment.swift in Sources */,
-				256CF65B219CD66D00C0C8B6 /* HistoricalSentimentViewController.swift in Sources */,
 				25D2A84721CDB9C1008F9129 /* DetailCardViewController.swift in Sources */,
-				25E4D4B921954B5000CFA268 /* QuestionaireView.swift in Sources */,
 				25E4D49B2195252100CFA268 /* snse.xcdatamodeld in Sources */,
 				25E4D4952195252100CFA268 /* ViewController.swift in Sources */,
 				2527C33921D9FBBB008B3A58 /* UILabel+Extensions.swift in Sources */,
 				25CDBC29219E3307008DB875 /* UIColor+Extensions.swift in Sources */,
 				25E4D4932195252100CFA268 /* AppDelegate.swift in Sources */,
 				2593190F2197A76D005CCC75 /* SentimentViewController.swift in Sources */,
+				25592E3121E18E3A00CB8752 /* HistoricalSentimentViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
