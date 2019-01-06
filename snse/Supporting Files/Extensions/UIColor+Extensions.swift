@@ -71,3 +71,10 @@ extension UIColor {
         }
     }
 }
+
+extension UIColor {
+    
+    static func defaultTintColor() -> UIColor {
+        return UIButton(type: UIButton.ButtonType.system).titleColor(for: .normal)!
+    }
+}

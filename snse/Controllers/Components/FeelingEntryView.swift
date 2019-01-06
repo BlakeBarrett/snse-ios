@@ -43,6 +43,10 @@ import UIKit
         super.init(coder: aDecoder)
     }
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
     override func draw(_ rect: CGRect) {
         removeAll()
         let buttonLabels = ["😞", "😐", "😊"]

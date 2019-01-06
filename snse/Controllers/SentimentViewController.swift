@@ -24,7 +24,7 @@ class SentimentViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setLargeTitleMode(true)
+        setLargeTitleMode(false)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -91,15 +91,6 @@ extension SentimentViewController {
                 sentiments.remove(at: indexPath.row)
                 tableView.reloadData()
             }
-        }
-    }
-}
-
-extension SentimentViewController {
-    func setLargeTitleMode(_ value: Bool) {
-        if #available(iOS 11.0, *) {
-            navigationController?.navigationBar.prefersLargeTitles = value
-            navigationItem.largeTitleDisplayMode = UINavigationItem.LargeTitleDisplayMode.always
         }
     }
 }

@@ -22,10 +22,7 @@ class EntryFormCardViewController: UIViewController {
     var selectedFeelingIndex: Int = -1
     
     override func viewDidLoad() {
-        elaborateTextField.delegate = self
-        waterImage.tintColor = self.view.tintColor
-        feelingView.selectedColor = self.view.tintColor
-        updateFeelingIntensity(value: 50)
+        reset()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,8 +35,9 @@ class EntryFormCardViewController: UIViewController {
     @IBAction func onPalettePressed(_ sender: UIButton) {
         catchTheFeeling()
         // launch color picker
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let controller = (storyboard.instantiateViewController(withIdentifier: ColorPickerViewController.identifier) as? ColorPickerViewController) {
+        
+        
+        if let controller = ColorPickerViewController.getViewController(with: ColorPickerViewController.identifier) as? ColorPickerViewController {
             weak var weakSelf = self
             controller.color = selectedColor
             controller.delegate = weakSelf
@@ -122,14 +120,29 @@ extension EntryFormCardViewController {
 }
 
 extension EntryFormCardViewController {
+    
+    func reset() {
+        elaborateTextField.text = ""
+        selectedColor = UIColor.white
+        waterImage.isSelected = false
+        feelingView.reset()
+        setColors(tintColor: UIColor.defaultTintColor())
+        view.backgroundColor = UIColor.groupTableViewBackground
+        updateFeelingIntensity(value: 50)
+    }
+    
     func sentiment() -> Sentiment? {
         var values = [String : Any]()
         values[Sentiment.Fields.feeling.rawValue] = getTheFeeling()
         values[Sentiment.Fields.water.rawValue] = waterImage.isSelected
-        values[Sentiment.Fields.intensity.rawValue] = intensitySlider.value
+        values[Sentiment.Fields.intensity.rawValue] = Int(intensitySlider.value)
         values[Sentiment.Fields.elaborate.rawValue] = elaborateTextField.text
-        values[Sentiment.Fields.color.rawValue] = selectedColor
         
-        return Sentiment(values: values)
+        let value = Sentiment(values: values)
+        // for some reason, I wasn't able to pass a UIColor through the values
+        //  dictionary and have it work.
+        // ¯\_(ツ)_/¯
+        value?.color = selectedColor
+        return value
     }
 }

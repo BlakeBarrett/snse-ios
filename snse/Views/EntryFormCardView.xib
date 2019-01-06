@@ -52,6 +52,9 @@
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="mHW-fr-GCy"/>
+                            </connections>
                         </textField>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6n9-Lv-hIc" userLabel="PaletteContainerView">
                             <rect key="frame" x="8" y="228.5" width="361" height="504.5"/>

@@ -76,6 +76,10 @@ class Sentiment {
             default: break
             }
         }
+        
+        if self.timestamp == nil {
+            self.timestamp = Date()
+        }
     }
 }
 
