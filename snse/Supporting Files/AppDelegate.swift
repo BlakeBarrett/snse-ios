@@ -18,13 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         return true
     }
-
-    // TODO: Blur the image of the app (to prevent app-switcher pii lieaks), check out this link:
-    // https://stackoverflow.com/a/31982879
     
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+        blur()
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
@@ -38,6 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        unBlur()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
@@ -93,3 +92,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+extension AppDelegate {
+    
+    static let blurEffectTag = 1337
+    
+    func blur() {
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.light)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = window!.frame
+        blurEffectView.tag = AppDelegate.blurEffectTag
+        
+        self.window?.addSubview(blurEffectView)
+    }
+    
+    func unBlur() {
+        self.window?.viewWithTag(AppDelegate.blurEffectTag)?.removeFromSuperview()
+    }
+}
