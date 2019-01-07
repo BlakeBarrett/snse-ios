@@ -11,6 +11,8 @@ import UIKit
 
 class SentimentViewController: UITableViewController {
     
+    static let identifier = "historyViewController"
+    
     var sentiments = [Sentiment]()
     
     override func viewDidLoad() {

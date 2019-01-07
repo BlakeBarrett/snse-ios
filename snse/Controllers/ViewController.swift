@@ -13,7 +13,6 @@ class ViewController: UIViewController {
     var questionaireView = EntryFormCardViewController()
     var authenticated = false
     
-    @IBOutlet weak var snseLabel: UILabel!
     @IBOutlet weak var entryView: UIView!
     
     deinit {
@@ -30,6 +29,7 @@ class ViewController: UIViewController {
         questionaireView.reset()
         
         addSettingsButton()
+        decorateTitle()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,10 +57,17 @@ class ViewController: UIViewController {
     }
     
     func showHistory() {
-        if let controller = UIViewController.getViewController(with: HistoricalSentimentViewController.identifier) {
-            navigationController?.setNavigationBarHidden(false, animated: false)
-            navigationController?.pushViewController(controller, animated: true)
-        }
+        let _ = UIViewController.show(viewWithId: SentimentViewController.identifier,
+                                      in: navigationController)
+    }
+    
+    func decorateTitle() {
+        let label = UILabel(frame: CGRect.zero)
+        let font = UIFont(name: "SignPainter-HouseScript", size: 36.0)
+        label.font = font
+        label.text = navigationItem.title
+        label.sizeToFit()
+        navigationItem.titleView = label
     }
     
     func addSettingsButton() {

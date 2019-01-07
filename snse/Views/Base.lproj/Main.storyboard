@@ -18,19 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dhr-xt-aLv">
-                                <rect key="frame" x="0.0" y="20" width="375" height="87"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="snse">
-                                        <attributes>
-                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                            <font key="NSFont" size="96" name="SignPainter-HouseScript"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uka-8C-bJm">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <constraints>
@@ -60,14 +47,11 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="uka-8C-bJm" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="2Xz-9z-fgE"/>
-                            <constraint firstAttribute="trailing" secondItem="Dhr-xt-aLv" secondAttribute="trailing" id="99d-8T-9YH"/>
                             <constraint firstItem="uka-8C-bJm" firstAttribute="top" secondItem="iPl-8n-Rdg" secondAttribute="bottom" id="AZV-05-FYB"/>
                             <constraint firstItem="uka-8C-bJm" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="DXK-NL-Ssj"/>
                             <constraint firstItem="iPl-8n-Rdg" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="HDQ-IZ-AXd"/>
-                            <constraint firstItem="Dhr-xt-aLv" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="LsP-Hz-XKk"/>
                             <constraint firstItem="uka-8C-bJm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Uon-nc-pgI"/>
                             <constraint firstItem="iPl-8n-Rdg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bd3-Io-kW6"/>
-                            <constraint firstItem="Dhr-xt-aLv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="buz-y7-3jc"/>
                             <constraint firstItem="iPl-8n-Rdg" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="okV-bC-xhu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -75,7 +59,6 @@
                     <navigationItem key="navigationItem" title="snse" id="Yf2-V9-5cp"/>
                     <connections>
                         <outlet property="entryView" destination="iPl-8n-Rdg" id="MOf-2u-Xfc"/>
-                        <outlet property="snseLabel" destination="Dhr-xt-aLv" id="Bmb-S5-MLf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
