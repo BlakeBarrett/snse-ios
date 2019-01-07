@@ -9,7 +9,8 @@
 import UIKit
 import LocalAuthentication
 
-// Hat-tip to: https://medium.com/@johnsundell/using-child-view-controllers-as-plugins-in-swift-458e6b277b54
+// Tip-of-the-hat to:
+// https://medium.com/@johnsundell/using-child-view-controllers-as-plugins-in-swift-458e6b277b54
 extension UIViewController {
     
     func add(_ child: UIViewController, to view: UIView?) {
@@ -33,6 +34,13 @@ extension UIViewController {
     
     static func getViewController(with identifier: String, from storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)) -> UIViewController? {
         return storyboard.instantiateViewController(withIdentifier: identifier)
+    }
+    
+    static func show(viewWithId id: String, in navigationController: UINavigationController? = nil) -> UIViewController? {
+        guard let controller = getViewController(with: id) else { return nil }
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        navigationController?.pushViewController(controller, animated: true)
+        return controller
     }
     
     func showNavBar(animated: Bool = false) {

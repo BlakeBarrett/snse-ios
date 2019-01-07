@@ -71,6 +71,7 @@ extension SentimentViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let value = self.sentiments[indexPath.row]
         showHistoricalSentiment(value)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func showHistoricalSentiment(_ value: Sentiment) {

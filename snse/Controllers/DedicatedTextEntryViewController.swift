@@ -27,14 +27,6 @@ class DedicatedTextEntryViewController: UIViewController {
     
     private var text: String?
     
-    static func show(in navigationController: UINavigationController? = nil) -> DedicatedTextEntryViewController? {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let controller = storyboard.instantiateViewController(withIdentifier: DedicatedTextEntryViewController.identifier) as? DedicatedTextEntryViewController else { return nil }
-        navigationController?.setNavigationBarHidden(false, animated: false)
-        navigationController?.pushViewController(controller, animated: true)
-        return controller
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         mainTextView.becomeFirstResponder()

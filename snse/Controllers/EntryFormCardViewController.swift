@@ -37,13 +37,11 @@ class EntryFormCardViewController: UIViewController {
         catchTheFeeling()
         // launch color picker
         
-        
-        if let controller = ColorPickerViewController.getViewController(with: ColorPickerViewController.identifier) as? ColorPickerViewController {
+        if let controller = UIViewController.show(viewWithId: ColorPickerViewController.identifier,
+                                                  in: navigationController) as? ColorPickerViewController {
             weak var weakSelf = self
-            controller.color = selectedColor
             controller.delegate = weakSelf
-            navigationController?.setNavigationBarHidden(true, animated: false)
-            navigationController?.pushViewController(controller, animated: true)
+            controller.color = selectedColor
         }
     }
     
@@ -59,9 +57,12 @@ extension EntryFormCardViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         // launch full-screen text editor
         textField.resignFirstResponder()
-        let controller = DedicatedTextEntryViewController.show(in: self.navigationController)
-        controller?.delegate = self
-        controller?.prepopulateText(with: textField.text)
+        if let controller = UIViewController.show(viewWithId: DedicatedTextEntryViewController.identifier,
+                                                  in: self.navigationController) as? DedicatedTextEntryViewController {
+            weak var weakSelf = self
+            controller.delegate = weakSelf
+            controller.prepopulateText(with: textField.text)
+        }
     }
 }
 
@@ -127,7 +128,7 @@ extension EntryFormCardViewController {
         selectedColor = UIColor.white
         waterImage.isSelected = false
         feelingView.reset()
-        setColors(tintColor: UIColor.defaultTintColor())
+        setColors(tintColor: UIColor.darkGray)
         view.backgroundColor = UIColor.groupTableViewBackground
         updateFeelingIntensity(value: 50)
     }
