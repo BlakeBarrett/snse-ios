@@ -43,6 +43,13 @@ class ViewController: UIViewController {
     
     @IBAction func onSaveButtonPressed(_ sender: Any) {
         questionaireView.save()
+        
+        if let thankVC = ViewController.getViewController(with: ThankViewController.identifier) as? ThankViewController {
+            thankVC.providesPresentationContextTransitionStyle = true
+            thankVC.definesPresentationContext = true
+            thankVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext;
+            present(thankVC, animated: true)
+        }
     }
     
     @IBAction func onHistoryButtonPressed(_ sender: Any) {
