@@ -11,6 +11,8 @@ import UIKit
 protocol TextEntryDelegate: class {
     
     func updateText(with value: String?)
+    
+    func saveWasCalled(with value: String?)
 }
 
 @IBDesignable
@@ -41,24 +43,30 @@ class DedicatedTextEntryViewController: UIViewController {
     }
     
     private func setupNavButtons() {
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel,
-                                                           target: self,
-                                                           action: #selector(onCancelClicked(_:)))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done,
+        // Done is just "I'm done here, take me back."
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done,
                                                             target: self,
                                                             action: #selector(onDoneClicked(_:)))
+        navigationItem.leftBarButtonItem?.style = UIBarButtonItem.Style.plain
+        
+        // Save is where the big-money's at; it's Done++
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save,
+                                                           target: self,
+                                                           action: #selector(onSaveClicked(_:)))
+        navigationItem.rightBarButtonItem?.style = UIBarButtonItem.Style.done
     }
     
-    @objc func onCancelClicked(_ sender: UIBarButtonItem) {
+    @objc func onDoneClicked(_ sender: UIBarButtonItem) {
+        self.delegate?.updateText(with: self.mainTextView.text)
         if let _ = navigationController {
             navigationController?.popViewController(animated: true)
         } else {
             self.dismiss(animated: true)
         }
     }
-    
-    @objc func onDoneClicked(_ sender: UIBarButtonItem) {
-        self.delegate?.updateText(with: self.mainTextView.text)
+
+    @objc func onSaveClicked(_ sender: UIBarButtonItem) {
+        self.delegate?.saveWasCalled(with: self.mainTextView.text)
         if let _ = navigationController {
             navigationController?.popViewController(animated: true)
         } else {

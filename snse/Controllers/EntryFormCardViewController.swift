@@ -67,6 +67,13 @@ extension EntryFormCardViewController: UITextFieldDelegate {
 }
 
 extension EntryFormCardViewController: TextEntryDelegate {
+    
+    func saveWasCalled(with value: String?) {
+        elaborateTextField.text = value
+        
+        save()
+    }
+    
     func updateText(with value: String?) {
         elaborateTextField.text = value
     }
@@ -122,6 +129,13 @@ extension EntryFormCardViewController {
 }
 
 extension EntryFormCardViewController {
+    
+    func save() {
+        if let sentiment = sentiment() {
+            SentimentFactory.save(sentiment)
+            reset()
+        }
+    }
     
     func reset() {
         elaborateTextField.text = ""

@@ -42,10 +42,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func onSaveButtonPressed(_ sender: Any) {
-        if let sentiment = questionaireView.sentiment() {
-            SentimentFactory.save(sentiment)
-            questionaireView.reset()
-        }
+        questionaireView.save()
     }
     
     @IBAction func onHistoryButtonPressed(_ sender: Any) {

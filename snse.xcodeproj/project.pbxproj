@@ -20,6 +20,7 @@
 		2593190921978195005CCC75 /* Sentiment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2593190821978195005CCC75 /* Sentiment.swift */; };
 		2593190B21978BC5005CCC75 /* SentimentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2593190A21978BC5005CCC75 /* SentimentFactory.swift */; };
 		2593190F2197A76D005CCC75 /* SentimentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2593190E2197A76D005CCC75 /* SentimentViewController.swift */; };
+		25A4081021E54A76005029A1 /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25A4080F21E54A76005029A1 /* Intents.framework */; };
 		25A8C11221D9A2B800C23C89 /* FeelingEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A8C11121D9A2B800C23C89 /* FeelingEntryView.swift */; };
 		25CDBC24219CFE0F008DB875 /* HSBColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CDBC23219CFE0F008DB875 /* HSBColorPicker.swift */; };
 		25CDBC26219D0129008DB875 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CDBC25219D0129008DB875 /* ColorPickerViewController.swift */; };
@@ -59,6 +60,8 @@
 		2593190821978195005CCC75 /* Sentiment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sentiment.swift; sourceTree = "<group>"; };
 		2593190A21978BC5005CCC75 /* SentimentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentimentFactory.swift; sourceTree = "<group>"; };
 		2593190E2197A76D005CCC75 /* SentimentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentimentViewController.swift; sourceTree = "<group>"; };
+		25A4080E21E54A55005029A1 /* snse.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = snse.entitlements; sourceTree = "<group>"; };
+		25A4080F21E54A76005029A1 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
 		25A64AAF21A0154400B553A9 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
 		25A64AB021A01A3600B553A9 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		25A64AB121A01C7900B553A9 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
@@ -87,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25A4081021E54A76005029A1 /* Intents.framework in Frameworks */,
 				258377D7219A52C100747670 /* LocalAuthentication.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -150,6 +154,7 @@
 		25E4D4912195252100CFA268 /* snse */ = {
 			isa = PBXGroup;
 			children = (
+				25A4080E21E54A55005029A1 /* snse.entitlements */,
 				25FED67A21967FC4002DE7F0 /* Models */,
 				25FED67621967F17002DE7F0 /* Views */,
 				25FED67721967F1F002DE7F0 /* Controllers */,
@@ -170,6 +175,7 @@
 		25E4D4B521954AA200CFA268 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				25A4080F21E54A76005029A1 /* Intents.framework */,
 				258377D6219A52C100747670 /* LocalAuthentication.framework */,
 				25E4D4B621954AA200CFA268 /* WebKit.framework */,
 			);
@@ -276,6 +282,11 @@
 				TargetAttributes = {
 					25E4D48E2195252100CFA268 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.Siri = {
+								enabled = 1;
+							};
+						};
 					};
 					25E4D4A52195252300CFA268 = {
 						CreatedOnToolsVersion = 10.1;
@@ -514,6 +525,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = snse/snse.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JJNWD2J7X4;
 				INFOPLIST_FILE = "$(SRCROOT)/snse/Supporting Files/Info.plist";
@@ -533,6 +545,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = snse/snse.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JJNWD2J7X4;
 				INFOPLIST_FILE = "$(SRCROOT)/snse/Supporting Files/Info.plist";
