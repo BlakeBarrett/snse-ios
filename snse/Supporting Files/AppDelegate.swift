@@ -109,3 +109,12 @@ extension AppDelegate {
         self.window?.viewWithTag(AppDelegate.blurEffectTag)?.removeFromSuperview()
     }
 }
+
+extension AppDelegate {
+    
+    // For handling Siri shortcuts
+    // https://developer.apple.com/documentation/sirikit/soup_chef_accelerating_app_interactions_with_shortcuts
+    override func restoreUserActivityState(_ activity: NSUserActivity) {
+        super.restoreUserActivityState(activity)
+    }
+}

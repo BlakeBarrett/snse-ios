@@ -28,8 +28,11 @@ class ViewController: UIViewController {
         add(questionaireView, to: entryView)
         questionaireView.reset()
         
-        addSettingsButton()
+//        addSettingsButton()
+        
         decorateTitle()
+        
+        setupIntents()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -82,5 +85,24 @@ class ViewController: UIViewController {
     @objc func onSettingsButtonPressed(_ sender: Any) {
         let _ = NotificationSettingsTableView.show(viewWithId: NotificationSettingsTableView.identifier,
                                                    in: self.navigationController)
+    }
+}
+
+extension ViewController {
+    
+    func setupIntents() {
+        
+        let identifier = "com.blakebarrett.snse.feeling"
+        
+        let activity = NSUserActivity(activityType: identifier) // 1
+        activity.title = "Feeling Great?" // 2
+        activity.userInfo = ["feeling" : "😊"] // 3
+        activity.isEligibleForSearch = true // 4
+        if #available(iOS 12.0, *) {
+            activity.isEligibleForPrediction = true // 5
+            activity.persistentIdentifier = NSUserActivityPersistentIdentifier(stringLiteral: identifier) // 6
+        }
+        view.userActivity = activity // 7
+        activity.becomeCurrent() // 8
     }
 }
