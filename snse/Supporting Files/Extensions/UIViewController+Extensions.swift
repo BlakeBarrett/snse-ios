@@ -43,6 +43,20 @@ extension UIViewController {
         return controller
     }
     
+    func show(_ viewController: UIViewController, modally: Bool = true, animated: Bool = true) {
+        viewController.providesPresentationContextTransitionStyle = modally
+        viewController.definesPresentationContext = modally
+        viewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        
+        present(viewController, animated: animated)
+    }
+    
+    func setStatusBar(hidden: Bool) {
+        modalPresentationCapturesStatusBarAppearance = !hidden
+        UIApplication.shared.isStatusBarHidden = hidden
+        setNeedsStatusBarAppearanceUpdate()
+    }
+    
     func showNavBar(animated: Bool = false) {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
@@ -95,6 +109,30 @@ extension ViewController {
             
             let policy = hasBiometrics ? LAPolicy.deviceOwnerAuthenticationWithBiometrics : LAPolicy.deviceOwnerAuthentication
             context.evaluatePolicy(policy, localizedReason: reason, reply: onAuthComplete)
+        }
+    }
+}
+
+extension UIViewController {
+    
+    @objc func getPresentationDuration() -> TimeInterval {
+        return 0.0
+    }
+    
+    func close() {
+        dismiss(animated: true)
+        navigationController?.dismiss(animated: true)
+        navigationController?.popViewController(animated: true)
+    }
+    
+    func startCountdown() {
+        let duration = getPresentationDuration()
+        if duration > 0 {
+            Timer.scheduledTimer(withTimeInterval: duration,
+                                 repeats: false) { [weak self] (timer) in
+                                    timer.invalidate()
+                                    self?.close()
+            }
         }
     }
 }

@@ -29,6 +29,14 @@ class DetailCardViewController: UIViewController {
         viewDidLoad()
     }
     
+    deinit {
+        setStatusBar(hidden: false)
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     override func viewDidLoad() {
         let when = sentiment?.getLongDateString()
         dateLabel.text = ""
@@ -41,10 +49,18 @@ class DetailCardViewController: UIViewController {
         decorateFeelingLabel(view: feelingLabel, sentiment: sentiment)
         
         elaborateTextView.text = sentiment?.elaborate
+        elaborateTextView.sizeToFit()
         
         setBackgroundColors(color(sentiment))
+        
+        setStatusBar(hidden: true)
+        
+        addTapListener()
     }
-    
+}
+
+extension DetailCardViewController {
+
     func setBackgroundColors(_ color: UIColor) {
         feelingLabel.backgroundColor = color
         view.backgroundColor = color.adjust(brightnessBy: -0.1)
@@ -64,5 +80,25 @@ class DetailCardViewController: UIViewController {
     func waterImageFor(value: Sentiment?) -> UIImage? {
         let waterImage = (value?.water ?? false) ? "water" : "water-off"
         return UIImage(named: waterImage)
+    }
+}
+
+extension DetailCardViewController {
+    
+    func addTapListener() {
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(onTap(_:)))
+        // Don't worry, self.elaborateTextView captures its own gesture events.
+        self.view.addGestureRecognizer(recognizer)
+    }
+    
+    @IBAction func onTap(_ sender: UITapGestureRecognizer) {
+        super.close()
+    }
+}
+
+extension UITextView {
+    
+    func hasScrollContent() -> Bool {
+        return self.contentSize.height > self.bounds.height
     }
 }

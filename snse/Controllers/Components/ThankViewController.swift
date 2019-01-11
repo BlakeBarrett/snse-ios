@@ -8,34 +8,22 @@
 
 import UIKit
 
+// TODO: Turn this into a subclass of UIViewController that presents-modally and auto-dismisses on touch and optionally after a timeout.
+// -- BlakeB 20190110
+
 class ThankViewController: UIViewController {
     
     static let identifier = "thankViewController"
     
-    var presentationDuration = 3.0
-    
     override func viewDidLoad() {
-        startCountdown()
+        super.startCountdown()
     }
     
     @IBAction func onTap(_ sender: UITapGestureRecognizer) {
-        close()
-    }
-}
-
-extension ThankViewController {
-    
-    func close() {
-        dismiss(animated: true)
-        navigationController?.dismiss(animated: true)
-        navigationController?.popViewController(animated: true)
+        super.close()
     }
     
-    func startCountdown() {
-        Timer.scheduledTimer(withTimeInterval: presentationDuration,
-                             repeats: false) { [weak self] (timer) in
-                                timer.invalidate()
-                                self?.close()
-        }
+    override func getPresentationDuration() -> TimeInterval {
+        return 3.0
     }
 }

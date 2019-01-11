@@ -45,10 +45,7 @@ class ViewController: UIViewController {
         questionaireView.save()
         
         if let thankVC = ViewController.getViewController(with: ThankViewController.identifier) as? ThankViewController {
-            thankVC.providesPresentationContextTransitionStyle = true
-            thankVC.definesPresentationContext = true
-            thankVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext;
-            present(thankVC, animated: true)
+            show(thankVC, modally: true, animated: true)
         }
     }
     
@@ -95,7 +92,6 @@ class ViewController: UIViewController {
 extension ViewController {
     
     func setupIntents() {
-        
         let identifier = "com.blakebarrett.snse.feeling"
         
         let activity = NSUserActivity(activityType: identifier) // 1

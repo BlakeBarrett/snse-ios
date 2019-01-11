@@ -77,10 +77,9 @@ extension SentimentViewController {
     }
     
     func showHistoricalSentiment(_ value: Sentiment) {
-        
         let detailView = DetailCardViewController.init(nibName: DetailCardViewController.nibName, bundle: nil)
         detailView.sentiment = value
-        navigationController?.pushViewController(detailView, animated: true)
+        show(detailView, modally: true, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
