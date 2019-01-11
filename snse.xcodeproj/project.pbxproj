@@ -15,6 +15,7 @@
 		2560502421D07DAB00A0F046 /* EntryFormCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2560502321D07DAB00A0F046 /* EntryFormCardView.xib */; };
 		2560502621D07DBE00A0F046 /* EntryFormCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2560502521D07DBE00A0F046 /* EntryFormCardViewController.swift */; };
 		2560502821D07EA500A0F046 /* UICardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2560502721D07EA500A0F046 /* UICardView.swift */; };
+		2572D6D421E95B510019AE8D /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2572D6D321E95B510019AE8D /* StoreKit.framework */; };
 		2576E9A521E2C5A2001F71F4 /* NotificationSettingsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2576E9A421E2C5A2001F71F4 /* NotificationSettingsTableView.swift */; };
 		258377D7219A52C100747670 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 258377D6219A52C100747670 /* LocalAuthentication.framework */; };
 		258377D9219A69E300747670 /* SentimentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 258377D8219A69E300747670 /* SentimentTableViewCell.xib */; };
@@ -56,6 +57,7 @@
 		2560502321D07DAB00A0F046 /* EntryFormCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EntryFormCardView.xib; sourceTree = "<group>"; };
 		2560502521D07DBE00A0F046 /* EntryFormCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryFormCardViewController.swift; sourceTree = "<group>"; };
 		2560502721D07EA500A0F046 /* UICardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICardView.swift; sourceTree = "<group>"; };
+		2572D6D321E95B510019AE8D /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		2576E9A421E2C5A2001F71F4 /* NotificationSettingsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsTableView.swift; sourceTree = "<group>"; };
 		258377D6219A52C100747670 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		258377D8219A69E300747670 /* SentimentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SentimentTableViewCell.xib; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2572D6D421E95B510019AE8D /* StoreKit.framework in Frameworks */,
 				25A4081021E54A76005029A1 /* Intents.framework in Frameworks */,
 				258377D7219A52C100747670 /* LocalAuthentication.framework in Frameworks */,
 			);
@@ -178,6 +181,7 @@
 		25E4D4B521954AA200CFA268 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2572D6D321E95B510019AE8D /* StoreKit.framework */,
 				25A4080F21E54A76005029A1 /* Intents.framework */,
 				258377D6219A52C100747670 /* LocalAuthentication.framework */,
 				25E4D4B621954AA200CFA268 /* WebKit.framework */,

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import StoreKit
 
 class ViewController: UIViewController {
 
@@ -24,9 +25,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        questionaireView.view.frame = entryView.frame
-        add(questionaireView, to: entryView)
-        questionaireView.reset()
+        appWasLaunched()
+        
+        addQuestionaireChildViewController()
         
 //        addSettingsButton()
         
@@ -45,6 +46,9 @@ class ViewController: UIViewController {
         questionaireView.save()
         
         if let thankVC = ViewController.getViewController(with: ThankViewController.identifier) as? ThankViewController {
+            thankVC.onDismiss = { [weak self] in
+                self?.promptForRating()
+            }
             show(thankVC, modally: true, animated: true)
         }
     }
@@ -72,6 +76,12 @@ class ViewController: UIViewController {
         label.text = navigationItem.title
         label.sizeToFit()
         navigationItem.titleView = label
+    }
+    
+    func addQuestionaireChildViewController() {
+        questionaireView.view.frame = entryView.frame
+        add(questionaireView, to: entryView)
+        questionaireView.reset()
     }
     
     func addSettingsButton() {
@@ -104,5 +114,32 @@ extension ViewController {
         }
         view.userActivity = activity // 7
         activity.becomeCurrent() // 8
+    }
+}
+
+extension ViewController {
+    
+    private struct StoreKitKeys {
+        static let launches = "Number of times the app has launched."
+    }
+    
+    func appWasLaunched() {
+        let defaults = UserDefaults.standard
+        let launches = howManyTimesHasAppBeenLaunched()
+        defaults.set(launches + 1, forKey: StoreKitKeys.launches)
+    }
+    
+    func howManyTimesHasAppBeenLaunched() -> Int {
+        let defaults = UserDefaults.standard
+        return defaults.value(forKey: StoreKitKeys.launches) as? Int ?? 0
+    }
+    
+    func promptForRating() {
+        if howManyTimesHasAppBeenLaunched() % 5 != 0 {
+            return
+        }
+        if #available(iOS 10.3, *) {
+            SKStoreReviewController.requestReview()
+        }
     }
 }

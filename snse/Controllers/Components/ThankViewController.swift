@@ -15,8 +15,18 @@ class ThankViewController: UIViewController {
     
     static let identifier = "thankViewController"
     
+    public var onDismiss: (() -> Void)?
+    
     override func viewDidLoad() {
         super.startCountdown()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        self.onDismiss?()
+    }
+    
+    deinit {
+        self.onDismiss = nil
     }
     
     @IBAction func onTap(_ sender: UITapGestureRecognizer) {
