@@ -16,6 +16,7 @@
 		2560502821D07EA500A0F046 /* UICardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2560502721D07EA500A0F046 /* UICardView.swift */; };
 		2572D6D421E95B510019AE8D /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2572D6D321E95B510019AE8D /* StoreKit.framework */; };
 		2572D6E021E963610019AE8D /* EntryFormCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2572D6E221E963610019AE8D /* EntryFormCardView.xib */; };
+		2572D6FA21E969EE0019AE8D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2572D6F921E969EE0019AE8D /* LaunchScreen.storyboard */; };
 		2576E9A521E2C5A2001F71F4 /* NotificationSettingsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2576E9A421E2C5A2001F71F4 /* NotificationSettingsTableView.swift */; };
 		258377D7219A52C100747670 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 258377D6219A52C100747670 /* LocalAuthentication.framework */; };
 		258377D9219A69E300747670 /* SentimentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 258377D8219A69E300747670 /* SentimentTableViewCell.xib */; };
@@ -75,6 +76,7 @@
 		2572D6F421E9654C0019AE8D /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/EntryFormCardView.strings; sourceTree = "<group>"; };
 		2572D6F521E965550019AE8D /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/Main.strings; sourceTree = "<group>"; };
 		2572D6F621E965560019AE8D /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/EntryFormCardView.strings; sourceTree = "<group>"; };
+		2572D6F921E969EE0019AE8D /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2576E9A421E2C5A2001F71F4 /* NotificationSettingsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsTableView.swift; sourceTree = "<group>"; };
 		258377D6219A52C100747670 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		258377D8219A69E300747670 /* SentimentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SentimentTableViewCell.xib; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 		25FED67621967F17002DE7F0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2572D6F921E969EE0019AE8D /* LaunchScreen.storyboard */,
 				25E4D4962195252100CFA268 /* Main.storyboard */,
 				258377D8219A69E300747670 /* SentimentTableViewCell.xib */,
 				25CDBC23219CFE0F008DB875 /* HSBColorPicker.swift */,
@@ -340,6 +343,7 @@
 				251C679C21C9EFC000FED932 /* DetailCardView.xib in Resources */,
 				25E4D4BB21954DD300CFA268 /* index.html in Resources */,
 				25FED67521967692002DE7F0 /* Assets.xcassets in Resources */,
+				2572D6FA21E969EE0019AE8D /* LaunchScreen.storyboard in Resources */,
 				25E4D4982195252100CFA268 /* Main.storyboard in Resources */,
 				258377D9219A69E300747670 /* SentimentTableViewCell.xib in Resources */,
 			);
