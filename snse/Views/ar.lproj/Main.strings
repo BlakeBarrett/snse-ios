@@ -1,11 +1,11 @@
 /* Class = "UILabel"; text = "Thank you for sharing."; ObjectID = "T2v-fy-umZ"; */
-"T2v-fy-umZ.text" = "Ich danke Ihnen für das Teilen.";
+"T2v-fy-umZ.text" = "شكرا لك للمشاركة.";
 
 /* Class = "UILabel"; text = "❤️"; ObjectID = "Tdg-g1-kBd"; */
 "Tdg-g1-kBd.text" = "❤️";
 
 /* Class = "UITableViewController"; title = "History"; ObjectID = "Xht-FG-ofk"; */
-"Xht-FG-ofk.title" = "Geschichte";
+"Xht-FG-ofk.title" = "التاريخ";
 
 /* Class = "UINavigationItem"; title = "snse"; ObjectID = "Yf2-V9-5cp"; */
 "Yf2-V9-5cp.title" = "snse";

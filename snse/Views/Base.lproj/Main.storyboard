@@ -148,10 +148,10 @@
             </objects>
             <point key="canvasLocation" x="2020" y="96"/>
         </scene>
-        <!--thankViewController-->
+        <!--Thank View Controller-->
         <scene sceneID="Wrs-vP-1cq">
             <objects>
-                <viewController storyboardIdentifier="thankViewController" title="thankViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RmG-N8-4ol" customClass="ThankViewController" customModule="snse" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="thankViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RmG-N8-4ol" customClass="ThankViewController" customModule="snse" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xIu-0Y-df2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
