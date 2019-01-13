@@ -24,7 +24,7 @@
 		2593190B21978BC5005CCC75 /* SentimentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2593190A21978BC5005CCC75 /* SentimentFactory.swift */; };
 		2593190F2197A76D005CCC75 /* SentimentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2593190E2197A76D005CCC75 /* SentimentViewController.swift */; };
 		259B4B8621EAC48A00EF2C51 /* UIDevice+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B4B8521EAC48A00EF2C51 /* UIDevice+Extensions.swift */; };
-		25A4081021E54A76005029A1 /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25A4080F21E54A76005029A1 /* Intents.framework */; };
+		25A4081021E54A76005029A1 /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25A4080F21E54A76005029A1 /* Intents.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		25A8C11221D9A2B800C23C89 /* FeelingEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A8C11121D9A2B800C23C89 /* FeelingEntryView.swift */; };
 		25CDBC24219CFE0F008DB875 /* HSBColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CDBC23219CFE0F008DB875 /* HSBColorPicker.swift */; };
 		25CDBC26219D0129008DB875 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CDBC25219D0129008DB875 /* ColorPickerViewController.swift */; };
