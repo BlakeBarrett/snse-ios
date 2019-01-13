@@ -47,6 +47,7 @@ extension UIViewController {
         viewController.providesPresentationContextTransitionStyle = modally
         viewController.definesPresentationContext = modally
         viewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        viewController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
         
         present(viewController, animated: animated)
     }

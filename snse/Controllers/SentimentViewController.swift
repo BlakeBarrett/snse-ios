@@ -77,7 +77,7 @@ extension SentimentViewController {
     }
     
     func showHistoricalSentiment(_ value: Sentiment) {
-        let detailView = DetailCardViewController.init(nibName: DetailCardViewController.nibName, bundle: nil)
+        let detailView = DetailCardViewController()
         detailView.sentiment = value
         show(detailView, modally: true, animated: true)
     }

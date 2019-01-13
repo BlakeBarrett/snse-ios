@@ -29,17 +29,13 @@ class DetailCardViewController: UIViewController {
         viewDidLoad()
     }
     
-    deinit {
-        setStatusBar(hidden: false)
-    }
-    
     override var prefersStatusBarHidden: Bool {
         return true
     }
     
     override func viewDidLoad() {
         let when = sentiment?.getLongDateString()
-        dateLabel.text = ""
+        dateLabel.text = when
         navigationController?.title = when
         self.title = when
         
@@ -56,6 +52,10 @@ class DetailCardViewController: UIViewController {
         setStatusBar(hidden: true)
         
         addTapListener()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        setStatusBar(hidden: false)
     }
 }
 
