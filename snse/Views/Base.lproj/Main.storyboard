@@ -120,20 +120,20 @@
             </objects>
             <point key="canvasLocation" x="1048.8" y="95.802098950524751"/>
         </scene>
-        <!--Notification Settings Table View-->
+        <!--Reminders-->
         <scene sceneID="PSR-xn-poV">
             <objects>
-                <tableViewController storyboardIdentifier="NotificationSettingsTableView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="PnS-6B-P6L" customClass="NotificationSettingsTableView" customModule="snse" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="NotificationSettingsTableView" title="Reminders" useStoryboardIdentifierAsRestorationIdentifier="YES" id="PnS-6B-P6L" customClass="NotificationSettingsTableView" customModule="snse" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="rNA-Ht-l6Y">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="cYT-KH-P0e">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="notificationCellReuseIdentifier" rowHeight="75" id="cYT-KH-P0e" customClass="NotificationAlarmTableViewCell" customModule="snse" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="75"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cYT-KH-P0e" id="mjc-Ic-6u1">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="74.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -281,6 +281,87 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zjf-Cl-ylY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1048.8" y="779.46026986506752"/>
+        </scene>
+        <!--Notification Add View Controller-->
+        <scene sceneID="bhi-8r-aJD">
+            <objects>
+                <viewController storyboardIdentifier="NotificationAddViewController" definesPresentationContext="YES" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="upr-mv-tAJ" customClass="NotificationAddViewController" customModule="snse" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1T5-ah-UbR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gv0-ux-Qrn">
+                                <rect key="frame" x="0.0" y="20" width="375" height="603"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="o9C-Wt-2xY">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DRt-Gf-F6J">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="7V1-Ms-lVn">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            </view>
+                                            <vibrancyEffect>
+                                                <blurEffect style="light"/>
+                                            </vibrancyEffect>
+                                        </visualEffectView>
+                                    </subviews>
+                                </view>
+                                <blurEffect style="prominent"/>
+                            </visualEffectView>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="BGi-ww-mT4">
+                                <rect key="frame" x="0.0" y="20" width="375" height="603"/>
+                                <date key="date" timeIntervalSinceReferenceDate="569278660.13630903">
+                                    <!--2019-01-15 20:57:40 +0000-->
+                                </date>
+                            </datePicker>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aR4-WB-ZyS">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem systemItem="cancel" id="KS4-W2-HAh">
+                                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <connections>
+                                            <action selector="onCancelPressed:" destination="upr-mv-tAJ" id="eYz-Mz-lLE"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="7m5-zM-aQV"/>
+                                    <barButtonItem enabled="NO" style="done" systemItem="save" id="lsD-qX-iY2">
+                                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <connections>
+                                            <action selector="onSavePressed:" destination="upr-mv-tAJ" id="FxO-ex-THT"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="aR4-WB-ZyS" firstAttribute="trailing" secondItem="xH1-lp-fWT" secondAttribute="trailing" id="4pc-bB-Qpz"/>
+                            <constraint firstItem="aR4-WB-ZyS" firstAttribute="bottom" secondItem="xH1-lp-fWT" secondAttribute="bottom" id="7mg-s9-E1L"/>
+                            <constraint firstItem="aR4-WB-ZyS" firstAttribute="leading" secondItem="xH1-lp-fWT" secondAttribute="leading" id="9jC-a4-yE5"/>
+                            <constraint firstItem="BGi-ww-mT4" firstAttribute="top" secondItem="xH1-lp-fWT" secondAttribute="top" id="9wd-sy-S8h"/>
+                            <constraint firstItem="BGi-ww-mT4" firstAttribute="trailing" secondItem="xH1-lp-fWT" secondAttribute="trailing" id="BVj-yo-2Iw"/>
+                            <constraint firstItem="aR4-WB-ZyS" firstAttribute="top" secondItem="BGi-ww-mT4" secondAttribute="bottom" id="CyT-rE-Dln"/>
+                            <constraint firstItem="aR4-WB-ZyS" firstAttribute="top" secondItem="BGi-ww-mT4" secondAttribute="bottom" id="PAy-Rd-hwH"/>
+                            <constraint firstItem="Gv0-ux-Qrn" firstAttribute="top" secondItem="xH1-lp-fWT" secondAttribute="top" id="XX8-AI-598"/>
+                            <constraint firstItem="Gv0-ux-Qrn" firstAttribute="leading" secondItem="xH1-lp-fWT" secondAttribute="leading" id="gRs-s6-sbp"/>
+                            <constraint firstItem="BGi-ww-mT4" firstAttribute="leading" secondItem="xH1-lp-fWT" secondAttribute="leading" id="so6-4C-iiF"/>
+                            <constraint firstItem="xH1-lp-fWT" firstAttribute="trailing" secondItem="Gv0-ux-Qrn" secondAttribute="trailing" id="yTv-JJ-U3W"/>
+                            <constraint firstItem="aR4-WB-ZyS" firstAttribute="top" secondItem="Gv0-ux-Qrn" secondAttribute="bottom" id="ymx-LG-gJJ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="xH1-lp-fWT"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="pickerView" destination="BGi-ww-mT4" id="KPQ-rp-8cB"/>
+                        <outlet property="saveButtonView" destination="lsD-qX-iY2" id="PTO-hW-a5b"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pJK-QT-rc1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1916" y="778.11094452773614"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Aj4-su-lgy">

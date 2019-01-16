@@ -49,7 +49,7 @@ import UIKit
     
     override func draw(_ rect: CGRect) {
         removeAll()
-        let buttonLabels = ["😞", "😐", "😊"]
+        let buttonLabels = Sentiment.Feels.all
         var count = 0
         buttonLabels.forEach({ value in
             let height = self.bounds.height

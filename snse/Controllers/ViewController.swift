@@ -29,7 +29,7 @@ class ViewController: UIViewController {
         
         addQuestionaireChildViewController()
         
-//        addSettingsButton()
+        addSettingsButton()
         
         decorateTitle()
         
@@ -85,7 +85,7 @@ class ViewController: UIViewController {
     }
     
     func addSettingsButton() {
-        let button = UIBarButtonItem(image: UIImage(named: "settings"),
+        let button = UIBarButtonItem(image: UIImage(named: "bell"),
                                      style: UIBarButtonItem.Style.plain,
                                      target: self,
                                      action: #selector(onSettingsButtonPressed(_:)))

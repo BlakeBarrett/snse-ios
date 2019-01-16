@@ -43,6 +43,14 @@ extension UIViewController {
         return controller
     }
     
+    func show(viewControllerWithId id: String, modally: Bool = true, animated: Bool = true) -> UIViewController? {
+        if let controller = UIViewController.getViewController(with: id) {
+            self.show(controller, modally: modally, animated: animated)
+            return controller
+        }
+        return nil
+    }
+    
     func show(_ viewController: UIViewController, modally: Bool = true, animated: Bool = true) {
         viewController.providesPresentationContextTransitionStyle = modally
         viewController.definesPresentationContext = modally

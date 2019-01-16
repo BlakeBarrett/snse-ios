@@ -12,6 +12,16 @@ import UIKit
 
 class Sentiment {
     
+    enum Feels: String {
+        case sad = "😞",
+        meh = "😐",
+        happy = "😊"
+        
+        static var all: [String] {
+            return [Feels.sad.rawValue, Feels.meh.rawValue, Feels.happy.rawValue]
+        }
+    }
+    
     enum Fields: String {
         case timestamp = "timestamp",
         water = "water",
