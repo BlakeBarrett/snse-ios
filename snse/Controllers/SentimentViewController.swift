@@ -14,6 +14,12 @@ class SentimentViewController: UITableViewController {
     static let identifier = "historyViewController"
     
     var sentiments = [Sentiment]()
+    var detailView: DetailCardViewController? = DetailCardViewController()
+    
+    deinit {
+        detailView?.sentiment = nil
+        detailView = nil
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,7 +83,7 @@ extension SentimentViewController {
     }
     
     func showHistoricalSentiment(_ value: Sentiment) {
-        let detailView = DetailCardViewController()
+        guard let detailView = detailView else { return }
         detailView.sentiment = value
         show(detailView, modally: true, animated: true)
     }

@@ -14,7 +14,7 @@ class EntryFormCardViewController: UIViewController {
     @IBOutlet weak var cardView: UICardView!
     
     @IBOutlet weak var feelingView: FeelingEntryView!
-    @IBOutlet weak var waterImage: UIButton!
+    @IBOutlet weak var waterImage: UIBarButtonItem!
     @IBOutlet weak var intensitySlider: UISlider!
     @IBOutlet weak var paletteButton: UIButton!
     @IBOutlet weak var elaborateTextField: UITextField!
@@ -45,9 +45,20 @@ class EntryFormCardViewController: UIViewController {
         }
     }
     
-    @IBAction func onWaterButtonPressed(_ sender: UIButton) {
-        sender.isSelected = !sender.isSelected
+    @IBAction func onWaterButtonPressed(_ sender: UIBarButtonItem) {
+        if (sender.tag == 0) {
+            sender.tag = 1
+        } else {
+            sender.tag = 0
+        }
+        updateWaterButtonImage(sender)
     }
+    
+    func updateWaterButtonImage(_ sender: UIBarButtonItem) {
+        let imageName = "water\(sender.tag == 0 ? "-off" : "")"
+        sender.image = UIImage(named: imageName)
+    }
+    
     @IBAction func onIntensitySliderChange(_ sender: UISlider) {
         updateFeelingIntensity(value: Int(sender.value))
     }
@@ -140,7 +151,8 @@ extension EntryFormCardViewController {
     func reset() {
         elaborateTextField.text = ""
         selectedColor = UIColor.white
-        waterImage.isSelected = false
+        waterImage.tag = 0
+        updateWaterButtonImage(waterImage)
         feelingView.reset()
         setColors(tintColor: UIColor.darkGray)
         view.backgroundColor = UIColor.groupTableViewBackground
@@ -150,7 +162,7 @@ extension EntryFormCardViewController {
     func sentiment() -> Sentiment? {
         var values = [String : Any]()
         values[Sentiment.Fields.feeling.rawValue] = getTheFeeling()
-        values[Sentiment.Fields.water.rawValue] = waterImage.isSelected
+        values[Sentiment.Fields.water.rawValue] = waterImage.tag == 1
         values[Sentiment.Fields.intensity.rawValue] = Int(intensitySlider.value)
         values[Sentiment.Fields.elaborate.rawValue] = elaborateTextField.text
         
