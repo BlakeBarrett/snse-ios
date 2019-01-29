@@ -20,6 +20,7 @@
 	<string>5</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+    <key>ITSAppUsesNonExemptEncryption</key><false/>
 	<key>NSCameraUsageDescription</key>
 	<string>Take a picture?</string>
 	<key>NSFaceIDUsageDescription</key>
