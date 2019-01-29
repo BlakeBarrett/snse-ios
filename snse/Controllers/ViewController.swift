@@ -44,13 +44,6 @@ class ViewController: UIViewController {
     
     @IBAction func onSaveButtonPressed(_ sender: Any) {
         questionaireView.save()
-        
-        if let thankVC = ViewController.getViewController(with: ThankViewController.identifier) as? ThankViewController {
-            thankVC.onDismiss = { [weak self] in
-                self?.promptForRating()
-            }
-            show(thankVC, modally: true, animated: true)
-        }
     }
     
     @IBAction func onHistoryButtonPressed(_ sender: Any) {
@@ -117,7 +110,7 @@ extension ViewController {
     }
 }
 
-extension ViewController {
+extension UIViewController {
     
     private struct StoreKitKeys {
         static let launches = "Number of times the app has launched."

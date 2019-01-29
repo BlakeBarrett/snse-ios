@@ -62,6 +62,15 @@ class EntryFormCardViewController: UIViewController {
     @IBAction func onIntensitySliderChange(_ sender: UISlider) {
         updateFeelingIntensity(value: Int(sender.value))
     }
+    
+    func sayThankYou() {
+        if let thankVC = ViewController.getViewController(with: ThankViewController.identifier) as? ThankViewController {
+            thankVC.onDismiss = { [weak self] in
+                self?.promptForRating()
+            }
+            show(thankVC, modally: true, animated: true)
+        }
+    }
 }
 
 extension EntryFormCardViewController: UITextFieldDelegate {
@@ -144,6 +153,7 @@ extension EntryFormCardViewController {
     func save() {
         if let sentiment = sentiment() {
             SentimentFactory.save(sentiment)
+            sayThankYou()
             reset()
         }
     }
