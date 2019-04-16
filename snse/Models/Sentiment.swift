@@ -118,20 +118,31 @@ extension Sentiment: CustomStringConvertible {
 
 extension Sentiment {
     
+    static let yesterday = "Yesterday "
+    static let ayer = "Ayer "
+    
+    func spanishLangCode() -> String? {
+        return Locale.init(identifier: "es").languageCode
+    }
+    
+    func isSpanishLocale() -> Bool {
+        return Locale.autoupdatingCurrent.languageCode == spanishLangCode()
+    }
+    
     func getDateString() -> String {
         let calendar = NSCalendar.autoupdatingCurrent
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale.autoupdatingCurrent
         if calendar.isDateInToday(timestamp!) {
-            dateFormatter.timeStyle = .none
-            dateFormatter.dateStyle = .short
+            dateFormatter.timeStyle = .short
+            dateFormatter.dateStyle = .none
         } else if calendar.isDateInYesterday(timestamp!) {
             
-            if Locale.autoupdatingCurrent.languageCode == Locale.init(identifier: "es").languageCode {
-                return "Ayer "
+            if isSpanishLocale() {
+                return Sentiment.ayer
             }
             
-            return "Yesterday "
+            return Sentiment.yesterday
         } else {
             dateFormatter.dateFormat = "MM/dd, hh:mm"
         }
@@ -151,11 +162,11 @@ extension Sentiment {
             dateFormatter.dateStyle = .short
         } else if calendar.isDateInYesterday(timestamp!) {
             switch Locale.autoupdatingCurrent.languageCode {
-            case Locale.init(identifier: "es").languageCode:
-                dayString = "Ayer "
+            case spanishLangCode():
+                dayString = Sentiment.ayer
                 break
             default:
-                dayString = "Yesterday "
+                dayString = Sentiment.yesterday
                 break
             }
             dateFormatter.dateStyle = .none

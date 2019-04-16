@@ -33,8 +33,12 @@ class DedicatedTextEntryViewController: UIViewController {
         super.viewDidLoad()
         mainTextView.becomeFirstResponder()
         mainTextView.text = text
-        addKeyboardEventListener()
         setupNavButtons()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        addKeyboardEventListener()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -43,7 +47,7 @@ class DedicatedTextEntryViewController: UIViewController {
     }
     
     private func setupNavButtons() {
-        // Done is just "I'm done here, take me back."
+        // Done, here means "I'm done here, take me back."
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done,
                                                             target: self,
                                                             action: #selector(onDoneClicked(_:)))

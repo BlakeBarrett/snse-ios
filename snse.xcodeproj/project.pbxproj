@@ -336,7 +336,16 @@
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				en,
 				Base,
+				fr,
+				de,
+				"zh-Hans",
+				ja,
+				es,
+				ru,
+				ar,
+				hi,
 			);
 			mainGroup = 25E4D4862195252100CFA268;
 			productRefGroup = 25E4D4902195252100CFA268 /* Products */;

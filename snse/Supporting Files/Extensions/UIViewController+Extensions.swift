@@ -62,7 +62,6 @@ extension UIViewController {
     
     func setStatusBar(hidden: Bool) {
         modalPresentationCapturesStatusBarAppearance = !hidden
-        UIApplication.shared.isStatusBarHidden = hidden
         setNeedsStatusBarAppearanceUpdate()
     }
     
