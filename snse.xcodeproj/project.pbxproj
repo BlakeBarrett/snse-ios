@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		250E11FF2272EEC700A0A62F /* UITextView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250E11FE2272EEC700A0A62F /* UITextView+Extensions.swift */; };
+		250E12012275882100A0A62F /* SentimentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250E12002275882100A0A62F /* SentimentTests.swift */; };
+		250E12022275882A00A0A62F /* Sentiment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2593190821978195005CCC75 /* Sentiment.swift */; };
+		250E120322758CF500A0A62F /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CDBC28219E3307008DB875 /* UIColor+Extensions.swift */; };
 		251C679C21C9EFC000FED932 /* DetailCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 251C679B21C9EFC000FED932 /* DetailCardView.xib */; };
 		2527C33921D9FBBB008B3A58 /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2527C33821D9FBBB008B3A58 /* UILabel+Extensions.swift */; };
 		2548F1D121E5D4C00055C414 /* ThankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2548F1D021E5D4C00055C414 /* ThankViewController.swift */; };
@@ -39,7 +42,6 @@
 		25E4D4952195252100CFA268 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E4D4942195252100CFA268 /* ViewController.swift */; };
 		25E4D4982195252100CFA268 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25E4D4962195252100CFA268 /* Main.storyboard */; };
 		25E4D49B2195252100CFA268 /* snse.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 25E4D4992195252100CFA268 /* snse.xcdatamodeld */; };
-		25E4D4AB2195252300CFA268 /* snseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E4D4AA2195252300CFA268 /* snseTests.swift */; };
 		25E4D4BB21954DD300CFA268 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 25E4D4BA21954DD300CFA268 /* index.html */; };
 		25FED67521967692002DE7F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25FED67421967692002DE7F0 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -56,6 +58,7 @@
 
 /* Begin PBXFileReference section */
 		250E11FE2272EEC700A0A62F /* UITextView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Extensions.swift"; sourceTree = "<group>"; };
+		250E12002275882100A0A62F /* SentimentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentimentTests.swift; sourceTree = "<group>"; };
 		251C679B21C9EFC000FED932 /* DetailCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailCardView.xib; sourceTree = "<group>"; };
 		2527C33821D9FBBB008B3A58 /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
 		2548F1D021E5D4C00055C414 /* ThankViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThankViewController.swift; sourceTree = "<group>"; };
@@ -109,7 +112,6 @@
 		25E4D49A2195252100CFA268 /* snse.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = snse.xcdatamodel; sourceTree = "<group>"; };
 		25E4D4A12195252300CFA268 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25E4D4A62195252300CFA268 /* snseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = snseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		25E4D4AA2195252300CFA268 /* snseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = snseTests.swift; sourceTree = "<group>"; };
 		25E4D4AC2195252300CFA268 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25E4D4B621954AA200CFA268 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		25E4D4BA21954DD300CFA268 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
@@ -204,8 +206,8 @@
 		25E4D4A92195252300CFA268 /* snseTests */ = {
 			isa = PBXGroup;
 			children = (
-				25E4D4AA2195252300CFA268 /* snseTests.swift */,
 				25E4D4AC2195252300CFA268 /* Info.plist */,
+				250E12002275882100A0A62F /* SentimentTests.swift */,
 			);
 			path = snseTests;
 			sourceTree = "<group>";
@@ -421,7 +423,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				25E4D4AB2195252300CFA268 /* snseTests.swift in Sources */,
+				250E12012275882100A0A62F /* SentimentTests.swift in Sources */,
+				250E12022275882A00A0A62F /* Sentiment.swift in Sources */,
+				250E120322758CF500A0A62F /* UIColor+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
