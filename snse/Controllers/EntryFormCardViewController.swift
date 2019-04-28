@@ -30,9 +30,6 @@ class EntryFormCardViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-    }
-    
     @IBAction func onPalettePressed(_ sender: UIButton) {
         catchTheFeeling()
         // launch color picker
@@ -65,8 +62,8 @@ class EntryFormCardViewController: UIViewController {
     
     func sayThankYou() {
         if let thankVC = ViewController.getViewController(with: ThankViewController.identifier) as? ThankViewController {
-            thankVC.onDismiss = { [weak self] in
-                self?.promptForRating()
+            thankVC.onDismiss = { [unowned self] in
+                self.promptForRating()
             }
             show(thankVC, modally: true, animated: true)
         }
@@ -74,13 +71,13 @@ class EntryFormCardViewController: UIViewController {
 }
 
 extension EntryFormCardViewController: UITextFieldDelegate {
+
     func textFieldDidBeginEditing(_ textField: UITextField) {
         // launch full-screen text editor
         textField.resignFirstResponder()
         if let controller = UIViewController.show(viewWithId: DedicatedTextEntryViewController.identifier,
                                                   in: self.navigationController) as? DedicatedTextEntryViewController {
-            weak var weakSelf = self
-            controller.delegate = weakSelf
+            controller.delegate = self
             controller.prepopulateText(with: textField.text)
         }
     }

@@ -74,7 +74,9 @@ extension DetailCardViewController {
     }
     
     func decorateFeelingLabel(view: UILabel, sentiment: Sentiment?) {
-        view.text = sentiment?.feeling
+        if view.text != sentiment?.feeling {
+            view.text = sentiment?.feeling
+        }
         let intensity = Double(sentiment?.intensity ?? 0) * 0.01
         let size = CGFloat(minFontSize + (intensity * maxFontSize))
         view.updateFontSize(size)
@@ -96,12 +98,5 @@ extension DetailCardViewController {
     
     @IBAction func onTap(_ sender: UITapGestureRecognizer) {
         super.close()
-    }
-}
-
-extension UITextView {
-    
-    func hasScrollContent() -> Bool {
-        return self.contentSize.height > self.bounds.height
     }
 }

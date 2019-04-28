@@ -70,12 +70,14 @@ class DedicatedTextEntryViewController: UIViewController {
     }
 
     @objc func onSaveClicked(_ sender: UIBarButtonItem) {
-        self.delegate?.saveWasCalled(with: self.mainTextView.text)
+        let text = self.mainTextView.text
+        self.mainTextView.text = ""
         if let _ = navigationController {
             navigationController?.popViewController(animated: true)
         } else {
             self.dismiss(animated: true)
         }
+        self.delegate?.saveWasCalled(with: text)
     }
     
     public func prepopulateText(with value: String?) {

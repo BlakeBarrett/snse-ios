@@ -41,27 +41,27 @@ class NotificationSettingsTableView: UITableViewController {
     }
     
     func reloadData() {
-        notificationUtils.center.getPendingNotificationRequests { [weak self] (requests: [UNNotificationRequest]) in
-            self?.dates = [Date]()
-            requests.forEach() {[weak self] request in
+        notificationUtils.center.getPendingNotificationRequests { [unowned self] (requests: [UNNotificationRequest]) in
+            self.dates = [Date]()
+            requests.forEach() {[unowned self] request in
                 if let trigger = request.trigger as? UNCalendarNotificationTrigger {
                     let components = trigger.dateComponents
                     if let date = Calendar.current.date(from: components) {
-                        self?.dates?.append(date)
+                        self.dates?.append(date)
                     }
                 }
             }
             DispatchQueue.main.async {
-                self?.tableView.reloadData()
+                self.tableView.reloadData()
             }
         }
     }
     
     @objc func onAddClicked(_ sender: UIBarButtonItem) {
-        notificationUtils.getAuthorization(success: { [weak self] in
-            if let controller = self?.show(viewControllerWithId: NotificationAddViewController.identifier,
-                                           modally: true,
-                                           animated: true) as? NotificationAddViewController {
+        notificationUtils.getAuthorization(success: { [unowned self] in
+            if let controller = self.show(viewControllerWithId: NotificationAddViewController.identifier,
+                                          modally: true,
+                                          animated: true) as? NotificationAddViewController {
                 controller.delegate = self
             }
         }, failure: { error in
@@ -82,19 +82,19 @@ extension NotificationSettingsTableView {
     
     func remove(_ value: Date?) {
         guard let value = value else { return }
-        notificationUtils.center.getPendingNotificationRequests { [weak self] (requests: [UNNotificationRequest]) in
-            self?.dates = [Date]()
-            requests.forEach() {[weak self] request in
+        notificationUtils.center.getPendingNotificationRequests { [unowned self] (requests: [UNNotificationRequest]) in
+            self.dates = [Date]()
+            requests.forEach() {[unowned self] request in
                 if let trigger = request.trigger as? UNCalendarNotificationTrigger {
                     let components = trigger.dateComponents
                     if let date = Calendar.current.date(from: components) {
                         if date == value {
-                            self?.notificationUtils.center.removePendingNotificationRequests(withIdentifiers: [request.identifier])
+                            self.notificationUtils.center.removePendingNotificationRequests(withIdentifiers: [request.identifier])
                         }
                     }
                 }
             }
-            self?.reloadData()
+            self.reloadData()
         }
     }
 }

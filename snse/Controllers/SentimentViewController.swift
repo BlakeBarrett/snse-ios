@@ -69,11 +69,14 @@ extension SentimentViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: SentimentTableViewCell.reuseIdentifier, for: indexPath) as! SentimentTableViewCell
-        cell.prepareForReuse()
-        let row = self.sentiments[indexPath.row]
-        cell.set(row)
-        return cell
+        let reusableCell = tableView.dequeueReusableCell(withIdentifier: SentimentTableViewCell.reuseIdentifier, for: indexPath)
+        if let cell = reusableCell as? SentimentTableViewCell {
+            cell.prepareForReuse()
+            let row = self.sentiments[indexPath.row]
+            cell.set(row)
+            return cell
+        }
+        return reusableCell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -107,14 +110,6 @@ class SentimentTableViewCell: UITableViewCell {
     
     static let reuseIdentifier = "sentimentTableViewCellReuseIdentifier"
     static let nibIdentifier = "SentimentTableViewCell"
-    
-    /*
-     timestamp = "timestamp",
-     water = "water",
-     elaborate = "elaborate",
-     feeling = "feeling",
-     color = "color"
-    */
     
     @IBOutlet weak var feelingLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
