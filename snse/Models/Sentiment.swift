@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 import UIKit
 
-class Sentiment {
+class Sentiment: Encodable {
     
     enum Feels: String {
         case sad = "😞",
@@ -22,7 +22,7 @@ class Sentiment {
         }
     }
     
-    enum Fields: String {
+    enum Fields: String, CodingKey {
         case timestamp = "timestamp",
         water = "water",
         elaborate = "elaborate",
@@ -64,6 +64,8 @@ class Sentiment {
                 // Are we loading from the db?
                 if let date = value as? Date {
                     self.timestamp = date
+                } else if let date = value as? Int {
+                    self.timestamp = Date(timeIntervalSince1970: Double(date))
                 }
                 break
             case Fields.water.rawValue:
@@ -89,6 +91,42 @@ class Sentiment {
         
         if self.timestamp == nil {
             self.timestamp = Date()
+        }
+    }
+    
+    convenience init?(jsonString: String) {
+        var values = [String: Any]()
+        do {
+            if let data = jsonString.data(using: .utf16) {
+                values = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as! [String: Any]
+            }
+        } catch {
+            
+        }
+        self.init(values: values)
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: Fields.self)
+        
+        let timeValue = timestamp?.timeIntervalSince1970
+        
+        try container.encode(feeling, forKey: .feeling)
+        try container.encode(water, forKey: .water)
+        try container.encode(timeValue, forKey: .timestamp)
+        try container.encode(elaborate, forKey: .elaborate)
+        try container.encode(intensity, forKey: .intensity)
+    }
+    
+    func jsonString() -> String {
+        let encoder = JSONEncoder()
+        
+        do {
+            let encoded = try encoder.encode(self)
+            let str = String(decoding: encoded, as: UTF8.self)
+            return str
+        } catch {
+            return error.localizedDescription
         }
     }
 }
