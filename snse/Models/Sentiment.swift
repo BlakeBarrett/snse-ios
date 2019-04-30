@@ -167,10 +167,10 @@ extension Sentiment {
         return Locale.autoupdatingCurrent.languageCode == spanishLangCode()
     }
     
-    func getDateString() -> String {
+    func getDateString(forLocale locale: Locale = Locale.autoupdatingCurrent) -> String {
         let calendar = NSCalendar.autoupdatingCurrent
         let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale.autoupdatingCurrent
+        dateFormatter.locale = locale
         if calendar.isDateInToday(timestamp!) {
             dateFormatter.timeStyle = .short
             dateFormatter.dateStyle = .none
@@ -187,9 +187,9 @@ extension Sentiment {
         return dateFormatter.string(from: timestamp!)
     }
     
-    func getLongDateString() -> String {
+    func getLongDateString(forLocale locale: Locale = Locale.autoupdatingCurrent) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale.autoupdatingCurrent
+        dateFormatter.locale = locale
         dateFormatter.dateStyle = .long
         dateFormatter.timeStyle = .short
         
