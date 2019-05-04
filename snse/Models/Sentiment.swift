@@ -193,12 +193,14 @@ extension Sentiment {
         dateFormatter.dateStyle = .long
         dateFormatter.timeStyle = .short
         
+        guard let timestamp = timestamp else { return "" }
+        
         var dayString = ""
         let calendar = NSCalendar.autoupdatingCurrent
-        if calendar.isDateInToday(timestamp!) {
+        if calendar.isDateInToday(timestamp) {
             dateFormatter.timeStyle = .none
             dateFormatter.dateStyle = .short
-        } else if calendar.isDateInYesterday(timestamp!) {
+        } else if calendar.isDateInYesterday(timestamp) {
             switch Locale.autoupdatingCurrent.languageCode {
             case spanishLangCode():
                 dayString = Sentiment.ayer
@@ -210,6 +212,6 @@ extension Sentiment {
             dateFormatter.dateStyle = .none
         }
         
-        return dayString + dateFormatter.string(from: timestamp!)
+        return dayString + dateFormatter.string(from: timestamp)
     }
 }
