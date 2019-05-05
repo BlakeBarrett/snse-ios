@@ -11,6 +11,7 @@ import XCTest
 class SentimentTests: XCTestCase {
     
     let json = "{\"timestamp\":1445473200,\"elaborate\":\"\",\"water\":true,\"feeling\":\"😊\",\"intensity\":50}"
+    let jsonWithColor = "{\"color\":\"#ff0000ff\",\"timestamp\":1445473200,\"elaborate\":\"\",\"water\":true,\"feeling\":\"😊\",\"intensity\":50}"
     let enUS = Locale(identifier: "en_US")
     let october_21st_2015_epoch = Double(1445473200)
     
@@ -39,15 +40,16 @@ class SentimentTests: XCTestCase {
     }
     
     func testDeSerialization() {
-        let value = Sentiment(jsonString: json)
+        let value = Sentiment(jsonString: jsonWithColor)
         
         XCTAssertEqual("😊", value?.feeling)
         XCTAssertEqual(50, value?.intensity)
         XCTAssertEqual("", value?.elaborate)
         XCTAssertEqual(true, value?.water)
+        XCTAssertEqual(UIColor.red, value?.color)
     }
     
-    func testSerialization() {
+    func testSerializationWithoutColor() {
         var values = [String: Any]()
         
         values["timestamp"] = 1445473200
@@ -59,6 +61,21 @@ class SentimentTests: XCTestCase {
         
         let actual = sentiment?.jsonString()
         XCTAssertEqual(json, actual)
+    }
+    
+    func testSerializationWithColor() {
+        var values = [String: Any]()
+        
+        values["timestamp"] = 1445473200
+        values["feeling"] = "😊"
+        values["elaborate"] = ""
+        values["water"] = true
+        values["intensity"] = 50
+        values["color"] = UIColor.red
+        let sentiment = Sentiment(values: values)
+        
+        let actual = sentiment?.jsonString()
+        XCTAssertEqual(jsonWithColor, actual)
     }
     
 }

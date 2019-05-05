@@ -83,6 +83,8 @@ class Sentiment: Encodable {
             case Fields.color.rawValue:
                 if let colorString = value as? String {
                     self.color = UIColor(hexaDecimalString: colorString)
+                } else if let color = value as? UIColor {
+                    self.color = color
                 }
                 break
             default: break
@@ -116,6 +118,9 @@ class Sentiment: Encodable {
         try container.encode(timeValue, forKey: .timestamp)
         try container.encode(elaborate, forKey: .elaborate)
         try container.encode(intensity, forKey: .intensity)
+        if let rgbaColor = color?.toRGBAString() {
+            try container.encode(rgbaColor, forKey: .color)
+        }
     }
     
     func jsonString() -> String {
