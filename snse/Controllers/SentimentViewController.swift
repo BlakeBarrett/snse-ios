@@ -28,6 +28,14 @@ class SentimentViewController: UITableViewController {
         tableView.register(cellNib, forCellReuseIdentifier: SentimentTableViewCell.reuseIdentifier)
         tableView.estimatedRowHeight = 75
         
+        if #available(iOS 11.0, *) {
+            navigationController?.navigationBar.prefersLargeTitles = true
+            let searchController = UISearchController(searchResultsController: nil)
+            searchController.searchResultsUpdater = self
+            searchController.definesPresentationContext = true
+            navigationItem.searchController = searchController
+        }
+        
         fetchAndRender()
     }
     
@@ -39,17 +47,18 @@ class SentimentViewController: UITableViewController {
         setLargeTitleMode(false)
     }
     
-    func fetchAndRender() {
-        loadSentiments() { sentiments in
+    func fetchAndRender(filter: String? = nil) {
+        loadSentiments(filter: filter) { sentiments in
             self.showSentiments(sentiments)
         }
     }
     
-    func loadSentiments(_ success: (([Sentiment]) -> Void)?) {
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    func loadSentiments(filter: String?, _ success: (([Sentiment]) -> Void)?) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let context = appDelegate.persistentContainer.viewContext
         // db on the background
         DispatchQueue.global(qos: .background).async {
-            self.sentiments = SentimentFactory.load(from: context)
+            self.sentiments = SentimentFactory.load(from: context, filter: filter)
             // ui on the main thread
             DispatchQueue.main.async {
                 success?(self.sentiments)
@@ -102,6 +111,20 @@ extension SentimentViewController {
                 sentiments.remove(at: indexPath.row)
                 tableView.reloadData()
             }
+        }
+    }
+    
+}
+
+extension SentimentViewController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        if  searchController.isActive,
+            let filter = searchController.searchBar.text,
+            !"".elementsEqual(filter) {
+            fetchAndRender(filter: filter)
+        } else {
+            fetchAndRender()
         }
     }
 }

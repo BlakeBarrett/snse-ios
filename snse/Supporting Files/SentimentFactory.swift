@@ -14,9 +14,9 @@ class SentimentFactory {
     
     static let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    static func load(from context: NSManagedObjectContext) -> [Sentiment] {
+    static func load(from context: NSManagedObjectContext, filter: String? = nil) -> [Sentiment] {
         var results = [Sentiment]()
-        let result = load(from: context, withPredicate: nil)
+        let result = search(in: context, for: filter)
         for data in result {
             if let sentiment = Sentiment(managedObject: data) {
                 results.append(sentiment)
@@ -40,6 +40,14 @@ class SentimentFactory {
             print("Failed")
         }
         return [NSManagedObject]()
+    }
+    
+    static func search(in context: NSManagedObjectContext, for query: String?) -> [NSManagedObject] {
+        var predicate: NSPredicate? = nil
+        if let query = query {
+            predicate = NSPredicate(format: "(feeling CONTAINS[cd] %@) OR (elaborate CONTAINS[cd] %@)", query, query)
+        }
+        return load(from: context, withPredicate: predicate)
     }
     
     static func save(_ value: Sentiment) {
