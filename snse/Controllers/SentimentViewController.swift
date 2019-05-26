@@ -27,13 +27,17 @@ class SentimentViewController: UITableViewController {
         let cellNib = UINib(nibName: SentimentTableViewCell.nibIdentifier, bundle: Bundle.main)
         tableView.register(cellNib, forCellReuseIdentifier: SentimentTableViewCell.reuseIdentifier)
         tableView.estimatedRowHeight = 75
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.addTarget(self,
+                                            action: #selector(handleRefreshControl),
+                                            for: .valueChanged)
         
         if #available(iOS 11.0, *) {
-            navigationController?.navigationBar.prefersLargeTitles = true
-            let searchController = UISearchController(searchResultsController: nil)
-            searchController.searchResultsUpdater = self
-            searchController.definesPresentationContext = true
-            navigationItem.searchController = searchController
+            navigationItem.searchController = UISearchController(searchResultsController: nil)
+            navigationItem.searchController?.searchResultsUpdater = self
+            navigationItem.searchController?.searchBar.placeholder = "Filter" // TODO: I18n
+            navigationItem.searchController?.searchBar.setShowsCancelButton(false, animated: false)
+            navigationItem.hidesSearchBarWhenScrolling = true
         }
         
         fetchAndRender()
@@ -68,6 +72,14 @@ class SentimentViewController: UITableViewController {
     
     func showSentiments(_ sentiments: [Sentiment]) {
         tableView.reloadData()
+        tableView.refreshControl?.endRefreshing()
+    }
+}
+
+extension SentimentViewController {
+    
+    @objc func handleRefreshControl() {
+        fetchAndRender()
     }
 }
 
@@ -91,12 +103,18 @@ extension SentimentViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let value = self.sentiments[indexPath.row]
         showHistoricalSentiment(value)
-        tableView.deselectRow(at: indexPath, animated: true)
+        if  #available(iOS 11.0, *),
+            navigationItem.searchController?.isActive ?? false {
+            
+        } else {
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
     }
     
     func showHistoricalSentiment(_ value: Sentiment) {
         guard let detailView = detailView else { return }
         detailView.sentiment = value
+        self.definesPresentationContext = false
         show(detailView, modally: true, animated: true)
     }
     
@@ -123,8 +141,6 @@ extension SentimentViewController: UISearchResultsUpdating {
             let filter = searchController.searchBar.text,
             !"".elementsEqual(filter) {
             fetchAndRender(filter: filter)
-        } else {
-            fetchAndRender()
         }
     }
 }

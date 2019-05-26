@@ -40,6 +40,7 @@ class DetailCardViewController: UIViewController {
         dateLabel.text = when
         navigationController?.title = when
         self.title = when
+        self.definesPresentationContext = true
         
         waterImageView.image = waterImageFor(value: sentiment)
         waterImageView.tintColor = dateLabel.textColor
