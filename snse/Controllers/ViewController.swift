@@ -64,7 +64,7 @@ class ViewController: UIViewController {
     
     func decorateTitle() {
         let label = UILabel(frame: CGRect.zero)
-        let font = UIFont(name: "SignPainter-HouseScript", size: 36.0)
+        let font = Fonts.signPainter36
         label.font = font
         label.text = navigationItem.title
         label.sizeToFit()
@@ -97,16 +97,16 @@ extension ViewController {
     func setupIntents() {
         let identifier = "com.blakebarrett.snse.feeling"
         
-        let activity = NSUserActivity(activityType: identifier) // 1
-        activity.title = "Feeling Great?" // 2
-        activity.userInfo = ["feeling" : "😊"] // 3
-        activity.isEligibleForSearch = true // 4
+        let activity = NSUserActivity(activityType: identifier)
+        activity.title = NSLocalizedString("Feeling great?", comment: "Feeling Great?")
+        activity.userInfo = ["feeling" : "😊"]
+        activity.isEligibleForSearch = true
         if #available(iOS 12.0, *) {
-            activity.isEligibleForPrediction = true // 5
-            activity.persistentIdentifier = NSUserActivityPersistentIdentifier(stringLiteral: identifier) // 6
+            activity.isEligibleForPrediction = true
+            activity.persistentIdentifier = NSUserActivityPersistentIdentifier(stringLiteral: identifier)
         }
-        view.userActivity = activity // 7
-        activity.becomeCurrent() // 8
+        view.userActivity = activity
+        activity.becomeCurrent()
     }
 }
 

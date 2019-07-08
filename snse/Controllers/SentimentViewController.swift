@@ -33,9 +33,10 @@ class SentimentViewController: UITableViewController {
                                             for: .valueChanged)
         
         if #available(iOS 11.0, *) {
+            let filter = NSLocalizedString("Filter", comment: "filter")
             navigationItem.searchController = UISearchController(searchResultsController: nil)
             navigationItem.searchController?.searchResultsUpdater = self
-            navigationItem.searchController?.searchBar.placeholder = "Filter" // TODO: I18n
+            navigationItem.searchController?.searchBar.placeholder = filter
             navigationItem.searchController?.searchBar.setShowsCancelButton(false, animated: false)
             navigationItem.hidesSearchBarWhenScrolling = true
         }

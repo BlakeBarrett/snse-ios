@@ -43,6 +43,7 @@
 		25E4D4982195252100CFA268 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25E4D4962195252100CFA268 /* Main.storyboard */; };
 		25E4D49B2195252100CFA268 /* snse.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 25E4D4992195252100CFA268 /* snse.xcdatamodeld */; };
 		25E4D4BB21954DD300CFA268 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 25E4D4BA21954DD300CFA268 /* index.html */; };
+		25ED4A6122D31FE100E93BEB /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25ED4A6022D31FE100E93BEB /* Fonts.swift */; };
 		25FED67521967692002DE7F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25FED67421967692002DE7F0 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -115,6 +116,7 @@
 		25E4D4AC2195252300CFA268 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25E4D4B621954AA200CFA268 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		25E4D4BA21954DD300CFA268 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		25ED4A6022D31FE100E93BEB /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		25FED67421967692002DE7F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -256,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				25E4D4922195252100CFA268 /* AppDelegate.swift */,
+				25ED4A6022D31FE100E93BEB /* Fonts.swift */,
 				2593190A21978BC5005CCC75 /* SentimentFactory.swift */,
 				25CDBC27219E32EB008DB875 /* Extensions */,
 				25E4D4BA21954DD300CFA268 /* index.html */,
@@ -409,6 +412,7 @@
 				250E11FF2272EEC700A0A62F /* UITextView+Extensions.swift in Sources */,
 				2576E9A521E2C5A2001F71F4 /* NotificationSettingsTableView.swift in Sources */,
 				257583FF21EFC8DD008F47E2 /* NotificationAlarmTableViewCell.swift in Sources */,
+				25ED4A6122D31FE100E93BEB /* Fonts.swift in Sources */,
 				2582015821EE809400CCDC70 /* NotificationAddViewController.swift in Sources */,
 				25E4D4952195252100CFA268 /* ViewController.swift in Sources */,
 				2548F1D121E5D4C00055C414 /* ThankViewController.swift in Sources */,
