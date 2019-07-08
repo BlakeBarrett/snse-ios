@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,15 +20,6 @@
                     <rect key="frame" x="0.0" y="0.0" width="76" height="76"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DateTime" textAlignment="right" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gle-pQ-l1n">
-                    <rect key="frame" x="253" y="27.5" width="100" height="21"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="100" id="hNn-DF-aAU"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="😊" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LcQ-VE-o26">
                     <rect key="frame" x="8" y="8" width="60" height="60"/>
                     <constraints>
@@ -40,7 +31,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kwU-hE-tEu">
-                    <rect key="frame" x="84" y="8" width="161" height="60"/>
+                    <rect key="frame" x="84" y="8" width="293" height="60"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <accessibility key="accessibilityConfiguration">
                         <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
@@ -50,20 +41,29 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DateTime" textAlignment="right" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gle-pQ-l1n">
+                    <rect key="frame" x="277" y="51" width="100" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="hNn-DF-aAU"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="kwU-hE-tEu" secondAttribute="trailing" constant="8" id="2yD-HK-pW9"/>
                 <constraint firstItem="XmX-9M-cVg" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="90s-3b-Nh1"/>
                 <constraint firstItem="kwU-hE-tEu" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="DaT-1X-Qtu"/>
-                <constraint firstItem="gle-pQ-l1n" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="EPg-o8-lcm"/>
                 <constraint firstItem="LcQ-VE-o26" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="ImB-HM-0uB"/>
                 <constraint firstItem="LcQ-VE-o26" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="NJy-d7-L8p"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="gle-pQ-l1n" secondAttribute="trailing" constant="8" id="PuM-YP-oom"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="XmX-9M-cVg" secondAttribute="bottom" id="a3z-hM-4GG"/>
                 <constraint firstItem="kwU-hE-tEu" firstAttribute="leading" secondItem="LcQ-VE-o26" secondAttribute="trailing" constant="16" id="cPL-06-JRe"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="gle-pQ-l1n" secondAttribute="trailing" constant="32" id="jqq-eT-FkX"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="gle-pQ-l1n" secondAttribute="bottom" constant="8" id="fCy-H8-Gap"/>
                 <constraint firstAttribute="bottom" secondItem="kwU-hE-tEu" secondAttribute="bottom" constant="8" id="lUY-xr-e93"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="LcQ-VE-o26" secondAttribute="bottom" constant="8" id="ndU-pb-RyM"/>
-                <constraint firstItem="gle-pQ-l1n" firstAttribute="leading" secondItem="kwU-hE-tEu" secondAttribute="trailing" constant="8" id="tZE-Ff-auF"/>
                 <constraint firstItem="kwU-hE-tEu" firstAttribute="leading" secondItem="XmX-9M-cVg" secondAttribute="trailing" constant="8" id="v0R-uu-iGd"/>
                 <constraint firstItem="XmX-9M-cVg" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="x2M-mb-wm2"/>
             </constraints>
