@@ -36,6 +36,7 @@ extension UIViewController {
         return storyboard.instantiateViewController(withIdentifier: identifier)
     }
     
+    @discardableResult
     static func show(viewWithId id: String, in navigationController: UINavigationController? = nil) -> UIViewController? {
         guard let controller = getViewController(with: id) else { return nil }
         navigationController?.setNavigationBarHidden(false, animated: false)
@@ -43,6 +44,7 @@ extension UIViewController {
         return controller
     }
     
+    @discardableResult
     func show(viewControllerWithId id: String, modally: Bool = true, animated: Bool = true) -> UIViewController? {
         if let controller = UIViewController.getViewController(with: id) {
             self.show(controller, modally: modally, animated: animated)

@@ -58,8 +58,8 @@ class ViewController: UIViewController {
     }
     
     func showHistory() {
-        let _ = UIViewController.show(viewWithId: SentimentViewController.identifier,
-                                      in: navigationController)
+        UIViewController.show(viewWithId: SentimentViewController.identifier,
+                              in: navigationController)
     }
     
     func decorateTitle() {
@@ -87,8 +87,8 @@ class ViewController: UIViewController {
     }
     
     @objc func onSettingsButtonPressed(_ sender: Any) {
-        let _ = NotificationSettingsTableView.show(viewWithId: NotificationSettingsTableView.identifier,
-                                                   in: self.navigationController)
+        NotificationSettingsTableView.show(viewWithId: NotificationSettingsTableView.identifier,
+                                           in: self.navigationController)
     }
 }
 
