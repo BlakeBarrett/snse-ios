@@ -35,7 +35,8 @@ class EntryFormCardViewController: UIViewController {
         // launch color picker
         
         if let controller = UIViewController.show(viewWithId: ColorPickerViewController.identifier,
-                                                  in: navigationController) as? ColorPickerViewController {
+                                                  in: navigationController)
+            as? ColorPickerViewController {
             weak var weakSelf = self
             controller.delegate = weakSelf
             controller.color = selectedColor
