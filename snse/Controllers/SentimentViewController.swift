@@ -13,8 +13,27 @@ class SentimentViewController: UITableViewController {
     
     static let identifier = "historyViewController"
     
+    struct Constants {
+        static let cancel = NSLocalizedString("Cancel", comment: "Cancel")
+        static let select = NSLocalizedString("Select", comment: "Select")
+        static let filter = NSLocalizedString("Filter", comment: "filter")
+    }
+    
     var sentiments = [Sentiment]()
     var detailView: DetailCardViewController? = DetailCardViewController()
+    var selectedItems = Set<Sentiment>()
+    
+    lazy var actionBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.action,
+                                                   target: self,
+                                                   action: #selector(handleAction))
+    lazy var selectBarButtonItem = UIBarButtonItem(title: Constants.select,
+                                                   style: .plain,
+                                                   target: self,
+                                                   action: #selector(handleSelectButton))
+    lazy var cancelBarButtonItem = UIBarButtonItem(title: Constants.cancel,
+                                                   style: .plain,
+                                                   target: self,
+                                                   action: #selector(handleSelectButton))
     
     deinit {
         detailView?.sentiment = nil
@@ -31,16 +50,19 @@ class SentimentViewController: UITableViewController {
         tableView.refreshControl?.addTarget(self,
                                             action: #selector(handleRefreshControl),
                                             for: .valueChanged)
+        tableView.allowsMultipleSelectionDuringEditing = true
         
         if #available(iOS 11.0, *) {
-            let filter = NSLocalizedString("Filter", comment: "filter")
+
             navigationItem.searchController = UISearchController(searchResultsController: nil)
             navigationItem.searchController?.searchResultsUpdater = self
-            navigationItem.searchController?.searchBar.placeholder = filter
+            navigationItem.searchController?.searchBar.placeholder = Constants.filter
             navigationItem.searchController?.searchBar.setShowsCancelButton(false, animated: false)
             navigationItem.hidesSearchBarWhenScrolling = true
-        }
+            
+            navigationItem.rightBarButtonItem = selectBarButtonItem
         
+        }
         fetchAndRender()
     }
     
@@ -79,6 +101,36 @@ class SentimentViewController: UITableViewController {
 
 extension SentimentViewController {
     
+    @objc func handleSelectButton() {
+        tableView.isEditing = !tableView.isEditing
+        if tableView.isEditing {
+            
+            navigationItem.leftBarButtonItem = cancelBarButtonItem
+            navigationItem.rightBarButtonItem = nil
+            
+        } else {
+            
+            navigationItem.leftBarButtonItem = nil
+            navigationItem.rightBarButtonItem = selectBarButtonItem
+            
+        }
+    }
+    
+    @objc func handleAction() {
+        
+        let encoder = JSONEncoder()
+        
+        guard let encoded = try? encoder.encode(Array(selectedItems)) else { return }
+        
+        let value = String(decoding: encoded, as: UTF8.self)
+        
+        // TODO: create a UIActivityItemProvider describing that this is string/json content
+        
+        self.present(UIActivityViewController(activityItems: [value],
+                                              applicationActivities: nil),
+                     animated: true)
+    }
+    
     @objc func handleRefreshControl() {
         fetchAndRender()
     }
@@ -103,13 +155,26 @@ extension SentimentViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let value = self.sentiments[indexPath.row]
-        showHistoricalSentiment(value)
-        if  #available(iOS 11.0, *),
-            navigationItem.searchController?.isActive ?? false {
+        selectedItems.insert(value)
+        
+        if !tableView.isEditing {
+            showHistoricalSentiment(value)
+            
+            if  #available(iOS 11.0, *),
+                navigationItem.searchController?.isActive ?? false {
+                tableView.deselectRow(at: indexPath, animated: true)
+            }
             
         } else {
-            tableView.deselectRow(at: indexPath, animated: true)
+            
+            navigationItem.rightBarButtonItem = actionBarButtonItem
+            
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let value = self.sentiments[indexPath.row]
+        selectedItems.remove(value)
     }
     
     func showHistoricalSentiment(_ value: Sentiment) {

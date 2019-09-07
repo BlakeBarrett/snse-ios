@@ -10,7 +10,21 @@ import Foundation
 import CoreData
 import UIKit
 
-class Sentiment: Encodable {
+class Sentiment: Encodable, Hashable, Equatable {
+    
+    static func == (lhs: Sentiment, rhs: Sentiment) -> Bool {
+        return lhs.timestamp == rhs.timestamp
+    }
+    
+    static func < (lhs: Sentiment, rhs: Sentiment) -> Bool {
+        let lhsTs = Double(lhs.timestamp?.timeIntervalSince1970 ?? 0)
+        let rhsTs = Double(rhs.timestamp?.timeIntervalSince1970 ?? 0)
+        return lhsTs < rhsTs
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(timestamp)
+    }
     
     enum Feels: String {
         case sad = "😞",
