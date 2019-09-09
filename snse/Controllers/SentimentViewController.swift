@@ -146,7 +146,9 @@ extension SentimentViewController {
     
     @objc func handleAction() {
         
-        guard let value = jsonString(for: Array(selectedItems)) else { return }
+        let items = Array(selectedItems)
+        
+        guard let value = jsonString(for: items) else { return }
         
         
         let savedFileUrl = getTempFilePath()
@@ -159,8 +161,9 @@ extension SentimentViewController {
     
     private func jsonString(for items: [Sentiment]) -> String? {
         let encoder = JSONEncoder()
+        encoder.outputFormatting = .prettyPrinted
         
-        guard let encoded = try? encoder.encode(sentiments) else { return nil }
+        guard let encoded = try? encoder.encode(items) else { return nil }
         
         let value = String(decoding: encoded, as: UTF8.self)
         

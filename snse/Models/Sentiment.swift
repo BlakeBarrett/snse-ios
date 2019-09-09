@@ -127,14 +127,14 @@ class Sentiment: Encodable, Hashable, Equatable {
         
         let timeValue = timestamp?.timeIntervalSince1970
         
-        try container.encode(feeling, forKey: .feeling)
-        try container.encode(water, forKey: .water)
         try container.encode(timeValue, forKey: .timestamp)
-        try container.encode(elaborate, forKey: .elaborate)
+        try container.encode(feeling, forKey: .feeling)
         try container.encode(intensity, forKey: .intensity)
+        try container.encode(water, forKey: .water)
         if let rgbaColor = color?.toRGBAString() {
             try container.encode(rgbaColor, forKey: .color)
         }
+        try container.encode(elaborate, forKey: .elaborate)
     }
     
     func jsonString() -> String {
@@ -156,11 +156,11 @@ extension Sentiment {
         if let entity = NSEntityDescription.entity(forEntityName: "SentimentEntity", in: context) {
             let sentiment = NSManagedObject(entity: entity, insertInto: context)
             sentiment.setValue(self.timestamp, forKey: Fields.timestamp.rawValue)
-            sentiment.setValue(self.water, forKey: Fields.water.rawValue)
-            sentiment.setValue(self.elaborate, forKey: Fields.elaborate.rawValue)
             sentiment.setValue(self.feeling, forKey: Fields.feeling.rawValue)
             sentiment.setValue(self.intensity, forKey: Fields.intensity.rawValue)
+            sentiment.setValue(self.water, forKey: Fields.water.rawValue)
             sentiment.setValue(self.color?.toRGBAString(), forKey: Fields.color.rawValue)
+            sentiment.setValue(self.elaborate, forKey: Fields.elaborate.rawValue)
             return sentiment
         }
         return nil
