@@ -16,14 +16,17 @@ class SentimentViewController: UITableViewController {
     struct Constants {
         static let cancel = NSLocalizedString("Cancel", comment: "Cancel")
         static let select = NSLocalizedString("Select", comment: "Select")
-        static let filter = NSLocalizedString("Filter", comment: "filter")
+        static let selectAll = NSLocalizedString("Select All", comment: "Select All")
+        static let filter = NSLocalizedString("Filter", comment: "Filter")
+        static let export = NSLocalizedString("Export", comment: "Export")
     }
     
     var sentiments = [Sentiment]()
     var detailView: DetailCardViewController? = DetailCardViewController()
     var selectedItems = Set<Sentiment>()
     
-    lazy var actionBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.action,
+    lazy var actionBarButtonItem = UIBarButtonItem(title: Constants.export,
+                                                   style: .plain,
                                                    target: self,
                                                    action: #selector(handleAction))
     lazy var selectBarButtonItem = UIBarButtonItem(title: Constants.select,
@@ -34,6 +37,10 @@ class SentimentViewController: UITableViewController {
                                                    style: .plain,
                                                    target: self,
                                                    action: #selector(handleSelectButton))
+    lazy var selectAllButtonItem = UIBarButtonItem(title: Constants.selectAll,
+                                                   style: .plain,
+                                                   target: self,
+                                                   action: #selector(handleSelectAll))
     
     deinit {
         detailView?.sentiment = nil
@@ -101,38 +108,75 @@ class SentimentViewController: UITableViewController {
 
 extension SentimentViewController {
     
+    @objc func handleRefreshControl() {
+        fetchAndRender()
+    }
+    
     @objc func handleSelectButton() {
         tableView.isEditing = !tableView.isEditing
         if tableView.isEditing {
             
             navigationItem.leftBarButtonItem = cancelBarButtonItem
-            navigationItem.rightBarButtonItem = nil
+            navigationItem.rightBarButtonItem = selectAllButtonItem
             
         } else {
             
             navigationItem.leftBarButtonItem = nil
             navigationItem.rightBarButtonItem = selectBarButtonItem
             
+            selectedItems.removeAll()
+            
         }
+    }
+    
+    @objc func handleSelectAll() {
+        self.sentiments.enumerated().forEach { (index, sentiment) in
+            
+            let indexPath = IndexPath(row: index, section: 0)
+            
+            tableView.selectRow(at: indexPath,
+                                animated: false,
+                                scrollPosition: UITableView.ScrollPosition.none)
+            
+            self.selectedItems.insert(sentiment)
+        }
+        
+        navigationItem.rightBarButtonItem = actionBarButtonItem
     }
     
     @objc func handleAction() {
         
-        let encoder = JSONEncoder()
+        guard let value = jsonString(for: Array(selectedItems)) else { return }
         
-        guard let encoded = try? encoder.encode(Array(selectedItems)) else { return }
         
-        let value = String(decoding: encoded, as: UTF8.self)
+        let savedFileUrl = getTempFilePath()
+        writeFile(with: value, to: savedFileUrl)
         
-        // TODO: create a UIActivityItemProvider describing that this is string/json content
-        
-        self.present(UIActivityViewController(activityItems: [value],
+        self.present(UIActivityViewController(activityItems: [savedFileUrl],
                                               applicationActivities: nil),
                      animated: true)
     }
     
-    @objc func handleRefreshControl() {
-        fetchAndRender()
+    private func jsonString(for items: [Sentiment]) -> String? {
+        let encoder = JSONEncoder()
+        
+        guard let encoded = try? encoder.encode(sentiments) else { return nil }
+        
+        let value = String(decoding: encoded, as: UTF8.self)
+        
+        return value
+    }
+    
+    private func getTempFilePath() -> URL {
+        let filename = "snse-\(Date().timeIntervalSince1970).json"
+        let tempDirectory = URL(fileURLWithPath: NSTemporaryDirectory(), isDirectory: true)
+        let tempFileUrl = tempDirectory.appendingPathComponent(filename)
+        
+        return tempFileUrl
+    }
+    
+    private func writeFile(with contents: String, to url: URL) {
+        try? contents.data(using: .utf8)?.write(to: url, options: .atomic)
     }
 }
 
@@ -167,7 +211,11 @@ extension SentimentViewController {
             
         } else {
             
-            navigationItem.rightBarButtonItem = actionBarButtonItem
+            if selectedItems.count == 0 {
+                navigationItem.rightBarButtonItem = selectAllButtonItem
+            } else {
+                navigationItem.rightBarButtonItem = actionBarButtonItem
+            }
             
         }
     }
@@ -175,6 +223,14 @@ extension SentimentViewController {
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let value = self.sentiments[indexPath.row]
         selectedItems.remove(value)
+        
+        guard tableView.isEditing else { return }
+        
+        if selectedItems.count == 0 {
+            navigationItem.rightBarButtonItem = selectAllButtonItem
+        } else {
+            navigationItem.rightBarButtonItem = actionBarButtonItem
+        }
     }
     
     func showHistoricalSentiment(_ value: Sentiment) {
