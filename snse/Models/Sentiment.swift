@@ -47,11 +47,11 @@ class Sentiment: Encodable, Hashable, Equatable {
         static func keys() -> [String] {
             return [
                 Fields.timestamp.rawValue,
-                Fields.water.rawValue,
-                Fields.elaborate.rawValue,
                 Fields.feeling.rawValue,
                 Fields.intensity.rawValue,
-                Fields.color.rawValue
+                Fields.water.rawValue,
+                Fields.color.rawValue,
+                Fields.elaborate.rawValue
             ]
         }
     }
