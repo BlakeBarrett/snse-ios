@@ -211,6 +211,7 @@ extension SentimentViewController {
                 navigationItem.searchController?.isActive ?? false {
                 tableView.deselectRow(at: indexPath, animated: true)
             }
+            tableView.deselectRow(at: indexPath, animated: true)
             
         } else {
             
