@@ -291,5 +291,7 @@ class SentimentTableViewCell: UITableViewCell {
         dateLabel.text = value.getDateString()
         
         colorView.backgroundColor = value.color
+        
+        self.backgroundColor = UIColor.white
     }
 }
