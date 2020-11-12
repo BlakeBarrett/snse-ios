@@ -211,6 +211,7 @@ extension SentimentViewController {
                 navigationItem.searchController?.isActive ?? false {
                 tableView.deselectRow(at: indexPath, animated: true)
             }
+            tableView.deselectRow(at: indexPath, animated: true)
             
         } else {
             
@@ -290,5 +291,7 @@ class SentimentTableViewCell: UITableViewCell {
         dateLabel.text = value.getDateString()
         
         colorView.backgroundColor = value.color
+        
+        self.backgroundColor = UIColor.white
     }
 }

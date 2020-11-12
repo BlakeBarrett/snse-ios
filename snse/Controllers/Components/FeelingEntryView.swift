@@ -88,7 +88,7 @@ import UIKit
         subviews.forEach({ view in
             view.backgroundColor = (view.tag == self.selectedIndex ? selectedColor : deselectedColor)
         })
-        backgroundColor = UIColor.clear
+        backgroundColor = UIColor.white
     }
     
     func updateLabelSizes() {
