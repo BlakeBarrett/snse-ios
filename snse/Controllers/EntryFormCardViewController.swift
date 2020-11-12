@@ -22,6 +22,9 @@ class EntryFormCardViewController: UIViewController {
     var selectedColor: UIColor? = UIColor.white
     var selectedFeelingIndex: Int = -1
     
+    static let maximumIntensity = 100
+    static let halfIntensity = maximumIntensity / 2
+    
     override func viewDidLoad() {
         reset()
     }
@@ -141,7 +144,7 @@ extension EntryFormCardViewController {
         feelingView.selectedIndex = selectedFeelingIndex
     }
     
-    func updateFeelingIntensity(value: Int) {
+    func updateFeelingIntensity(value: Int = Int(halfIntensity)) {
         feelingView.intensity = value
     }
 }
@@ -156,15 +159,19 @@ extension EntryFormCardViewController {
         }
     }
     
-    func reset() {
+    func reset(
+        defaultIntensityValue: Float = Float(EntryFormCardViewController.halfIntensity),
+        backgroundColor: UIColor = UIColor.groupTableViewBackground
+    ) {
         elaborateTextField.text = ""
         selectedColor = UIColor.white
         waterImage.tag = 0
         updateWaterButtonImage(waterImage)
         feelingView.reset()
         setColors(tintColor: UIColor.darkGray)
-        view.backgroundColor = UIColor.groupTableViewBackground
-        updateFeelingIntensity(value: 50)
+        view.backgroundColor = backgroundColor
+        updateFeelingIntensity()
+        intensitySlider.setValue(defaultIntensityValue, animated: true)
     }
     
     func sentiment() -> Sentiment? {
