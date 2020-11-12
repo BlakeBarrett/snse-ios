@@ -72,7 +72,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v8U-bR-K5D">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v8U-bR-K5D">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="cancel" id="bud-IO-x2r">
@@ -90,7 +90,7 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <view contentMode="scaleToFill" verticalCompressionResistancePriority="250" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gmp-lc-ypv" customClass="HSBColorPicker" customModule="snse" customModuleProvider="target">
+                            <view contentMode="scaleToFill" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="gmp-lc-ypv" customClass="HSBColorPicker" customModule="snse" customModuleProvider="target">
                                 <rect key="frame" x="16" y="36" width="343" height="571"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
