@@ -54,12 +54,14 @@ extension UIViewController {
     }
     
     func show(_ viewController: UIViewController, modally: Bool = true, animated: Bool = true) {
-        viewController.providesPresentationContextTransitionStyle = modally
-        viewController.definesPresentationContext = modally
-        viewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-        viewController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-        
-        present(viewController, animated: animated)
+        DispatchQueue.main.async {
+            viewController.providesPresentationContextTransitionStyle = modally
+            viewController.definesPresentationContext = modally
+            viewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+            viewController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+
+            self.present(viewController, animated: animated)
+        }
     }
     
     func setStatusBar(hidden: Bool) {
