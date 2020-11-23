@@ -72,7 +72,11 @@ extension DetailCardViewController {
     }
     
     func color(_ sentiment: Sentiment?) -> UIColor {
-        return sentiment?.color ?? UIColor.systemGroupedBackground
+        if #available(iOS 13.0, *) {
+            return sentiment?.color ?? UIColor.systemGroupedBackground
+        } else {
+            return sentiment?.color ?? UIColor.groupTableViewBackground
+        }
     }
     
     func decorateFeelingLabel(view: UILabel, sentiment: Sentiment?) {

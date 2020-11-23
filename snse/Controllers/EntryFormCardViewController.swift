@@ -162,15 +162,25 @@ extension EntryFormCardViewController {
     
     func reset(
         defaultIntensityValue: Float = Float(EntryFormCardViewController.halfIntensity),
-        backgroundColor: UIColor = UIColor.systemGroupedBackground
+        backgroundColor: UIColor? = nil
     ) {
+        var color: UIColor? = backgroundColor
+        
+        if color == nil {
+            if #available(iOS 13.0, *) {
+                color = UIColor.systemGroupedBackground
+            } else {
+                color = UIColor.groupTableViewBackground
+            }
+        }
+        
         elaborateTextField.text = ""
         selectedColor = UIColor.white
         waterImage.tag = 0
         updateWaterButtonImage(waterImage)
         feelingView.reset()
         setColors(tintColor: UIColor.darkGray)
-        view.backgroundColor = backgroundColor
+        view.backgroundColor = color
         updateFeelingIntensity()
         intensitySlider.setValue(defaultIntensityValue, animated: true)
     }
