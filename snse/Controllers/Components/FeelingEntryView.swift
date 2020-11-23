@@ -51,14 +51,15 @@ import UIKit
         removeAll()
         let buttonLabels = Sentiment.Feels.all
         var count = 0
+        removeAll()
         buttonLabels.forEach({ value in
-            let height = self.bounds.height
-            let width = self.bounds.width / CGFloat(buttonLabels.count)
+            let width = rect.width / CGFloat(buttonLabels.count)
             let x = CGFloat(CGFloat(count) * width)
             let y = CGFloat(0)
             
             let button = generateButton(with: value)
-            button.frame = CGRect(x: x, y: y, width: width, height: height)
+            // make the new rect a square
+            button.frame = CGRect(x: x, y: y, width: width, height: width)
             button.tag = count
             addSubview(button)
             count += 1

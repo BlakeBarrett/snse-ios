@@ -34,6 +34,16 @@ class EntryFormCardViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
+    override func viewWillTransition(to size: CGSize,
+                            with coordinator: UIViewControllerTransitionCoordinator) {
+        feelingView.draw(
+            CGRect(
+                origin: CGPoint.zero,
+                size: size
+            )
+        )
+    }
+    
     @IBAction func onPalettePressed(_ sender: UIButton) {
         catchTheFeeling()
         // launch color picker
