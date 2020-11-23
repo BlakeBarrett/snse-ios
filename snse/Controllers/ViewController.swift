@@ -102,10 +102,9 @@ extension ViewController {
         activity.title = NSLocalizedString("Feeling great?", comment: "Feeling Great?")
         activity.userInfo = ["feeling" : "😊"]
         activity.isEligibleForSearch = true
-        if #available(iOS 12.0, *) {
-            activity.isEligibleForPrediction = true
-            activity.persistentIdentifier = NSUserActivityPersistentIdentifier(stringLiteral: identifier)
-        }
+        activity.isEligibleForPrediction = true
+        activity.persistentIdentifier = NSUserActivityPersistentIdentifier(stringLiteral: identifier)
+        
         view.userActivity = activity
         activity.becomeCurrent()
     }
