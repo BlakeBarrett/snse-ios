@@ -31,7 +31,6 @@ class DedicatedTextEntryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        forceLightMode()
         mainTextView.becomeFirstResponder()
         mainTextView.text = text
         setupNavButtons()

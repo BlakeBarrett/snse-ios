@@ -146,11 +146,3 @@ extension UIViewController {
         }
     }
 }
-
-extension UIViewController {
-    func forceLightMode() {
-        if #available(iOS 13.0, *) {
-            overrideUserInterfaceStyle = .light
-        }
-    }
-}

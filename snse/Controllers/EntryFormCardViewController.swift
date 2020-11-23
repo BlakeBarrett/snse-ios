@@ -27,8 +27,6 @@ class EntryFormCardViewController: UIViewController {
     
     override func viewDidLoad() {
         
-        forceLightMode()
-        
         reset()
     }
     

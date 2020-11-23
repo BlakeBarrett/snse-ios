@@ -27,8 +27,6 @@ class DetailCardViewController: UIViewController {
     
     override func awakeFromNib() {
         
-        forceLightMode()
-        
         viewDidLoad()
     }
     
