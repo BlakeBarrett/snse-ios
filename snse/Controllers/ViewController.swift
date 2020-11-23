@@ -70,6 +70,7 @@ class ViewController: UIViewController {
         label.font = font
         label.text = navigationItem.title
         label.sizeToFit()
+        label.textColor = UIColor.darkText
         navigationItem.titleView = label
     }
     
