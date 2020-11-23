@@ -11,12 +11,9 @@ import UIKit
 // Thanks!: https://medium.com/@cafielo/how-to-detect-notch-screen-in-swift-56271827625d
 extension UIDevice {
     var hasNotch: Bool {
-        if #available(iOS 11.0, *) {
-            let bottom = UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0
-            return bottom > 0
-        } else {
-            // Fallback on earlier versions
-            return false
+        if #available(iOS 11.0, tvOS 11.0, *) {
+            return UIApplication.shared.delegate?.window??.safeAreaInsets.top ?? 0 > 20
         }
+        return false
     }
 }

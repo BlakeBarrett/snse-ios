@@ -162,7 +162,7 @@ extension EntryFormCardViewController {
     
     func reset(
         defaultIntensityValue: Float = Float(EntryFormCardViewController.halfIntensity),
-        backgroundColor: UIColor = UIColor.groupTableViewBackground
+        backgroundColor: UIColor = UIColor.systemGroupedBackground
     ) {
         elaborateTextField.text = ""
         selectedColor = UIColor.white
