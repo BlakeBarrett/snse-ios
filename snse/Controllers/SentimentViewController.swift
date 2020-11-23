@@ -14,33 +14,29 @@ class SentimentViewController: UITableViewController {
     static let identifier = "historyViewController"
     
     struct Constants {
-        static let cancel = NSLocalizedString("Cancel", comment: "Cancel")
         static let select = NSLocalizedString("Select", comment: "Select")
         static let selectAll = NSLocalizedString("Select All", comment: "Select All")
         static let filter = NSLocalizedString("Filter", comment: "Filter")
-        static let export = NSLocalizedString("Export", comment: "Export")
+        
+        static var actionBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action,
+                                                            target: self,
+                                                            action: #selector(handleAction))
+        static var selectBarButtonItem = UIBarButtonItem(title: Constants.select,
+                                                       style: .plain,
+                                                       target: self,
+                                                       action: #selector(handleSelectButton))
+        static var cancelBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel,
+                                                            target: self,
+                                                            action: #selector(handleSelectButton))
+        static var selectAllButtonItem = UIBarButtonItem(title: Constants.selectAll,
+                                                       style: .plain,
+                                                       target: self,
+                                                       action: #selector(handleSelectAll))
     }
     
     var sentiments = [Sentiment]()
     var detailView: DetailCardViewController? = DetailCardViewController()
     var selectedItems = Set<Sentiment>()
-    
-    lazy var actionBarButtonItem = UIBarButtonItem(title: Constants.export,
-                                                   style: .plain,
-                                                   target: self,
-                                                   action: #selector(handleAction))
-    lazy var selectBarButtonItem = UIBarButtonItem(title: Constants.select,
-                                                   style: .plain,
-                                                   target: self,
-                                                   action: #selector(handleSelectButton))
-    lazy var cancelBarButtonItem = UIBarButtonItem(title: Constants.cancel,
-                                                   style: .plain,
-                                                   target: self,
-                                                   action: #selector(handleSelectButton))
-    lazy var selectAllButtonItem = UIBarButtonItem(title: Constants.selectAll,
-                                                   style: .plain,
-                                                   target: self,
-                                                   action: #selector(handleSelectAll))
     
     deinit {
         detailView?.sentiment = nil
@@ -50,6 +46,14 @@ class SentimentViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configureTableView(tableView: tableView)
+        
+        configureNavigationItem(navigationItem: navigationItem)
+        
+        fetchAndRender()
+    }
+    
+    func configureTableView(tableView: UITableView) {
         let cellNib = UINib(nibName: SentimentTableViewCell.nibIdentifier, bundle: Bundle.main)
         tableView.register(cellNib, forCellReuseIdentifier: SentimentTableViewCell.reuseIdentifier)
         tableView.estimatedRowHeight = 75
@@ -58,19 +62,17 @@ class SentimentViewController: UITableViewController {
                                             action: #selector(handleRefreshControl),
                                             for: .valueChanged)
         tableView.allowsMultipleSelectionDuringEditing = true
+    }
+    
+    func configureNavigationItem(navigationItem: UINavigationItem,
+                                 selectItem: UIBarButtonItem = Constants.selectBarButtonItem) {
+        navigationItem.searchController = UISearchController(searchResultsController: nil)
+        navigationItem.searchController?.searchResultsUpdater = self
+        navigationItem.searchController?.searchBar.placeholder = Constants.filter
+        navigationItem.searchController?.searchBar.setShowsCancelButton(false, animated: false)
+        navigationItem.hidesSearchBarWhenScrolling = true
         
-        if #available(iOS 11.0, *) {
-
-            navigationItem.searchController = UISearchController(searchResultsController: nil)
-            navigationItem.searchController?.searchResultsUpdater = self
-            navigationItem.searchController?.searchBar.placeholder = Constants.filter
-            navigationItem.searchController?.searchBar.setShowsCancelButton(false, animated: false)
-            navigationItem.hidesSearchBarWhenScrolling = true
-            
-            navigationItem.rightBarButtonItem = selectBarButtonItem
-        
-        }
-        fetchAndRender()
+        navigationItem.rightBarButtonItem = selectItem
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -117,17 +119,17 @@ extension SentimentViewController {
         
         if tableView.isEditing {
             
-            navigationItem.leftBarButtonItem = cancelBarButtonItem
+            navigationItem.leftBarButtonItem = Constants.cancelBarButtonItem
             
             // Because there is a bug in macCatalyts where you cannot "Select All".
             #if !targetEnvironment(macCatalyst)
-                navigationItem.rightBarButtonItem = selectAllButtonItem
+            navigationItem.rightBarButtonItem = Constants.selectAllButtonItem
             #endif
             
         } else {
             
             navigationItem.leftBarButtonItem = nil
-            navigationItem.rightBarButtonItem = selectBarButtonItem
+            navigationItem.rightBarButtonItem = Constants.selectBarButtonItem
             
             selectedItems.removeAll()
             
@@ -146,7 +148,7 @@ extension SentimentViewController {
             self.selectedItems.insert(sentiment)
         }
         
-        navigationItem.rightBarButtonItem = actionBarButtonItem
+        navigationItem.rightBarButtonItem = Constants.actionBarButtonItem
     }
     
     @objc func handleAction() {
@@ -221,9 +223,9 @@ extension SentimentViewController {
         } else {
             
             if selectedItems.count == 0 {
-                navigationItem.rightBarButtonItem = selectAllButtonItem
+                navigationItem.rightBarButtonItem = Constants.selectAllButtonItem
             } else {
-                navigationItem.rightBarButtonItem = actionBarButtonItem
+                navigationItem.rightBarButtonItem = Constants.actionBarButtonItem
             }
             
         }
@@ -236,9 +238,9 @@ extension SentimentViewController {
         guard tableView.isEditing else { return }
         
         if selectedItems.count == 0 {
-            navigationItem.rightBarButtonItem = selectAllButtonItem
+            navigationItem.rightBarButtonItem = Constants.selectAllButtonItem
         } else {
-            navigationItem.rightBarButtonItem = actionBarButtonItem
+            navigationItem.rightBarButtonItem = Constants.actionBarButtonItem
         }
     }
     
