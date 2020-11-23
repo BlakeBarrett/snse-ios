@@ -11,7 +11,11 @@ import UserNotifications
 
 class NotificationUtils {
     
-    let center = UNUserNotificationCenter.current()
+    var center: UNUserNotificationCenter {
+        get {
+            UNUserNotificationCenter.current()
+        }
+    }
     
     func getAuthorization(success: (()->Void)?, failure: ((Error?)->Void)?) {
         
@@ -28,7 +32,7 @@ class NotificationUtils {
     private func createNotification() -> UNNotificationContent {
         let notification = UNMutableNotificationContent()
         notification.title = "Snse"
-        notification.body = "How are you feeling?"
+        notification.body = NSLocalizedString("How are you feeling?", comment: "How are you feeling?")
         notification.sound = UNNotificationSound.default
         return notification
     }

@@ -14,13 +14,29 @@ class NotificationSettingsTableView: UITableViewController {
     
     public static let identifier = "NotificationSettingsTableView"
     
-    private let notificationUtils = NotificationUtils()
+    struct Constants {
+        static let addBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
+                                                        target: self,
+                                                        action: #selector(onAddClicked(_:)))
+        
+        static let selectBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Select", comment: "Select"),
+                                                       style: .plain,
+                                                       target: self,
+                                                       action: #selector(handleSelectButton))
+        
+        static let cancelBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel,
+                                                            target: self,
+                                                            action: #selector(handleSelectButton))
+
+    }
+        
+    private lazy var notificationUtils = NotificationUtils()
     var dates: [Date]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        registerTableViewCell()
-        addAddButtonToRightNavigationItem()
+        registerTableViewCell(tableView: tableView)
+        addButtonToRightNavigationItems(navigationItem: navigationItem)
         reloadData()
     }
     
@@ -28,16 +44,20 @@ class NotificationSettingsTableView: UITableViewController {
         navigationItem.rightBarButtonItem = nil
     }
     
-    func registerTableViewCell() {
+    func registerTableViewCell(tableView: UITableView) {
         let cellNib = UINib(nibName: NotificationAlarmTableViewCell.nibIdentifier, bundle: Bundle.main)
         tableView.register(cellNib, forCellReuseIdentifier: NotificationAlarmTableViewCell.reuseIdentifier)
         tableView.estimatedRowHeight = 100
     }
     
-    func addAddButtonToRightNavigationItem() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
-                                                            target: self,
-                                                            action: #selector(onAddClicked(_:)))
+    func addButtonToRightNavigationItems(navigationItem: UINavigationItem,
+                                         add: UIBarButtonItem = Constants.addBarButtonItem,
+                                         select: UIBarButtonItem = Constants.selectBarButtonItem) {
+        #if targetEnvironment(macCatalyst)
+            navigationItem.rightBarButtonItems = [add, select]
+        #else
+            navigationItem.rightBarButtonItem = add
+        #endif
     }
     
     func reloadData() {
@@ -129,6 +149,18 @@ extension NotificationSettingsTableView {
         if  editingStyle == .delete {
             let selectedDate = self.dates?[indexPath.row]
             remove(selectedDate)
+        }
+    }
+}
+
+extension NotificationSettingsTableView {
+    @objc func handleSelectButton() {
+        tableView.isEditing = !tableView.isEditing
+        
+        if tableView.isEditing {
+            navigationItem.rightBarButtonItems = [Constants.addBarButtonItem, Constants.cancelBarButtonItem]
+        } else {
+            navigationItem.rightBarButtonItems = [Constants.addBarButtonItem, Constants.selectBarButtonItem]
         }
     }
 }
