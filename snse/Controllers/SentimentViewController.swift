@@ -114,10 +114,15 @@ extension SentimentViewController {
     
     @objc func handleSelectButton() {
         tableView.isEditing = !tableView.isEditing
+        
         if tableView.isEditing {
             
             navigationItem.leftBarButtonItem = cancelBarButtonItem
-            navigationItem.rightBarButtonItem = selectAllButtonItem
+            
+            // Because there is a bug in macCatalyts where you cannot "Select All".
+            #if !targetEnvironment(macCatalyst)
+                navigationItem.rightBarButtonItem = selectAllButtonItem
+            #endif
             
         } else {
             
