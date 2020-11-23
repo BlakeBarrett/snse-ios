@@ -26,6 +26,9 @@ class DetailCardViewController: UIViewController {
     var sentiment: Sentiment?
     
     override func awakeFromNib() {
+        
+        forceLightMode()
+        
         viewDidLoad()
     }
     

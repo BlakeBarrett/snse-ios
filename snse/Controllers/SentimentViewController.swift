@@ -50,6 +50,8 @@ class SentimentViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        forceLightMode()
+        
         let cellNib = UINib(nibName: SentimentTableViewCell.nibIdentifier, bundle: Bundle.main)
         tableView.register(cellNib, forCellReuseIdentifier: SentimentTableViewCell.reuseIdentifier)
         tableView.estimatedRowHeight = 75
@@ -66,6 +68,7 @@ class SentimentViewController: UITableViewController {
             navigationItem.searchController?.searchBar.placeholder = Constants.filter
             navigationItem.searchController?.searchBar.setShowsCancelButton(false, animated: false)
             navigationItem.hidesSearchBarWhenScrolling = true
+            navigationItem.searchController?.forceLightMode()
             
             navigationItem.rightBarButtonItem = selectBarButtonItem
         

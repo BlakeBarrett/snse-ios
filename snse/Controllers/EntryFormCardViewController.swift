@@ -26,6 +26,9 @@ class EntryFormCardViewController: UIViewController {
     static let halfIntensity = maximumIntensity / 2
     
     override func viewDidLoad() {
+        
+        forceLightMode()
+        
         reset()
     }
     

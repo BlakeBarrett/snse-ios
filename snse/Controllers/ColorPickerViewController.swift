@@ -24,7 +24,11 @@ class ColorPickerViewController: UIViewController {
     var delegate: ColorPickerDelegate?
     
     override func viewDidLoad() {
+        
+        forceLightMode()
+        
         viewHSBColorPicker.delegate = self
+        
         if let color = self.color {
             decorateWithColor(color: color)
         }
