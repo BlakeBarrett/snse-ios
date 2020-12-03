@@ -14,24 +14,25 @@ class SentimentViewController: UITableViewController {
     static let identifier = "historyViewController"
     
     struct Constants {
+        
         static let select = NSLocalizedString("Select", comment: "Select")
         static let selectAll = NSLocalizedString("Select All", comment: "Select All")
         static let filter = NSLocalizedString("Filter", comment: "Filter")
         
         static var actionBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action,
-                                                            target: self,
-                                                            action: #selector(handleAction))
+                                                         target: self,
+                                                         action: #selector(handleAction))
         static var selectBarButtonItem = UIBarButtonItem(title: Constants.select,
-                                                       style: .plain,
-                                                       target: self,
-                                                       action: #selector(handleSelectButton))
+                                                         style: .plain,
+                                                         target: self,
+                                                         action: #selector(handleSelectButton))
         static var cancelBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel,
-                                                            target: self,
-                                                            action: #selector(handleSelectButton))
+                                                         target: self,
+                                                         action: #selector(handleSelectButton))
         static var selectAllButtonItem = UIBarButtonItem(title: Constants.selectAll,
-                                                       style: .plain,
-                                                       target: self,
-                                                       action: #selector(handleSelectAll))
+                                                         style: .plain,
+                                                         target: self,
+                                                         action: #selector(handleSelectAll))
     }
     
     var sentiments = [Sentiment]()
@@ -45,6 +46,8 @@ class SentimentViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.interactions.append(UIDropInteraction(delegate: self))
         
         configureTableView(tableView: tableView)
         
@@ -275,6 +278,55 @@ extension SentimentViewController: UISearchResultsUpdating {
             !"".elementsEqual(filter) {
             fetchAndRender(filter: filter)
         }
+    }
+}
+
+extension SentimentViewController: UIDropInteractionDelegate {
+    
+    static let JSONTypeIdentifier = "public.json"
+    static let JSONTypeIdentifiers = [
+        JSONTypeIdentifier,
+//        "public.url", "public.link"
+    ]
+    
+    func dropInteraction(_ interaction: UIDropInteraction,
+                         canHandle session: UIDropSession) -> Bool {
+        return session.hasItemsConforming(toTypeIdentifiers: SentimentViewController.JSONTypeIdentifiers)
+    }
+
+    func dropInteraction(_ interaction: UIDropInteraction, sessionDidUpdate session: UIDropSession) -> UIDropProposal {
+        return UIDropProposal(operation: .copy)
+    }
+
+    func dropInteraction(_ interaction: UIDropInteraction, performDrop session: UIDropSession) {
+        // This is called with an array of NSURL
+        let _ = session.loadObjects(ofClass: URL.self) { urls in
+            for url in urls {
+                // Trying to play nice with permissions - https://developer.apple.com/documentation/uikit/view_controllers/providing_access_to_directories
+                guard url.startAccessingSecurityScopedResource() else {
+                    continue
+                }
+                self.importJSONData(from: url)
+                print(url)
+                do { url.stopAccessingSecurityScopedResource() }
+            }
+        }
+        
+        session.items.forEach { item in
+            let _ = item.itemProvider.loadObject(ofClass: URL.self) { data, error in
+                if let data = data {
+                    self.importJSONData(from: data)
+                }
+            }
+            let _ = item.itemProvider.loadObject(ofClass: String.self) { data, error in
+                let value = String(data ?? "")
+                print(value)
+            }
+        }
+    }
+    
+    private func importJSONData(from url: URL) {
+        print("I would love to load data from \(url).")
     }
 }
 
