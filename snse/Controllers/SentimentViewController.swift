@@ -284,49 +284,30 @@ extension SentimentViewController: UISearchResultsUpdating {
 extension SentimentViewController: UIDropInteractionDelegate {
     
     static let JSONTypeIdentifier = "public.json"
-    static let JSONTypeIdentifiers = [
-        JSONTypeIdentifier,
-//        "public.url", "public.link"
-    ]
     
     func dropInteraction(_ interaction: UIDropInteraction,
                          canHandle session: UIDropSession) -> Bool {
-        return session.hasItemsConforming(toTypeIdentifiers: SentimentViewController.JSONTypeIdentifiers)
+        return session.hasItemsConforming(toTypeIdentifiers: [SentimentViewController.JSONTypeIdentifier])
     }
 
     func dropInteraction(_ interaction: UIDropInteraction, sessionDidUpdate session: UIDropSession) -> UIDropProposal {
         return UIDropProposal(operation: .copy)
     }
 
+    // Thank you @Asperi on StackOverflow: https://stackoverflow.com/a/65211685/659746
     func dropInteraction(_ interaction: UIDropInteraction, performDrop session: UIDropSession) {
-        // This is called with an array of NSURL
-        let _ = session.loadObjects(ofClass: URL.self) { urls in
-            for url in urls {
-                // Trying to play nice with permissions - https://developer.apple.com/documentation/uikit/view_controllers/providing_access_to_directories
-                guard url.startAccessingSecurityScopedResource() else {
-                    continue
-                }
-                self.importJSONData(from: url)
-                print(url)
-                do { url.stopAccessingSecurityScopedResource() }
-            }
-        }
-        
         session.items.forEach { item in
-            let _ = item.itemProvider.loadObject(ofClass: URL.self) { data, error in
+            guard item.itemProvider.hasItemConformingToTypeIdentifier(SentimentViewController.JSONTypeIdentifier) else { return }
+            item.itemProvider.loadDataRepresentation(forTypeIdentifier: SentimentViewController.JSONTypeIdentifier) { data, error in
                 if let data = data {
                     self.importJSONData(from: data)
                 }
             }
-            let _ = item.itemProvider.loadObject(ofClass: String.self) { data, error in
-                let value = String(data ?? "")
-                print(value)
-            }
         }
     }
-    
-    private func importJSONData(from url: URL) {
-        print("I would love to load data from \(url).")
+
+    private func importJSONData(from data: Data) {
+        print("Decode JSON from \(data.description).")
     }
 }
 
