@@ -12,6 +12,16 @@ import UIKit
 
 class Sentiment: Encodable, Hashable, Equatable {
     
+    static func arrayFrom(data: Data) -> [Sentiment]? {
+        guard let json = try? JSONSerialization.jsonObject(with: data, options: []),
+              let sentimentsDict = json as? [[String:Any]]
+            else { return nil }
+        
+        return sentimentsDict.compactMap{ item in
+            Sentiment(values: item)
+        }
+    }
+    
     static func == (lhs: Sentiment, rhs: Sentiment) -> Bool {
         return lhs.timestamp == rhs.timestamp
     }
@@ -78,8 +88,8 @@ class Sentiment: Encodable, Hashable, Equatable {
                 // Are we loading from the db?
                 if let date = value as? Date {
                     self.timestamp = date
-                } else if let date = value as? Int {
-                    self.timestamp = Date(timeIntervalSince1970: Double(date))
+                } else if let doubleDate = value as? Double {
+                    self.timestamp = Date(timeIntervalSince1970: doubleDate)
                 }
                 break
             case Fields.water.rawValue:
@@ -138,12 +148,9 @@ class Sentiment: Encodable, Hashable, Equatable {
     }
     
     func jsonString() -> String {
-        let encoder = JSONEncoder()
-        
         do {
-            let encoded = try encoder.encode(self)
-            let str = String(decoding: encoded, as: UTF8.self)
-            return str
+            let encoded = try JSONEncoder().encode(self)
+            return String(decoding: encoded, as: UTF8.self)
         } catch {
             return error.localizedDescription
         }

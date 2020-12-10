@@ -50,6 +50,12 @@ class SentimentFactory {
         return load(from: context, withPredicate: predicate)
     }
     
+    static func save(_ value: [Sentiment]) {
+        value.forEach{ item in
+            save(item)
+        }
+    }
+    
     static func save(_ value: Sentiment) {
         let _ = value.managedObject(in: context)
         do {

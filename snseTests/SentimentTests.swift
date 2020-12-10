@@ -15,6 +15,25 @@ class SentimentTests: XCTestCase {
     let enUS = Locale(identifier: "en_US")
     let october_21st_2015_epoch = Double(1445473200)
     
+    let prettyPrintedRealWorldJSON = "{\r" +
+        "\t\"color\" : \"#ff67a4ff\",\r" +
+        "\t\"timestamp\" : 1546131431.5893731,\r" +
+        "\t\"elaborate\" : \"Finished vacuuming. Now I'm playing video games.\",\r" +
+        "\t\"intensity\" : 75,\r" +
+        "\t\"feeling\" : \"😊\",\r" +
+        "\t\"water\" : false\r" +
+      "}"
+    
+    func testParsingActualDate() {
+        let dateString = "1546131431.5893731"
+        guard let dateDouble = Double(dateString) else {
+            XCTFail("Parsing went badly.")
+            return
+        }
+        let date = Date(timeIntervalSince1970: dateDouble)
+        XCTAssertNotNil(date)
+    }
+    
     // NOTE: date rendering tests will fail if not in the Pacific timezone.
     func testShortDateString() {
         var values = [String: Any]()
@@ -52,31 +71,54 @@ class SentimentTests: XCTestCase {
     func testSerializationWithoutColor() {
         var values = [String: Any]()
         
-        values["timestamp"] = 1445473200
+        values["timestamp"] = 1445473200.0
         values["feeling"] = "😊"
         values["elaborate"] = ""
         values["water"] = true
         values["intensity"] = 50
-        let sentiment = Sentiment(values: values)
         
-        let actual = sentiment?.jsonString()
-        XCTAssertEqual(json, actual)
+        let expected = Sentiment(values: values)
+        let actual = Sentiment(jsonString: json)
+        
+        XCTAssertEqual(expected, actual)
     }
     
     func testSerializationWithColor() {
         var values = [String: Any]()
         
-        values["timestamp"] = 1445473200
+        values["timestamp"] = 1445473200.0
         values["feeling"] = "😊"
         values["elaborate"] = ""
         values["water"] = true
         values["intensity"] = 50
         values["color"] = UIColor.red
-        let sentiment = Sentiment(values: values)
         
-        let actual = sentiment?.jsonString()
-        XCTAssertEqual(jsonWithColor, actual)
+        let expected = Sentiment(values: values)
+        let actual = Sentiment(jsonString: jsonWithColor)
+        
+        XCTAssertEqual(expected, actual)
     }
     
+    func testDeserializingActualRealWorldJSON() {
+        guard let sentiment = Sentiment(jsonString: prettyPrintedRealWorldJSON) else {
+            XCTFail("Could not create Sentiment from JSON string provided.")
+            return
+        }
+        
+        if let dateDouble = Double("1546131431.5893731") {
+            let expected = Date(timeIntervalSince1970: dateDouble)
+            let actual = sentiment.timestamp
+            XCTAssertEqual(expected, actual)
+        } else {
+            XCTFail("Parsing Double from String went very badly.")
+        }
+        
+        XCTAssertEqual("12/29, 04:57", sentiment.getDateString())
+        XCTAssertEqual("December 29, 2018 at 4:57 PM", sentiment.getLongDateString())
+        XCTAssertEqual("😊", sentiment.feeling)
+        XCTAssertEqual(false, sentiment.water)
+        XCTAssertEqual("Finished vacuuming. Now I'm playing video games.", sentiment.elaborate)
+        XCTAssertEqual(75, sentiment.intensity)
+        XCTAssertNotNil(sentiment.color)
+    }
 }
-

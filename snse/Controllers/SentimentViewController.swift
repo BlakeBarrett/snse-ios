@@ -307,7 +307,8 @@ extension SentimentViewController: UIDropInteractionDelegate {
     }
 
     private func importJSONData(from data: Data) {
-        print("Decode JSON from \(data.description).")
+        let values = Sentiment.arrayFrom(data: data)
+        //SentimentFactory.save(values)
     }
 }
 
