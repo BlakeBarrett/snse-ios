@@ -297,17 +297,20 @@ extension SentimentViewController: UIDropInteractionDelegate {
     // Thank you @Asperi on StackOverflow: https://stackoverflow.com/a/65211685/659746
     func dropInteraction(_ interaction: UIDropInteraction, performDrop session: UIDropSession) {
         session.items.forEach { item in
-            guard item.itemProvider.hasItemConformingToTypeIdentifier(SentimentViewController.JSONTypeIdentifier) else { return }
-            item.itemProvider.loadDataRepresentation(forTypeIdentifier: SentimentViewController.JSONTypeIdentifier) { data, error in
-                if let data = data {
-                    self.importJSONData(from: data)
+            item.itemProvider.registeredTypeIdentifiers.forEach { itemType in
+                guard item.itemProvider.hasItemConformingToTypeIdentifier(itemType) else { return }
+                item.itemProvider.loadDataRepresentation(forTypeIdentifier: itemType) { data, error in
+                    if let data = data {
+                        self.importJSONData(from: data)
+                    }
                 }
             }
         }
     }
 
     private func importJSONData(from data: Data) {
-        let values = Sentiment.arrayFrom(data: data)
+        guard let values = SentimentFactory.arrayFrom(data: data) else { return }
+        print(values)
         //SentimentFactory.save(values)
     }
 }

@@ -78,4 +78,14 @@ class SentimentFactory {
         }
         return false
     }
+    
+    static func arrayFrom(data: Data) -> [Sentiment]? {
+        guard let json = try? JSONSerialization.jsonObject(with: data, options: []),
+              let sentimentsDict = json as? [[String:Any]]
+            else { return nil }
+        
+        return sentimentsDict.compactMap{ item in
+            Sentiment(values: item)
+        }
+    }
 }
