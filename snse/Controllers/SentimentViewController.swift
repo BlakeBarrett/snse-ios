@@ -79,13 +79,16 @@ class SentimentViewController: UITableViewController {
     
     func configureNavigationItem(navigationItem: UINavigationItem,
                                  selectItem: UIBarButtonItem = Constants.selectBarButtonItem) {
-        navigationItem.searchController = UISearchController(searchResultsController: nil)
-        navigationItem.searchController?.searchResultsUpdater = self
-        navigationItem.searchController?.searchBar.placeholder = Constants.filter
-        navigationItem.searchController?.searchBar.setShowsCancelButton(false, animated: false)
-        navigationItem.hidesSearchBarWhenScrolling = true
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.placeholder = Constants.filter
+        searchController.searchBar.setShowsCancelButton(true, animated: false)
         
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = true
         navigationItem.rightBarButtonItem = selectItem
+        
+        definesPresentationContext = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
