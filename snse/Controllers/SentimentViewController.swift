@@ -83,10 +83,16 @@ class SentimentViewController: UITableViewController {
         searchController.searchResultsUpdater = self
         searchController.searchBar.placeholder = Constants.filter
         searchController.searchBar.setShowsCancelButton(true, animated: false)
+        searchController.searchBar.backgroundImage = UIImage()
+        searchController.searchBar.backgroundColor = .white
+        searchController.searchBar.barTintColor = .white
+        searchController.searchBar.barStyle = .default
         
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = true
         navigationItem.rightBarButtonItem = selectItem
+        
+        navigationController?.navigationBar.backgroundColor = .white
         
         definesPresentationContext = true
     }
