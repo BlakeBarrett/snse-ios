@@ -16,20 +16,20 @@ class NotificationSettingsTableView: UITableViewController {
     
     struct Constants {
         static let addBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
-                                                        target: self,
-                                                        action: #selector(onAddClicked(_:)))
+                                                      target: self,
+                                                      action: #selector(onAddClicked(_:)))
         
         static let selectBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Select", comment: "Select"),
-                                                       style: .plain,
-                                                       target: self,
-                                                       action: #selector(handleSelectButton))
+                                                         style: .plain,
+                                                         target: self,
+                                                         action: #selector(handleSelectButton))
         
         static let cancelBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel,
-                                                            target: self,
-                                                            action: #selector(handleSelectButton))
-
-    }
+                                                         target: self,
+                                                         action: #selector(handleSelectButton))
         
+    }
+    
     private lazy var notificationUtils = NotificationUtils()
     var dates: [Date]?
     

@@ -50,6 +50,17 @@ class SentimentFactory {
         return load(from: context, withPredicate: predicate)
     }
     
+    static func save(_ values: [Sentiment]) {
+        values.forEach{ item in
+            let _ = item.managedObject(in: context)
+        }
+        do {
+            try context.save()
+        } catch {
+            return
+        }
+    }
+    
     static func save(_ value: Sentiment) {
         let _ = value.managedObject(in: context)
         do {
@@ -71,5 +82,15 @@ class SentimentFactory {
             return true
         }
         return false
+    }
+    
+    static func arrayFrom(data: Data) -> [Sentiment]? {
+        guard let json = try? JSONSerialization.jsonObject(with: data, options: []),
+              let sentimentsDict = json as? [[String:Any]]
+        else { return nil }
+        
+        return sentimentsDict.compactMap{ item in
+            Sentiment(values: item)
+        }
     }
 }
