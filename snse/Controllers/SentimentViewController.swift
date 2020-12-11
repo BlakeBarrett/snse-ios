@@ -25,19 +25,29 @@ class SentimentViewController: UITableViewController {
         static var selectBarButtonItem = UIBarButtonItem(title: Constants.select,
                                                          style: .plain,
                                                          target: self,
-                                                         action: #selector(handleSelectButton))
+                                                         action: #selector(handleSelectButton(_:)))
         static var cancelBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel,
                                                          target: self,
-                                                         action: #selector(handleSelectButton))
+                                                         action: #selector(handleSelectButton(_:)))
         static var selectAllButtonItem = UIBarButtonItem(title: Constants.selectAll,
                                                          style: .plain,
                                                          target: self,
                                                          action: #selector(handleSelectAll))
+        static var trashBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash,
+                                                         target: self,
+                                                         action: #selector(handleTrash))
     }
     
     var sentiments = [Sentiment]()
     var detailView: DetailCardViewController? = DetailCardViewController()
-    var selectedItems = Set<Sentiment>()
+    
+    var selectedItems: [Sentiment]? {
+        get {
+            return tableView.indexPathsForSelectedRows?.compactMap { indexPath in
+                self.sentiments[indexPath.row]
+            }
+        }
+    }
     
     deinit {
         detailView?.sentiment = nil
@@ -117,25 +127,27 @@ extension SentimentViewController {
         fetchAndRender()
     }
     
-    @objc func handleSelectButton() {
+    @objc func handleSelectButton(_ sender: Any) {
         tableView.isEditing = !tableView.isEditing
+        
+        navigationItem.rightBarButtonItem = nil
+        navigationItem.rightBarButtonItems = nil
         
         if tableView.isEditing {
             
             navigationItem.leftBarButtonItem = Constants.cancelBarButtonItem
             
-            // Because there is a bug in macCatalyts where you cannot "Select All".
-            #if !targetEnvironment(macCatalyst)
-            navigationItem.rightBarButtonItem = Constants.selectAllButtonItem
+            // Because in macCatalyts where you cannot "Select All", nor can you swipe to delete
+            #if targetEnvironment(macCatalyst)
+                navigationItem.rightBarButtonItems = [Constants.actionBarButtonItem, Constants.trashBarButtonItem]
+            #else
+                navigationItem.rightBarButtonItem = Constants.selectAllButtonItem
             #endif
             
         } else {
             
             navigationItem.leftBarButtonItem = nil
             navigationItem.rightBarButtonItem = Constants.selectBarButtonItem
-            
-            selectedItems.removeAll()
-            
         }
     }
     
@@ -147,26 +159,35 @@ extension SentimentViewController {
             tableView.selectRow(at: indexPath,
                                 animated: false,
                                 scrollPosition: UITableView.ScrollPosition.none)
-            
-            self.selectedItems.insert(sentiment)
         }
         
         navigationItem.rightBarButtonItem = Constants.actionBarButtonItem
     }
     
+    @objc func handleTrash() {
+        selectedItems?.forEach { sentiment in
+            _ = SentimentFactory.delete(sentiment)
+        }
+        
+        fetchAndRender()
+        
+        handleSelectButton(self)
+    }
+    
     @objc func handleAction() {
         
-        let items = Array(selectedItems)
+        guard let items = selectedItems else { return }
         
-        guard let value = jsonString(for: items) else { return }
-        
+        guard let json = jsonString(for: items) else { return }
         
         let savedFileUrl = getTempFilePath()
-        writeFile(with: value, to: savedFileUrl)
+        writeFile(with: json, to: savedFileUrl)
         
-        self.present(UIActivityViewController(activityItems: [savedFileUrl],
-                                              applicationActivities: nil),
-                     animated: true)
+        self.present(
+            UIActivityViewController(
+                activityItems: [savedFileUrl],
+                applicationActivities: nil),
+            animated: true)
     }
     
     private func jsonString(for items: [Sentiment]) -> String? {
@@ -211,36 +232,32 @@ extension SentimentViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let value = self.sentiments[indexPath.row]
-        selectedItems.insert(value)
-        
         if !tableView.isEditing {
+            let value = self.sentiments[indexPath.row]
             showHistoricalSentiment(value)
             
             if  #available(iOS 11.0, *),
                 navigationItem.searchController?.isActive ?? false {
                 tableView.deselectRow(at: indexPath, animated: true)
             }
-            tableView.deselectRow(at: indexPath, animated: true)
             
+            tableView.deselectRow(at: indexPath, animated: true)
         } else {
             
-            if selectedItems.count == 0 {
+            if selectedItems?.count == 0 {
                 navigationItem.rightBarButtonItem = Constants.selectAllButtonItem
             } else {
                 navigationItem.rightBarButtonItem = Constants.actionBarButtonItem
             }
-            
         }
     }
     
-    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        let value = self.sentiments[indexPath.row]
-        selectedItems.remove(value)
+    override func tableView(_ tableView: UITableView,
+                            didDeselectRowAt indexPath: IndexPath) {
         
         guard tableView.isEditing else { return }
         
-        if selectedItems.count == 0 {
+        if selectedItems?.count == 0 {
             navigationItem.rightBarButtonItem = Constants.selectAllButtonItem
         } else {
             navigationItem.rightBarButtonItem = Constants.actionBarButtonItem
@@ -254,11 +271,14 @@ extension SentimentViewController {
         show(detailView, modally: true, animated: true)
     }
     
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView,
+                            canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView,
+                            commit editingStyle: UITableViewCell.EditingStyle,
+                            forRowAt indexPath: IndexPath) {
         if  editingStyle == .delete {
             let sentiment = sentiments[indexPath.row]
             if SentimentFactory.delete(sentiment) {
@@ -267,7 +287,6 @@ extension SentimentViewController {
             }
         }
     }
-    
 }
 
 extension SentimentViewController: UISearchResultsUpdating {
@@ -289,11 +308,11 @@ extension SentimentViewController: UIDropInteractionDelegate {
                          canHandle session: UIDropSession) -> Bool {
         return session.hasItemsConforming(toTypeIdentifiers: [SentimentViewController.JSONTypeIdentifier])
     }
-
+    
     func dropInteraction(_ interaction: UIDropInteraction, sessionDidUpdate session: UIDropSession) -> UIDropProposal {
         return UIDropProposal(operation: .copy)
     }
-
+    
     // Thank you @Asperi on StackOverflow: https://stackoverflow.com/a/65211685/659746
     func dropInteraction(_ interaction: UIDropInteraction, performDrop session: UIDropSession) {
         session.items.forEach { item in
@@ -307,11 +326,17 @@ extension SentimentViewController: UIDropInteractionDelegate {
             }
         }
     }
-
+    
     private func importJSONData(from data: Data) {
         guard let values = SentimentFactory.arrayFrom(data: data) else { return }
-        print(values)
-        //SentimentFactory.save(values)
+        DispatchQueue.global(qos: .background).async {
+            // Save on a background thread
+            SentimentFactory.save(values)
+            // ui on the main thread
+            DispatchQueue.main.async {
+                self.fetchAndRender()
+            }
+        }
     }
 }
 
