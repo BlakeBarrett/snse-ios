@@ -14,20 +14,29 @@ class NotificationSettingsTableView: UITableViewController {
     
     public static let identifier = "NotificationSettingsTableView"
     
-    struct Constants {
-        static let addBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
-                                                      target: self,
-                                                      action: #selector(onAddClicked(_:)))
-        
-        static let selectBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Select", comment: "Select"),
-                                                         style: .plain,
-                                                         target: self,
-                                                         action: #selector(handleSelectButton))
-        
-        static let cancelBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel,
-                                                         target: self,
-                                                         action: #selector(handleSelectButton))
-        
+    var addBarButtonItem: UIBarButtonItem {
+        get {
+            UIBarButtonItem(barButtonSystemItem: .add,
+                            target: self,
+                            action: #selector(onAddClicked(_:)))
+        }
+    }
+    
+    var selectBarButtonItem: UIBarButtonItem {
+        get {
+            UIBarButtonItem(title: NSLocalizedString("Select", comment: "Select"),
+                            style: .plain,
+                            target: self,
+                            action: #selector(handleSelectButton))
+        }
+    }
+    
+    var cancelBarButtonItem: UIBarButtonItem {
+        get {
+            UIBarButtonItem(barButtonSystemItem: .cancel,
+                            target: self,
+                            action: #selector(handleSelectButton))
+        }
     }
     
     private lazy var notificationUtils = NotificationUtils()
@@ -36,7 +45,9 @@ class NotificationSettingsTableView: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         registerTableViewCell(tableView: tableView)
-        addButtonToRightNavigationItems(navigationItem: navigationItem)
+        addButtonToRightNavigationItems(navigationItem: navigationItem,
+                                        add: self.addBarButtonItem,
+                                        select: self.selectBarButtonItem)
         reloadData()
     }
     
@@ -51,12 +62,12 @@ class NotificationSettingsTableView: UITableViewController {
     }
     
     func addButtonToRightNavigationItems(navigationItem: UINavigationItem,
-                                         add: UIBarButtonItem = Constants.addBarButtonItem,
-                                         select: UIBarButtonItem = Constants.selectBarButtonItem) {
+                                         add: UIBarButtonItem,
+                                         select: UIBarButtonItem) {
         #if targetEnvironment(macCatalyst)
-            navigationItem.rightBarButtonItems = [add, select]
+        navigationItem.rightBarButtonItems = [add, select]
         #else
-            navigationItem.rightBarButtonItem = add
+        navigationItem.rightBarButtonItem = add
         #endif
     }
     
@@ -79,10 +90,12 @@ class NotificationSettingsTableView: UITableViewController {
     
     @objc func onAddClicked(_ sender: UIBarButtonItem) {
         notificationUtils.getAuthorization(success: { [unowned self] in
-            if let controller = self.show(viewControllerWithId: NotificationAddViewController.identifier,
-                                          modally: true,
-                                          animated: true) as? NotificationAddViewController {
-                controller.delegate = self
+            DispatchQueue.main.async {
+                if let controller = self.show(viewControllerWithId: NotificationAddViewController.identifier,
+                                              modally: true,
+                                              animated: true) as? NotificationAddViewController {
+                    controller.delegate = self
+                }
             }
         }, failure: { error in
             
@@ -158,9 +171,9 @@ extension NotificationSettingsTableView {
         tableView.isEditing = !tableView.isEditing
         
         if tableView.isEditing {
-            navigationItem.rightBarButtonItems = [Constants.addBarButtonItem, Constants.cancelBarButtonItem]
+            navigationItem.rightBarButtonItems = [self.addBarButtonItem, self.cancelBarButtonItem]
         } else {
-            navigationItem.rightBarButtonItems = [Constants.addBarButtonItem, Constants.selectBarButtonItem]
+            navigationItem.rightBarButtonItems = [self.addBarButtonItem, self.selectBarButtonItem]
         }
     }
 }

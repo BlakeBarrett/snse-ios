@@ -18,24 +18,48 @@ class SentimentViewController: UITableViewController {
         static let select = NSLocalizedString("Select", comment: "Select")
         static let selectAll = NSLocalizedString("Select All", comment: "Select All")
         static let filter = NSLocalizedString("Filter", comment: "Filter")
-        
-        static var actionBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action,
-                                                         target: self,
-                                                         action: #selector(handleAction))
-        static var selectBarButtonItem = UIBarButtonItem(title: Constants.select,
-                                                         style: .plain,
-                                                         target: self,
-                                                         action: #selector(handleSelectButton(_:)))
-        static var cancelBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel,
-                                                         target: self,
-                                                         action: #selector(handleSelectButton(_:)))
-        static var selectAllButtonItem = UIBarButtonItem(title: Constants.selectAll,
-                                                         style: .plain,
-                                                         target: self,
-                                                         action: #selector(handleSelectAll))
-        static var trashBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash,
-                                                         target: self,
-                                                         action: #selector(handleTrash))
+    }
+    
+    var actionBarButtonItem: UIBarButtonItem {
+        get {
+            UIBarButtonItem(barButtonSystemItem: .action,
+                            target: self,
+                            action: #selector(handleAction))
+        }
+    }
+    
+    var selectBarButtonItem: UIBarButtonItem {
+        get {
+            UIBarButtonItem(title: Constants.select,
+                            style: .plain,
+                            target: self,
+                            action: #selector(handleSelectButton(_:)))
+        }
+    }
+    
+    var cancelBarButtonItem: UIBarButtonItem {
+        get {
+            UIBarButtonItem(barButtonSystemItem: .cancel,
+                            target: self,
+                            action: #selector(handleSelectButton(_:)))
+        }
+    }
+    
+    var selectAllButtonItem: UIBarButtonItem {
+        get {
+            UIBarButtonItem(title: Constants.selectAll,
+                            style: .plain,
+                            target: self,
+                            action: #selector(handleSelectAll))
+        }
+    }
+    
+    var trashBarButtonItem: UIBarButtonItem {
+        get {
+            UIBarButtonItem(barButtonSystemItem: .trash,
+                            target: self,
+                            action: #selector(handleTrash))
+        }
     }
     
     var sentiments = [Sentiment]()
@@ -61,7 +85,7 @@ class SentimentViewController: UITableViewController {
         
         configureTableView(tableView: tableView)
         
-        configureNavigationItem(navigationItem: navigationItem)
+        configureNavigationItem(navigationItem: navigationItem, selectItem: selectBarButtonItem)
         
         fetchAndRender()
     }
@@ -78,7 +102,7 @@ class SentimentViewController: UITableViewController {
     }
     
     func configureNavigationItem(navigationItem: UINavigationItem,
-                                 selectItem: UIBarButtonItem = Constants.selectBarButtonItem) {
+                                 selectItem: UIBarButtonItem) {
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.searchBar.placeholder = Constants.filter
@@ -144,19 +168,19 @@ extension SentimentViewController {
         
         if tableView.isEditing {
             
-            navigationItem.leftBarButtonItem = Constants.cancelBarButtonItem
+            navigationItem.leftBarButtonItem = cancelBarButtonItem
             
             // Because in macCatalyts where you cannot "Select All", nor can you swipe to delete
             #if targetEnvironment(macCatalyst)
-                navigationItem.rightBarButtonItems = [Constants.actionBarButtonItem, Constants.trashBarButtonItem]
+            navigationItem.rightBarButtonItems = [Constants.actionBarButtonItem, Constants.trashBarButtonItem]
             #else
-                navigationItem.rightBarButtonItem = Constants.selectAllButtonItem
+            navigationItem.rightBarButtonItem = selectAllButtonItem
             #endif
             
         } else {
             
             navigationItem.leftBarButtonItem = nil
-            navigationItem.rightBarButtonItem = Constants.selectBarButtonItem
+            navigationItem.rightBarButtonItem = selectBarButtonItem
         }
     }
     
@@ -170,7 +194,7 @@ extension SentimentViewController {
                                 scrollPosition: UITableView.ScrollPosition.none)
         }
         
-        navigationItem.rightBarButtonItem = Constants.actionBarButtonItem
+        navigationItem.rightBarButtonItem = actionBarButtonItem
     }
     
     @objc func handleTrash() {
@@ -254,9 +278,9 @@ extension SentimentViewController {
         } else {
             
             if selectedItems?.count == 0 {
-                navigationItem.rightBarButtonItem = Constants.selectAllButtonItem
+                navigationItem.rightBarButtonItem = selectAllButtonItem
             } else {
-                navigationItem.rightBarButtonItem = Constants.actionBarButtonItem
+                navigationItem.rightBarButtonItem = actionBarButtonItem
             }
         }
     }
@@ -267,9 +291,9 @@ extension SentimentViewController {
         guard tableView.isEditing else { return }
         
         if selectedItems?.count == 0 {
-            navigationItem.rightBarButtonItem = Constants.selectAllButtonItem
+            navigationItem.rightBarButtonItem = selectAllButtonItem
         } else {
-            navigationItem.rightBarButtonItem = Constants.actionBarButtonItem
+            navigationItem.rightBarButtonItem = actionBarButtonItem
         }
     }
     
