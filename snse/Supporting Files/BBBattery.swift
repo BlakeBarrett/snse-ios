@@ -59,7 +59,7 @@ class BBBattery {
     
     public func close() {
         let current = batteryLevel
-        let total = self.intialBatteryLevel + current
+        let total = current - self.intialBatteryLevel
         save(total)
     }
     
