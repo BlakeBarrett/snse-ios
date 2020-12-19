@@ -24,8 +24,6 @@
 	<string>public.app-category.healthcare-fitness</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSCameraUsageDescription</key>
-	<string>Take a picture?</string>
 	<key>NSFaceIDUsageDescription</key>
 	<string>YOU are your key.</string>
 	<key>NSUserActivityTypes</key>
