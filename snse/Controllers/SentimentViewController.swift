@@ -14,7 +14,6 @@ class SentimentViewController: UITableViewController {
     static let identifier = "historyViewController"
     
     struct Constants {
-        
         static let select = NSLocalizedString("Select", comment: "Select")
         static let selectAll = NSLocalizedString("Select All", comment: "Select All")
         static let filter = NSLocalizedString("Filter", comment: "Filter")
@@ -106,11 +105,12 @@ class SentimentViewController: UITableViewController {
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.searchBar.placeholder = Constants.filter
-        searchController.searchBar.setShowsCancelButton(true, animated: false)
+        searchController.searchBar.setShowsCancelButton(false, animated: false)
         searchController.searchBar.backgroundImage = UIImage()
         searchController.searchBar.backgroundColor = .white
         searchController.searchBar.barTintColor = .white
         searchController.searchBar.barStyle = .default
+        searchController.definesPresentationContext = false
         
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = true
@@ -172,7 +172,7 @@ extension SentimentViewController {
             
             // Because in macCatalyts where you cannot "Select All", nor can you swipe to delete
             #if targetEnvironment(macCatalyst)
-            navigationItem.rightBarButtonItems = [Constants.actionBarButtonItem, Constants.trashBarButtonItem]
+            navigationItem.rightBarButtonItems = [actionBarButtonItem, trashBarButtonItem]
             #else
             navigationItem.rightBarButtonItem = selectAllButtonItem
             #endif
