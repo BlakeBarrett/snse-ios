@@ -47,6 +47,7 @@
 		25FED67521967692002DE7F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25FED67421967692002DE7F0 /* Assets.xcassets */; };
 		FB42D7D0258D6AFB004A89A6 /* BBBattery.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB42D7CF258D6AFB004A89A6 /* BBBattery.swift */; };
 		FB42D7D1258D6AFB004A89A6 /* BBBattery.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB42D7CF258D6AFB004A89A6 /* BBBattery.swift */; };
+		FB944491258D897C00D64A37 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FB944490258D897C00D64A37 /* Settings.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +122,7 @@
 		25ED4A6022D31FE100E93BEB /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		25FED67421967692002DE7F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FB42D7CF258D6AFB004A89A6 /* BBBattery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBBattery.swift; sourceTree = "<group>"; };
+		FB944490258D897C00D64A37 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -269,6 +271,7 @@
 				25E4D4992195252100CFA268 /* snse.xcdatamodeld */,
 				25FED67421967692002DE7F0 /* Assets.xcassets */,
 				FB42D7CF258D6AFB004A89A6 /* BBBattery.swift */,
+				FB944490258D897C00D64A37 /* Settings.bundle */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -384,6 +387,7 @@
 				25FED67521967692002DE7F0 /* Assets.xcassets in Resources */,
 				2572D6FA21E969EE0019AE8D /* LaunchScreen.storyboard in Resources */,
 				25E4D4982195252100CFA268 /* Main.storyboard in Resources */,
+				FB944491258D897C00D64A37 /* Settings.bundle in Resources */,
 				258377D9219A69E300747670 /* SentimentTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
