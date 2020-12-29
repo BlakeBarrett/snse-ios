@@ -216,10 +216,13 @@ extension SentimentViewController {
         let savedFileUrl = getTempFilePath()
         writeFile(with: json, to: savedFileUrl)
         
-        self.present(
-            UIActivityViewController(
-                activityItems: [savedFileUrl],
-                applicationActivities: nil),
+        let activity = UIActivityViewController(
+            activityItems: [savedFileUrl],
+            applicationActivities: nil)
+        
+        self.show(
+            activity,
+            modally: true,
             animated: true)
     }
     

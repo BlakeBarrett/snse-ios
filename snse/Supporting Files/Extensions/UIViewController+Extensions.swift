@@ -53,13 +53,30 @@ extension UIViewController {
         return nil
     }
     
-    func show(_ viewController: UIViewController, modally: Bool = true, animated: Bool = true) {
+    func show(_ viewController: UIViewController,
+              modally: Bool = true,
+              animated: Bool = true) {
+        
         DispatchQueue.main.async {
             viewController.providesPresentationContextTransitionStyle = modally
             viewController.definesPresentationContext = modally
-            viewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-            viewController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-
+            viewController.modalPresentationStyle = .overCurrentContext
+            viewController.modalTransitionStyle = .crossDissolve
+            
+        // is this on a real iPad (not in Catalyst).
+        #if !targetEnvironment(macCatalyst)
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                viewController.modalPresentationStyle = .popover
+                viewController.popoverPresentationController?.sourceView = self.view
+                
+                let nav = UINavigationController(rootViewController: viewController)
+                nav.modalPresentationStyle = viewController.modalPresentationStyle
+                nav.popoverPresentationController?.barButtonItem = self.navigationItem.rightBarButtonItem
+                
+                self.present(nav, animated: animated, completion: nil)
+                return
+            }
+        #endif
             self.present(viewController, animated: animated)
         }
     }

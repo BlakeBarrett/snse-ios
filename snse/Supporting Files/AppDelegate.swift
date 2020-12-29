@@ -36,6 +36,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         if #available(iOS 13.0, *) {
             window?.overrideUserInterfaceStyle = .light
+            
+            if  let window = window,
+                let splitViewController = window.rootViewController as? UISplitViewController,
+                let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as? UINavigationController,
+                let topViewController = navigationController.topViewController {
+                
+                topViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
+                // Add a translucent background to the primary view controller.
+                splitViewController.primaryBackgroundStyle = .sidebar
+            }
         }
         // Override point for customization after application launch.
         return true
