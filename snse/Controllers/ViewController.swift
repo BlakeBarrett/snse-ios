@@ -11,6 +11,8 @@ import StoreKit
 
 class ViewController: UIViewController {
 
+    static let identifier = "mainEntryViewController"
+    
     var questionaireView = EntryFormCardViewController()
     var authenticated = false
     

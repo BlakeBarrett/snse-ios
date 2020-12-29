@@ -150,3 +150,52 @@ extension AppDelegate {
         super.restoreUserActivityState(activity)
     }
 }
+
+extension AppDelegate {
+    
+    @available(iOS 13.0, *)
+    override func buildMenu(with builder: UIMenuBuilder) {
+        super.buildMenu(with: builder)
+        
+        let newSentimentCommand = UIKeyCommand(title: NSLocalizedString("New", comment: "new"),
+                                               image: nil,
+                                               action: #selector(newSentiment),
+                                               input: "N",
+                                               modifierFlags: .command,
+                                               propertyList: nil)
+        
+        let newMenu = UIMenu(title: NSLocalizedString("", comment: ""),
+                             image: nil,
+                             identifier: UIMenu.Identifier("com.blakebarrett.snse.app.new"),
+                             options: .displayInline,
+                             children: [newSentimentCommand])
+        
+        builder.insertChild(newMenu, atStartOfMenu: .file)
+    }
+    
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        
+        let currentlyPresentedRestorationIdentifier = window?.rootViewController?.children.last?.restorationIdentifier
+        
+        switch action {
+            case #selector(newSentiment):
+                return currentlyPresentedRestorationIdentifier != ViewController.identifier
+            default:
+                return super.canPerformAction(action, withSender: sender)
+        }
+    }
+    
+    @objc
+    public func newSentiment() {
+        if let viewController = ViewController.getViewController(with: ViewController.identifier) {
+            window?.rootViewController?.present(viewController, animated: true)
+        }
+    }
+}
+
+extension AppDelegate {
+    
+    override func validate(_ command: UICommand) {
+        super.validate(command)
+    }
+}
