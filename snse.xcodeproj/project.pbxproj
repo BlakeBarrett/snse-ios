@@ -45,6 +45,8 @@
 		25E4D4BB21954DD300CFA268 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 25E4D4BA21954DD300CFA268 /* index.html */; };
 		25ED4A6122D31FE100E93BEB /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25ED4A6022D31FE100E93BEB /* Fonts.swift */; };
 		25FED67521967692002DE7F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25FED67421967692002DE7F0 /* Assets.xcassets */; };
+		FB132E4425A7D0B20003336D /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = FB132E4325A7D0B20003336D /* about.html */; };
+		FB48D31E25A7C68900826427 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB48D31D25A7C68900826427 /* AboutViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +120,8 @@
 		25E4D4BA21954DD300CFA268 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		25ED4A6022D31FE100E93BEB /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		25FED67421967692002DE7F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FB132E4325A7D0B20003336D /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
+		FB48D31D25A7C68900826427 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,6 +254,7 @@
 				25D2A84621CDB9C1008F9129 /* DetailCardViewController.swift */,
 				2560502521D07DBE00A0F046 /* EntryFormCardViewController.swift */,
 				255C9BE121DAE4FB00AA7008 /* DedicatedTextEntryViewController.swift */,
+				FB48D31D25A7C68900826427 /* AboutViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -257,6 +262,7 @@
 		25FED67921967F5E002DE7F0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FB132E4325A7D0B20003336D /* about.html */,
 				25E4D4922195252100CFA268 /* AppDelegate.swift */,
 				25ED4A6022D31FE100E93BEB /* Fonts.swift */,
 				2593190A21978BC5005CCC75 /* SentimentFactory.swift */,
@@ -379,6 +385,7 @@
 				25E4D4BB21954DD300CFA268 /* index.html in Resources */,
 				25FED67521967692002DE7F0 /* Assets.xcassets in Resources */,
 				2572D6FA21E969EE0019AE8D /* LaunchScreen.storyboard in Resources */,
+				FB132E4425A7D0B20003336D /* about.html in Resources */,
 				25E4D4982195252100CFA268 /* Main.storyboard in Resources */,
 				258377D9219A69E300747670 /* SentimentTableViewCell.xib in Resources */,
 			);
@@ -416,6 +423,7 @@
 				257583FF21EFC8DD008F47E2 /* NotificationAlarmTableViewCell.swift in Sources */,
 				25ED4A6122D31FE100E93BEB /* Fonts.swift in Sources */,
 				2582015821EE809400CCDC70 /* NotificationAddViewController.swift in Sources */,
+				FB48D31E25A7C68900826427 /* AboutViewController.swift in Sources */,
 				25E4D4952195252100CFA268 /* ViewController.swift in Sources */,
 				2548F1D121E5D4C00055C414 /* ThankViewController.swift in Sources */,
 				2527C33921D9FBBB008B3A58 /* UILabel+Extensions.swift in Sources */,

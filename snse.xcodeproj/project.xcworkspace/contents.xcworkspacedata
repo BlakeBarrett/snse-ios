@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:snse.xcodeproj">
+      location = "group:/Users/blakebarrett/Src/blakebarrett/snse-ios/snse/Supporting Files/ABOUT.html">
+   </FileRef>
+   <FileRef
+      location = "self:">
    </FileRef>
 </Workspace>

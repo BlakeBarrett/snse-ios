@@ -195,6 +195,7 @@ extension AppDelegate {
 
 extension AppDelegate {
     
+    @available(iOS 13.0, *)
     override func validate(_ command: UICommand) {
         super.validate(command)
     }

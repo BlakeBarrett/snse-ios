@@ -37,6 +37,13 @@ extension UIViewController {
     }
     
     @discardableResult
+    static func show(_ controller: UIViewController, in navigationController: UINavigationController? = nil) -> UIViewController? {
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        navigationController?.pushViewController(controller, animated: true)
+        return controller
+    }
+    
+    @discardableResult
     static func show(viewWithId id: String, in navigationController: UINavigationController? = nil) -> UIViewController? {
         guard let controller = getViewController(with: id) else { return nil }
         navigationController?.setNavigationBarHidden(false, animated: false)

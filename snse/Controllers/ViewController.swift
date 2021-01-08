@@ -66,12 +66,45 @@ class ViewController: UIViewController {
     
     func decorateTitle() {
         let label = UILabel(frame: CGRect.zero)
-        let font = Fonts.signPainter36
+        decorate(label: label)
+        addTapListener(to: label)
+        navigationItem.titleView = label
+    }
+    
+    func decorate(label: UILabel,
+                  with font: UIFont? = Fonts.signPainter36 ) {
         label.font = font
         label.text = navigationItem.title
         label.sizeToFit()
         label.textColor = UIColor.darkText
-        navigationItem.titleView = label
+    }
+    
+    func addTapListener(to label: UILabel,
+                        for selector: Selector = #selector(onSnseLabelTap)) {
+        let tap = UITapGestureRecognizer(target: self, action: selector)
+        label.isUserInteractionEnabled = true
+        label.addGestureRecognizer(tap)
+    }
+    
+    @objc func onSnseLabelTap() {
+        
+        // Catalyst opens in Safari
+        #if targetEnvironment(macCatalyst)
+        
+        if let url = URL(string: "https://github.com/BlakeBarrett/snse-ios/blob/main/ABOUT.md") {
+            UIApplication.shared.open(url)
+            return
+        }
+        
+        // iOS opens in custom view
+        #else
+        
+        let aboutVC = AboutViewController()
+        aboutVC.view.frame = self.view.bounds
+        UIViewController.show(aboutVC,
+                              in: navigationController)
+        
+        #endif
     }
     
     func addQuestionaireChildViewController() {
