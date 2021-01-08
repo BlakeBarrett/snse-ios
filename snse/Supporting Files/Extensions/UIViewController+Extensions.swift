@@ -73,8 +73,17 @@ extension UIViewController {
         // is this on a real iPad (not in Catalyst).
         #if !targetEnvironment(macCatalyst)
             if UIDevice.current.userInterfaceIdiom == .pad {
-                viewController.modalPresentationStyle = .popover
-                viewController.popoverPresentationController?.sourceView = self.view
+                
+                if #available(iOS 13.0, *) {
+                    viewController.modalPresentationStyle = .automatic
+                } else {
+                    viewController.modalPresentationStyle = .popover
+                    if let popoverPresentationController = viewController.popoverPresentationController {
+                        popoverPresentationController.sourceView = self.view
+                        popoverPresentationController.sourceRect = self.view.frame
+                        
+                    }
+                }
                 
                 let nav = UINavigationController(rootViewController: viewController)
                 nav.modalPresentationStyle = viewController.modalPresentationStyle
@@ -84,7 +93,7 @@ extension UIViewController {
                 return
             }
         #endif
-            self.present(viewController, animated: animated)
+                self.present(viewController, animated: animated)
         }
     }
     
